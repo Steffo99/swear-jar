@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ld54"
+run/main_scene="res://root.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/bg_color=Color(0.0977035, 0.0977035, 0.10161, 1)
+boot_splash/image="res://icon.png"
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=270
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+window/handheld/orientation=1
+
+[layer_names]
+
+2d_physics/layer_2="Bottle"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.0977035, 0.0977035, 0.10161, 1)

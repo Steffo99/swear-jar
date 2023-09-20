@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://x34aaomqiebu"]
+
+[ext_resource type="Texture2D" uid="uid://cxsl5yvdhswc7" path="res://icon.png" id="1_ld7df"]
+
+[node name="Coin" type="RigidBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(218, 69)
+scale = Vector2(0.107422, 0.107422)
+texture = ExtResource("1_ld7df")
