@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3kitncwpi42j"]
+[gd_scene load_steps=6 format=3 uid="uid://c3kitncwpi42j"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://wjrjkmxp41dt" path="res://entity/coin.tres" id="1_1merf"]
+[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin.tres" id="1_1merf"]
 [ext_resource type="Texture2D" uid="uid://dbdkb4vt7dh85" path="res://entity/coin_copper_4.png" id="1_wedw1"]
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper_outline_2.png" id="2_2ifq3"]
+[ext_resource type="Script" path="res://entity/coin_copper.gd" id="2_y0e7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
 size = Vector2(14, 3)
@@ -10,15 +11,15 @@ size = Vector2(14, 3)
 [node name="CoinCopper" type="RigidBody2D"]
 collision_layer = 5
 collision_mask = 7
-center_of_mass_mode = 1
-center_of_mass = Vector2(10, 0)
+inertia = 20000.0
 physics_material_override = ExtResource("1_1merf")
 continuous_cd = 1
 linear_damp = 0.1
 angular_damp = 0.1
+script = ExtResource("2_y0e7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_c6byl")
 
 [node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
