@@ -81,7 +81,6 @@ texture_filter = 1
 [node name="TimeSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
 position = Vector2(-24, -490)
 scene = ExtResource("2_dv01l")
-target_parent = NodePath("..")
 
 [node name="Timer" type="Timer" parent="UI/GameContainer/Game/TimeSpawner"]
 autostart = true
@@ -89,7 +88,6 @@ autostart = true
 [node name="ButtonSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
 position = Vector2(24, -490)
 scene = ExtResource("2_dv01l")
-target_parent = NodePath("..")
 
 [connection signal="pressed" from="UI/Rows/UpperButtons/SpawnButton" to="UI/GameContainer/Game/ButtonSpawner" method="spawn"]
 [connection signal="timeout" from="UI/GameContainer/Game/TimeSpawner/Timer" to="UI/GameContainer/Game/TimeSpawner" method="spawn"]
