@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=6 format=3 uid="uid://cbccs6kwwf265"]
 
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_4fmd3"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="2_dv01l"]
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_m7p4p"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_pubxn"]
+[ext_resource type="PackedScene" uid="uid://cxtgmrrq432tc" path="res://convertitore.tscn" id="5_6hpcd"]
 
 [node name="Root" type="Node"]
 
@@ -90,6 +91,9 @@ autostart = true
 position = Vector2(23, -424)
 scene = ExtResource("2_dv01l")
 target_parent = NodePath("..")
+
+[node name="Convertitore" parent="UI/GameContainer/Game" instance=ExtResource("5_6hpcd")]
+position = Vector2(-110, -257)
 
 [connection signal="pressed" from="UI/Rows/UpperButtons/SpawnButton" to="UI/GameContainer/Game/TouchSpawner" method="spawn"]
 [connection signal="timeout" from="UI/GameContainer/Game/Spawner/Timer2" to="UI/GameContainer/Game/Spawner" method="spawn"]
