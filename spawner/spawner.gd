@@ -11,7 +11,9 @@ var buffer: int = 0
 
 
 func spawn():
-	buffer = clampi(buffer + 1, 0, buffer_cap)
+	buffer += 1
+	if buffer > buffer_cap:
+		buffer = buffer_cap
 
 
 func _physics_process(_delta):
