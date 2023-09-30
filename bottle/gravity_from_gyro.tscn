@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d05b8jy3xmpcb"]
+
+[ext_resource type="Script" path="res://bottle/gravity_from_gyro.gd" id="1_40gii"]
+
+[node name="GravityFromGyro" type="Node"]
+script = ExtResource("1_40gii")

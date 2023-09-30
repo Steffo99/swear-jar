@@ -6,7 +6,6 @@ class_name Spawner
 func spawn():
 	if len($Area2D.get_overlapping_bodies()) > 0:
 		return
-
-	var scene_instant= scene.instantiate()
+	var scene_instant = scene.instantiate()
 	scene_instant.position=Vector2.ZERO
 	add_child(scene_instant)

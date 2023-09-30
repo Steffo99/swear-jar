@@ -15,7 +15,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_xnebx")
 

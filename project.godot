@@ -34,8 +34,12 @@ window/handheld/orientation=1
 
 [physics]
 
-2d/solver/contact_max_allowed_penetration=1.0
-2d/solver/default_contact_bias=1.0
+2d/run_on_separate_thread=true
+2d/solver/solver_iterations=4
+2d/solver/contact_recycle_radius=3.0
+2d/solver/contact_max_allowed_penetration=0.02
+2d/solver/default_contact_bias=0.1
+2d/solver/default_constraint_bias=0.1
 
 [rendering]
 
