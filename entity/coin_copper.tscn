@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3kitncwpi42j"]
 
-[ext_resource type="PhysicsMaterial" path="res://entity/coin.tres" id="1_1merf"]
+[ext_resource type="PhysicsMaterial" uid="uid://wjrjkmxp41dt" path="res://entity/coin.tres" id="1_1merf"]
 [ext_resource type="Texture2D" uid="uid://dbdkb4vt7dh85" path="res://entity/coin_copper_4.png" id="1_wedw1"]
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper_outline_2.png" id="2_2ifq3"]
 
@@ -10,19 +10,22 @@ size = Vector2(14, 3)
 [node name="CoinCopper" type="RigidBody2D"]
 collision_layer = 5
 collision_mask = 7
+center_of_mass_mode = 1
+center_of_mass = Vector2(10, 0)
 physics_material_override = ExtResource("1_1merf")
 continuous_cd = 1
 linear_damp = 0.1
 angular_damp = 0.1
 
-[node name="Outline" type="Sprite2D" parent="."]
-z_index = -10
-texture_filter = 1
-texture = ExtResource("2_2ifq3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_c6byl")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
 texture_filter = 1
 texture = ExtResource("1_wedw1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_c6byl")
+[node name="Outline" type="Sprite2D" parent="CollisionShape2D"]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("2_2ifq3")
