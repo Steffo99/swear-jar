@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxtgmrrq432tc"]
+
+[ext_resource type="Script" path="res://Convertitore.gd" id="1_7de38"]
+[ext_resource type="Texture2D" uid="uid://cxsl5yvdhswc7" path="res://icon.png" id="2_8bfs6"]
+
+[node name="Convertitore" type="Node2D"]
+script = ExtResource("1_7de38")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(61, 76)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_8bfs6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(36, 114, 36, 38, 42, 56, 61, 57, 79, 56, 85, 38, 85, 115, 61, 91)
+
+[node name="Ingresso" type="Area2D" parent="."]
+position = Vector2(56, 42)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingresso"]
+polygon = PackedVector2Array(-20, -6, 29, -6, 23, 11, 5, 14, -12, 12)
+
+[connection signal="body_shape_entered" from="Ingresso" to="." method="_on_ingresso_body_shape_entered"]
