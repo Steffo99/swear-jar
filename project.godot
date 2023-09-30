@@ -28,6 +28,7 @@ window/handheld/orientation=1
 [layer_names]
 
 2d_physics/layer_2="Bottle"
+2d_physics/layer_3="Entities"
 
 [rendering]
 
