@@ -70,8 +70,63 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Game" type="Node2D" parent="UI/GameContainer"]
+texture_filter = 1
 
 [node name="Bottle" parent="UI/GameContainer/Game" instance=ExtResource("1_4fmd3")]
 
 [node name="CoinCopper" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
-position = Vector2(-8, -473)
+position = Vector2(-3, -443)
+
+[node name="CoinCopper2" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper3" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper4" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper5" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper6" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper7" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper8" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper9" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper10" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper11" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper12" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper13" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper14" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper15" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper16" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper17" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper18" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)
+
+[node name="CoinCopper19" parent="UI/GameContainer/Game" instance=ExtResource("2_dv01l")]
+position = Vector2(-3, -443)

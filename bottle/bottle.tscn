@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bllsprv8orpn4"]
+[gd_scene load_steps=4 format=3 uid="uid://bllsprv8orpn4"]
 
 [ext_resource type="Texture2D" uid="uid://os7j1nq0sk5m" path="res://bottle/bottle_tiles.png" id="1_iubt6"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kqc5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_midqx"]
 resource_name = "Bottle Placeholder"
 texture = ExtResource("1_iubt6")
 0:0/next_alternative_id = 2
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_tr7be"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 2
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_kqc5i")
 sources/0 = SubResource("TileSetAtlasSource_midqx")
 
 [node name="Bottle" type="TileMap"]
 tile_set = SubResource("TileSet_tr7be")
+collision_visibility_mode = 1
 format = 2
 layer_0/tile_data = PackedInt32Array(-1638406, 0, 0, -1638407, 0, 0, -1638408, 0, 0, -1572872, 0, 0, -1507336, 0, 0, -1441800, 0, 0, -1376264, 0, 0, -1310728, 0, 0, -1245192, 0, 0, -393224, 0, 0, -327688, 0, 0, -262152, 0, 0, -458760, 0, 0, -524296, 0, 0, -589832, 0, 0, -655368, 0, 0, -720904, 0, 0, -786440, 0, 0, -851976, 0, 0, -917512, 0, 0, -983048, 0, 0, -1048584, 0, 0, -1114120, 0, 0, -1179656, 0, 0, -196616, 0, 0, -131080, 0, 0, -65544, 0, 0, -8, 0, 0, -7, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -5, 0, 0, -6, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -131065, 0, 0, -196601, 0, 0, -262137, 0, 0, -327673, 0, 0, -393209, 0, 0, -458745, 0, 0, -524281, 0, 0, -589817, 0, 0, -655353, 0, 0, -720889, 0, 0, -786425, 0, 0, -851961, 0, 0, -917497, 0, 0, -983033, 0, 0, -1048569, 0, 0, -1114105, 0, 0, -1441785, 0, 0, -1507321, 0, 0, -1376249, 0, 0, -1310713, 0, 0, -1245177, 0, 0, -1179641, 0, 0, -1572857, 0, 0, -1638393, 0, 0, -1703929, 0, 0, -1703930, 0, 0, -1703931, 0, 0, -1638405, 0, 0, -1638404, 0, 0, -1703940, 0, 0, -1769476, 0, 0, -1835012, 0, 0, -1900548, 0, 0, -1703932, 0, 0, -1703933, 0, 0, -1769469, 0, 0, -1835005, 0, 0, -1900541, 0, 0, -1966077, 0, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="Poly" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-64, -480, -64, -416, -128, -416, -128, 0, 128, 0, 128, -416, 64, -416, 64, -480, 48, -480, 48, -400, 112, -400, 112, -16, -112, -16, -112, -400, -48, -400, -48, -480)
