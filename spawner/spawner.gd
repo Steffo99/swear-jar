@@ -9,3 +9,4 @@ func spawn():
 	var scene_instant = scene.instantiate()
 	scene_instant.position=Vector2.ZERO
 	add_child(scene_instant)
+	
