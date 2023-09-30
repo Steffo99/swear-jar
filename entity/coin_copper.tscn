@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper_outline_2.png" id="2_2ifq3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
-size = Vector2(14, 3)
+size = Vector2(16, 5)
 
 [node name="CoinCopper" type="RigidBody2D"]
 collision_layer = 5
