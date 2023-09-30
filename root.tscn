@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=4 format=3 uid="uid://cbccs6kwwf265"]
 
-[ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_4fmd3"]
+[ext_resource type="PackedScene" path="res://bottle/bottle.tscn" id="1_4fmd3"]
+[ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="2_dv01l"]
+[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_pubxn"]
 
 [node name="Root" type="Node"]
 
@@ -72,3 +74,8 @@ grow_vertical = 0
 texture_filter = 1
 
 [node name="Bottle" parent="UI/GameContainer/Game" instance=ExtResource("1_4fmd3")]
+
+[node name="Spawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
+position = Vector2(-9, -333)
+scene = ExtResource("2_dv01l")
+target_parent = NodePath("..")

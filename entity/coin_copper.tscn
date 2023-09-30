@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3kitncwpi42j"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin.tres" id="1_1merf"]
+[ext_resource type="PhysicsMaterial" path="res://entity/coin.tres" id="1_1merf"]
 [ext_resource type="Texture2D" uid="uid://dbdkb4vt7dh85" path="res://entity/coin_copper_4.png" id="1_wedw1"]
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper_outline_2.png" id="2_2ifq3"]
 
