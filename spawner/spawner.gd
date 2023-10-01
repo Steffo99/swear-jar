@@ -16,7 +16,7 @@ var buffer: int = 0
 @export_flags_2d_physics var overlapping_bodies_collision_mask: int
 @export_range(0, 16) var overlapping_body_count_limit: int
 
-signal spawned(what: RigidBody2D)
+signal spawned(what: Node2D)
 
 
 func spawn():
