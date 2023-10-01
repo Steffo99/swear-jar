@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=6 format=3 uid="uid://cbccs6kwwf265"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_8jrhk"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_h26ax"]
-[ext_resource type="Script" path="res://View.gd" id="3_1ki2g"]
-[ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="3_8gkpc"]
+[ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="3_hrdyr"]
 [ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="3_lvefk"]
-[ext_resource type="Script" path="res://interface/SafeUI.gd" id="4_grf0c"]
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="5_2cc15"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_8jrhk")
 
-[node name="View" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -21,47 +19,33 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme = ExtResource("1_h26ax")
-script = ExtResource("3_1ki2g")
 
-[node name="GameWI" type="CenterContainer" parent="View"]
+[node name="GameContainer" type="Control" parent="UI"]
 process_mode = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_vertical_guides_ = []
+grow_vertical = 0
 
-[node name="GameWorld" type="Control" parent="View/GameWI"]
-layout_mode = 2
+[node name="Game" parent="UI/GameContainer" instance=ExtResource("3_hrdyr")]
 
-[node name="Game" parent="View/GameWI/GameWorld" instance=ExtResource("3_8gkpc")]
-
-[node name="SafeUI" type="MarginContainer" parent="View"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_grf0c")
-
-[node name="GameUI" parent="View/SafeUI" instance=ExtResource("5_2cc15")]
+[node name="GameUI" parent="UI" instance=ExtResource("5_2cc15")]
 process_mode = 3
-layout_mode = 2
+layout_mode = 1
 
-[node name="ShopUI" parent="View/SafeUI" instance=ExtResource("3_lvefk")]
+[node name="ShopUI" parent="UI" instance=ExtResource("3_lvefk")]
 process_mode = 3
 visible = false
-layout_mode = 2
+layout_mode = 1
 
-[connection signal="score_button_pressed" from="View/SafeUI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
-[connection signal="shop_button_pressed" from="View/SafeUI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
-[connection signal="spawn_button_pressed" from="View/SafeUI/GameUI" to="." method="_on_game_ui_spawn_button_pressed"]
-[connection signal="back_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
-[connection signal="delete_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
-[connection signal="purchase_begin" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
-[connection signal="score_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]
+[connection signal="score_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
+[connection signal="shop_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
+[connection signal="spawn_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_spawn_button_pressed"]
+[connection signal="back_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
+[connection signal="delete_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
+[connection signal="purchase_begin" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
+[connection signal="score_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]

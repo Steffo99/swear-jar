@@ -12,16 +12,15 @@ texture_filter = 1
 script = ExtResource("1_i3ly0")
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
-position = Vector2(0, 240)
 
 [node name="GravityFromGyro" parent="Bottle" instance=ExtResource("2_h2pfr")]
 
 [node name="CopperToSilver" parent="." instance=ExtResource("6_tf2pv")]
 z_index = 10
-position = Vector2(2, -314)
+position = Vector2(3, -298)
 
 [node name="TimeSpawner" parent="." instance=ExtResource("3_qwsty")]
-position = Vector2(0, -144)
+position = Vector2(0, -480)
 scene = ExtResource("4_e5nwi")
 buffer_cap = 1
 spawn_position_range_x = 32.0
@@ -32,7 +31,7 @@ overlapping_body_count_limit = 4
 [node name="Timer" type="Timer" parent="TimeSpawner"]
 
 [node name="ButtonSpawner" parent="." instance=ExtResource("3_qwsty")]
-position = Vector2(0, -144)
+position = Vector2(0, -480)
 scene = ExtResource("4_e5nwi")
 buffer_cap = 50
 spawn_position_range_x = 32.0

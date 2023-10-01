@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ratkps4plkhl"]
+[gd_scene load_steps=19 format=3 uid="uid://ratkps4plkhl"]
 
 [ext_resource type="Script" path="res://convertors/copper_to_silver.gd" id="1_jjv83"]
 [ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver.tscn" id="2_orv64"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dg4qq1pgojk8d" path="res://entity/copper_to_silver/copper_converter_front_3.png" id="6_8ghce"]
 [ext_resource type="Texture2D" uid="uid://60502lbpup6" path="res://entity/copper_to_silver/copper_converter_front_4.png" id="7_e53sb"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="10_uc0v7"]
+[ext_resource type="Texture2D" uid="uid://440yhlpwpfw4" path="res://entity/copper_converter_back.png" id="11_c4wel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
 atlas = ExtResource("4_04v4v")
@@ -50,17 +51,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
 size = Vector2(26, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i6q7"]
-size = Vector2(3, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqmlo"]
-size = Vector2(3, 28)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31dtl"]
 size = Vector2(25.8333, 5)
 
 [node name="CopperToSilver" type="StaticBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_jjv83")
 scene = ExtResource("2_orv64")
 
@@ -72,10 +67,16 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4m3dg")
 frame_progress = 0.143561
 
+[node name="CopperConverterBack" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("11_c4wel")
+
 [node name="Collector" parent="." instance=ExtResource("3_a4naa")]
 collecting_types = Array[StringName]([&"Copper"])
 collecting_collision_mask = 4
-collecting_amount = 2
+collecting_amount = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
 position = Vector2(0, 9.5)
@@ -87,13 +88,11 @@ scene = ExtResource("2_orv64")
 buffer_cap = 1
 spawn_rotation_range = 90.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14.3333, -1)
-shape = SubResource("RectangleShape2D_3i6q7")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, 13.5, -16, -16.5, -14.5, -17.5, -13, -16.5, -13, 13.5)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(14.5, -1.66667)
-shape = SubResource("RectangleShape2D_eqmlo")
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(13, 12.5, 13, -16.5, 14.5, -17.5, 16, -16.5, 16, 12.5)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.3333)
@@ -103,7 +102,7 @@ one_way_collision = true
 one_way_collision_margin = 8.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.998
+wait_time = 0.518
 one_shot = true
 
 [node name="New_item" type="AudioStreamPlayer" parent="."]
