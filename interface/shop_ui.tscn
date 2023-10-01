@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://cklkdygv61bny"]
+
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_qdf0y"]
+[ext_resource type="PackedScene" uid="uid://dul1fpyh733t7" path="res://interface/purchasable_item.tscn" id="2_2dtc0"]
+[ext_resource type="PackedScene" uid="uid://wodgj6rp2ewm" path="res://interface/purchasable_item_padding.tscn" id="3_4feaj"]
+
+[node name="ShopUI" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qdf0y")
+
+[node name="Rows" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperButtons" type="HBoxContainer" parent="Rows"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="MoneyButton" type="Button" parent="Rows/UpperButtons"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "$0"
+alignment = 0
+
+[node name="UpperButtonsSpacer" type="PanelContainer" parent="Rows/UpperButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Rows/UpperButtons"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Back"
+alignment = 2
+
+[node name="Scrollable" type="ScrollContainer" parent="Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="ScrollableItems" type="VBoxContainer" parent="Rows/Scrollable"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PurchasableItem" parent="Rows/Scrollable/ScrollableItems" instance=ExtResource("2_2dtc0")]
+layout_mode = 2
+
+[node name="PurchasableItemPadding" parent="Rows/Scrollable/ScrollableItems" instance=ExtResource("3_4feaj")]
+layout_mode = 2
+
+[node name="PurchasableItem2" parent="Rows/Scrollable/ScrollableItems" instance=ExtResource("2_2dtc0")]
+layout_mode = 2

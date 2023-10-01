@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://wodgj6rp2ewm"]
+
+[node name="PurchasableItemPadding" type="Control"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 3
+anchors_preset = 0
