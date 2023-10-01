@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2vtvoj6ua3cb"
-path="res://.godot/imported/coin_copper_outline_2.png-829acf40dd043553c3d53e7c7f7439a6.ctex"
+path="res://.godot/imported/coin_copper_outline_2.png-012aebc3b6684efe16d8635e2f15bfa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/coin_copper_outline_2.png"
-dest_files=["res://.godot/imported/coin_copper_outline_2.png-829acf40dd043553c3d53e7c7f7439a6.ctex"]
+source_file="res://entity/coin_copper/coin_copper_outline_2.png"
+dest_files=["res://.godot/imported/coin_copper_outline_2.png-012aebc3b6684efe16d8635e2f15bfa8.ctex"]
 
 [params]
 
