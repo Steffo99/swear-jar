@@ -7,3 +7,4 @@ class_name Game
 
 func trigger_spawn():
 	button_spawner.spawn()
+
