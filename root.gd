@@ -3,8 +3,8 @@ class_name Root
 
 
 @onready var tree: SceneTree = get_tree()
-@onready var game_ui: GameUI = $UI/GameUI
-@onready var shop_ui: ShopUI = $UI/ShopUI
+@export var game_ui: GameUI
+@export var shop_ui: ShopUI
 
 
 enum UIState {

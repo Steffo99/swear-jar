@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c67lfbk4gf1ga"]
+[gd_scene load_steps=2 format=3 uid="uid://c67lfbk4gf1ga"]
 
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_xqfmg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p13i4"]
-size = Vector2(96, 96)
-
-[node name="Spawner" type="Node2D"]
+[node name="Spawner" type="Area2D"]
 script = ExtResource("1_xqfmg")
-
-[node name="Area" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="Shape" type="CollisionShape2D" parent="Area"]
-shape = SubResource("RectangleShape2D_p13i4")

@@ -1,21 +1,32 @@
-extends Node2D
+extends Area2D
 class_name Spawner
 
+## A node which spawns things!
 
+## The scene to spawn.
 @export var scene: PackedScene
+
+## The node to add new scenes to.
 @export var target: Node
 
+## Count of how many items should be spawned when possible.
 var buffer: int = 0
+
+## Maximum amount of items whose spawn can be buffered.
 @export var buffer_cap: int
 
-@onready var area: Area2D = $Area
+## Rect in which scenes can be spawned randomly in.
+@export var spawn_rect: Rect2
 
-@export var spawn_position_range_x: float
-@export_range(0, 90) var spawn_rotation_range: float
-@onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+## Minimum rotation degrees that an object can spawn with.
+@export_range(0, 360) var spawn_rotation_degrees_min: float
 
-@export_flags_2d_physics var overlapping_bodies_collision_mask: int
-@export_range(0, 16) var overlapping_body_count_limit: int
+## Maximum rotation degrees that an object can spawn with.
+@export_range(0, 360) var spawn_rotation_degrees_max: float
+
+## Maximum amount of bodies overlapping the spawner's area before the spawner stops spawning.
+@export_range(0, 16, 1, "or_greater") var overlapping_body_count_limit: int
+
 
 signal spawned(what: Node2D)
 
@@ -25,34 +36,28 @@ func spawn():
 	if buffer > buffer_cap:
 		buffer = buffer_cap
 
-func _count_overlapping_bodies() -> int:
-	var overlapping_bodies = area.get_overlapping_bodies()
-	var overlapping_body_count = 0
-	for overlapping_body in overlapping_bodies:
-		if overlapping_body.collision_layer & overlapping_bodies_collision_mask:
-			overlapping_body_count += 1
-	return overlapping_body_count
-
-
 func _select_spawn_position() -> Vector2:
-	return Vector2(rng.randf_range(-spawn_position_range_x, +spawn_position_range_x), 0)
+	return Vector2(
+		Randomizer.rng.randf_range(spawn_rect.position.x, spawn_rect.end.x), 
+		Randomizer.rng.randf_range(spawn_rect.position.y, spawn_rect.end.y),
+	)
 
 func _select_spawn_rotation() -> float:
-	return rng.randf_range(-spawn_rotation_range, spawn_rotation_range)
+	return Randomizer.rng.randf_range(
+		spawn_rotation_degrees_min, 
+		spawn_rotation_degrees_max
+	)
 
 func _do_spawn():
-	if _count_overlapping_bodies() > overlapping_body_count_limit:
+	if len(get_overlapping_bodies()) > overlapping_body_count_limit:
 		return
-	var scene_instant = scene.instantiate()
-	scene_instant.global_position = global_position + _select_spawn_position()
-	scene_instant.rotation_degrees = _select_spawn_rotation()
-	target.add_child(scene_instant)
-	emit_signal("spawned", scene_instant)
+	var instantiated = scene.instantiate()
+	instantiated.position = position - target.position + _select_spawn_position()
+	instantiated.rotation_degrees = _select_spawn_rotation()
+	target.add_child(instantiated)
+	emit_signal("spawned", instantiated)
 	buffer -= 1
-
 
 func _physics_process(_delta):
 	if buffer > 0:
 		_do_spawn()
-
-

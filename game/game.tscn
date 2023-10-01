@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=7 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_h2pfr"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="4_e5nwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
+size = Vector2(80, 80)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -14,32 +17,31 @@ script = ExtResource("1_i3ly0")
 
 [node name="GravityFromGyro" parent="Bottle" instance=ExtResource("2_h2pfr")]
 
-[node name="CopperToSilver" parent="." instance=ExtResource("6_tf2pv")]
-z_index = 10
-position = Vector2(3, -298)
-
-[node name="TimeSpawner" parent="." instance=ExtResource("3_qwsty")]
-position = Vector2(0, -144)
+[node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
+position = Vector2(136, 40)
 scene = ExtResource("4_e5nwi")
 target = NodePath("..")
 buffer_cap = 1
-spawn_position_range_x = 32.0
-spawn_rotation_range = 15.0
-overlapping_bodies_collision_mask = 4
+spawn_rect = Rect2(-20, 0, 40, 0)
 overlapping_body_count_limit = 4
 
+[node name="NeckShape" type="CollisionShape2D" parent="TimeSpawner"]
+shape = SubResource("RectangleShape2D_4uksi")
+
 [node name="Timer" type="Timer" parent="TimeSpawner"]
-wait_time = 0.017
+wait_time = 0.1
 autostart = true
 
 [node name="ButtonSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
-position = Vector2(0, -144)
+position = Vector2(136, 0)
 scene = ExtResource("4_e5nwi")
 target = NodePath("..")
-buffer_cap = 50
-spawn_position_range_x = 32.0
-spawn_rotation_range = 15.0
-overlapping_bodies_collision_mask = 4
+buffer_cap = 10
+spawn_rect = Rect2(-20, 0, 40, 0)
 overlapping_body_count_limit = 4
+
+[node name="NeckShape" type="CollisionShape2D" parent="ButtonSpawner"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_4uksi")
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
