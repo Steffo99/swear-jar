@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_xqfmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p13i4"]
-size = Vector2(14, 2)
+size = Vector2(32, 2)
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_xqfmg")
@@ -11,7 +11,7 @@ script = ExtResource("1_xqfmg")
 [node name="Area" type="Area2D" parent="."]
 collision_mask = 4
 
-[node name="CoinShape" type="CollisionShape2D" parent="Area"]
+[node name="Shape" type="CollisionShape2D" parent="Area"]
 position = Vector2(0, -3)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_p13i4")
