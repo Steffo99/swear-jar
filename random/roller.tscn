@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvgxb0ichkoe7"]
+
+[ext_resource type="Script" path="res://random/roller.gd" id="1_vetpi"]
+
+[node name="Roller" type="Node2D"]
+script = ExtResource("1_vetpi")

@@ -1,6 +1,8 @@
 extends Node2D
 
+func _on_roller_failure():
+	print("failure")
 
-func _process(delta):
-	print($Evaluator.total_value)
-	
+
+func _on_roller_success():
+	print("success")

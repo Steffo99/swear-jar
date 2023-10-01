@@ -25,19 +25,15 @@ func _on_body_entered(body):
 	if body is PhysicsBody2D:
 		if body.collision_layer & collecting_collision_mask:
 			var evaluable: Valuable = body.get_node("Valuable")
-			print("sommato")
 			total_value += evaluable.value
 			evaluable.evaluate()
 			score_changed.emit(total_value)
-			print("totale= "+str(total_value))
 			
 func _on_body_exited(body):
 	if body is PhysicsBody2D:
 		if body.collision_layer & collecting_collision_mask:
 			var evaluable: Valuable = body.get_node("Valuable")
-			print("sottratto")
 			total_value -= evaluable.value
 			evaluable.evaluate()
 			score_changed.emit(total_value)
-			print("totale= "+str(total_value))
 

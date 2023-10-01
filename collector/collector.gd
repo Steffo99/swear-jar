@@ -31,11 +31,9 @@ func _on_body_entered(body: Node2D):
 		if body.collision_layer & collecting_collision_mask:
 			var collectible: Collectible = body.get_node("Collectible")
 			if collectible.type in collecting_types:
-				print("collezionato")
 				collected_count += 1
 				collectible.collect()
 				emit_signal("collected", body)
 				if collected_count >= collecting_amount:
-					print("goal")
 					emit_signal("goal")
 					collected_count = 0
