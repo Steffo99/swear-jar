@@ -22,7 +22,6 @@ signal spawned(what: RigidBody2D)
 func spawn():
 	buffer += 1
 	if buffer > buffer_cap:
-		print("Hit buffer!")
 		buffer = buffer_cap
 
 func _count_overlapping_bodies() -> int:
