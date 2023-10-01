@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://beg758fa6o0cs"]
+
+[ext_resource type="Script" path="res://value/evaluator.gd" id="1_sjx78"]
+
+[node name="Evaluator" type="Area2D"]
+script = ExtResource("1_sjx78")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

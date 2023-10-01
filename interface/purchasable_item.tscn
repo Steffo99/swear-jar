@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://dul1fpyh733t7"]
+
+[ext_resource type="Texture2D" uid="uid://cxsl5yvdhswc7" path="res://icon.png" id="1_drwcj"]
+[ext_resource type="Script" path="res://interface/purchasable_item.gd" id="1_h8jix"]
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_r2qbu"]
+
+[node name="PurchasableItem" type="Panel"]
+custom_minimum_size = Vector2(0, 182)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_r2qbu")
+script = ExtResource("1_h8jix")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderPaddingTop" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="IconPaddingLeft" type="Control" parent="Contents/Header"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="Contents/Header"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+texture = ExtResource("1_drwcj")
+expand_mode = 2
+
+[node name="IconNameSeparator" type="Control" parent="Contents/Header"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Contents/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "ITEMNAME"
+uppercase = true
+
+[node name="NamePaddingRight" type="Control" parent="Contents/Header"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="HeaderDescriptionPadding" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DescriptionPaddingLeft" type="Control" parent="Contents/Description"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="Contents/Description"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "What does this item do? Nobody knows."
+autowrap_mode = 2
+
+[node name="DescriptionPaddingRight" type="Control" parent="Contents/Description"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="DescriptionActionPadding" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Action" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BuyButtonPaddingLeft" type="Control" parent="Contents/Action"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="Contents/Action"]
+layout_mode = 2
+text = "Buy"
+
+[node name="BuyCostPadding" type="Control" parent="Contents/Action"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="Contents/Action"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 16
+text = "3 fiorygi"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CostLabelPaddingRight" type="Control" parent="Contents/Action"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="ActionPaddingBottom" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[connection signal="pressed" from="Contents/Action/BuyButton" to="." method="_on_buy_button_pressed"]

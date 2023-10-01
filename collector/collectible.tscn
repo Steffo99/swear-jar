@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk1vvq5rug01m"]
+
+[ext_resource type="Script" path="res://collector/collectible.gd" id="1_qilbk"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="2_2nvfu"]
+
+[node name="Collectible" type="Node"]
+script = ExtResource("1_qilbk")
+
+[node name="Valuable" parent="." instance=ExtResource("2_2nvfu")]

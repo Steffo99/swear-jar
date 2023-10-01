@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=6 format=3 uid="uid://cbccs6kwwf265"]
 
-[ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_4fmd3"]
-[ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="2_dv01l"]
-[ext_resource type="PackedScene" path="res://bottle/gravity_from_gyro.tscn" id="2_m7p4p"]
-[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_pubxn"]
+[ext_resource type="Script" path="res://root.gd" id="1_8jrhk"]
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_h26ax"]
+[ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="3_hrdyr"]
+[ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="3_lvefk"]
+[ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="5_2cc15"]
 
 [node name="Root" type="Node"]
+script = ExtResource("1_8jrhk")
 
 [node name="UI" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,53 +18,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
-
-[node name="Rows" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NotchSpacer" type="PanelContainer" parent="UI/Rows"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="UpperButtons" type="HBoxContainer" parent="UI/Rows"]
-custom_minimum_size = Vector2(0, 54)
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="MoneyButton" type="Button" parent="UI/Rows/UpperButtons"]
-custom_minimum_size = Vector2(54, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-text = "$0"
-alignment = 0
-
-[node name="UpperButtonsSpacerLeft" type="PanelContainer" parent="UI/Rows/UpperButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpawnButton" type="Button" parent="UI/Rows/UpperButtons"]
-custom_minimum_size = Vector2(54, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Drop"
-
-[node name="UpperButtonsSpacerRight" type="PanelContainer" parent="UI/Rows/UpperButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ShopButton" type="Button" parent="UI/Rows/UpperButtons"]
-custom_minimum_size = Vector2(54, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Shop"
-alignment = 2
+theme = ExtResource("1_h26ax")
 
 [node name="GameContainer" type="Control" parent="UI"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -71,14 +31,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Game" type="Node2D" parent="UI/GameContainer"]
-texture_filter = 1
+[node name="Game" parent="UI/GameContainer" instance=ExtResource("3_hrdyr")]
 
-[node name="Bottle" parent="UI/GameContainer/Game" instance=ExtResource("1_4fmd3")]
+[node name="GameUI" parent="UI" instance=ExtResource("5_2cc15")]
+process_mode = 3
+layout_mode = 1
 
-[node name="GravityFromGyro" parent="UI/GameContainer/Game/Bottle" instance=ExtResource("2_m7p4p")]
+[node name="ShopUI" parent="UI" instance=ExtResource("3_lvefk")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
-[node name="Spawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
-position = Vector2(0, -400)
-scene = ExtResource("2_dv01l")
-target_parent = NodePath("..")
+[connection signal="score_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
+[connection signal="shop_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
+[connection signal="spawn_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_spawn_button_pressed"]
+[connection signal="back_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
+[connection signal="delete_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
+[connection signal="purchase_begin" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
+[connection signal="score_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]
