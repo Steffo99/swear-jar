@@ -9,22 +9,33 @@ var total_value: int = 0
 ## The types of [Collectible]s to value.
 ##
 ## The strings will match only if exactly the same.
-@export var collecting_types: Array[StringName]
+#@export var collecting_types: Array[StringName]
 
 ## The collision mask to check colliding body against.
 @export_flags_2d_physics var collecting_collision_mask: int
 
-
-## The evaluator has added the value of an object.
+## The evaluator has added the value of an object to the total.
 signal added(what: PhysicsBody2D)
-
-## The evaluator has removed the value of an object.
+## The evaluator has removed the value of an object to the total.
 signal removed(what: PhysicsBody2D)
 
-
-func _on_body_entered(body: Node2D):
-	pass
-					
-
-
+func _on_body_entered(body):
+	if body is PhysicsBody2D:
+		if body.collision_layer & collecting_collision_mask:
+			var evaluable: Valuable = body.get_node("Valuable")
+			print("sommato")
+			total_value += evaluable.value
+			evaluable.evaluate()
+			added.emit(body)
+			print("totale= "+str(total_value))
+			
+func _on_body_exited(body):
+	if body is PhysicsBody2D:
+		if body.collision_layer & collecting_collision_mask:
+			var evaluable: Valuable = body.get_node("Valuable")
+			print("sottratto")
+			total_value -= evaluable.value
+			evaluable.evaluate()
+			added.emit(body)
+			print("totale= "+str(total_value))
 

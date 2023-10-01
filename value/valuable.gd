@@ -3,8 +3,11 @@ class_name Valuable
 
 @export var value: int
 
-#signal object_value
-#
-#
-#func collect():
-#	emit_signal("collected")
+## Emitted when this entity has been counted.
+signal evaluated
+
+## Mark this entity as evaluated.
+##
+func evaluate():
+	emit_signal("evaluated")
+

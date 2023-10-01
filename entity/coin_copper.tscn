@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3kitncwpi42j"]
+[gd_scene load_steps=7 format=3 uid="uid://c3kitncwpi42j"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_8k46m"]
 [ext_resource type="Texture2D" uid="uid://dbdkb4vt7dh85" path="res://entity/coin_copper_4.png" id="1_wedw1"]
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper_outline_2.png" id="2_2ifq3"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_yefrx"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_jdvvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
 size = Vector2(16, 5)
@@ -32,3 +33,6 @@ texture = ExtResource("2_2ifq3")
 
 [node name="Collectible" parent="." instance=ExtResource("4_yefrx")]
 type = &"Copper"
+
+[node name="Valuable" parent="." instance=ExtResource("5_jdvvd")]
+value = 1
