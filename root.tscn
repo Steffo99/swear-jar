@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" path="res://root.gd" id="1_8jrhk"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_h26ax"]
-[ext_resource type="PackedScene" uid="uid://mfa1v4fsnupp" path="res://interface/game_container.tscn" id="1_xjgvu"]
+[ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="3_hrdyr"]
 [ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="3_lvefk"]
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="5_2cc15"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_8jrhk")
+ui_state = null
 
 [node name="UI" type="Control" parent="."]
 texture_filter = 1
@@ -20,9 +21,18 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme = ExtResource("1_h26ax")
 
-[node name="GameContainer" parent="UI" instance=ExtResource("1_xjgvu")]
+[node name="GameContainer" type="Control" parent="UI"]
 process_mode = 1
 layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Game" parent="UI/GameContainer" instance=ExtResource("3_hrdyr")]
 
 [node name="GameUI" parent="UI" instance=ExtResource("5_2cc15")]
 process_mode = 3

@@ -3,6 +3,7 @@ class_name Root
 
 
 @onready var tree: SceneTree = get_tree()
+@onready var game: Game = $UI/GameContainer/Game
 @onready var game_ui: GameUI = $UI/GameUI
 @onready var shop_ui: ShopUI = $UI/ShopUI
 
@@ -46,4 +47,4 @@ func _on_game_ui_shop_button_pressed():
 	ui_state = UIState.SHOP
 
 func _on_game_ui_spawn_button_pressed():
-	pass # Replace with function body.
+	game.trigger_spawn()
