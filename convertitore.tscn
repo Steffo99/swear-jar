@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d34gt53jcq1uw"]
+[gd_scene load_steps=3 format=3 uid="uid://ei1b0ity3nwg"]
 
 [ext_resource type="Script" path="res://Convertitore.gd" id="1_7de38"]
 [ext_resource type="Texture2D" uid="uid://cxsl5yvdhswc7" path="res://icon.png" id="2_8bfs6"]
