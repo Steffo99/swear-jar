@@ -48,3 +48,6 @@ func _on_game_ui_shop_button_pressed():
 
 func _on_game_ui_spawn_button_pressed():
 	game.trigger_spawn()
+
+func _on_shop_ui_purchase_begin(_what):
+	ui_state = UIState.GAME

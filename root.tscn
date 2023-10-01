@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=6 format=3 uid="uid://cbccs6kwwf265"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_8jrhk"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_h26ax"]
@@ -8,7 +8,6 @@
 
 [node name="Root" type="Node"]
 script = ExtResource("1_8jrhk")
-ui_state = null
 
 [node name="UI" type="Control" parent="."]
 texture_filter = 1
@@ -40,6 +39,7 @@ layout_mode = 1
 
 [node name="ShopUI" parent="UI" instance=ExtResource("3_lvefk")]
 process_mode = 3
+visible = false
 layout_mode = 1
 
 [connection signal="score_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
