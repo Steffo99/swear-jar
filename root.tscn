@@ -47,4 +47,5 @@ layout_mode = 1
 [connection signal="spawn_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_spawn_button_pressed"]
 [connection signal="back_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
 [connection signal="delete_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
+[connection signal="purchase_begin" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
 [connection signal="score_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]
