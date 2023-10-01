@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj5di48de0ua0"
-path="res://.godot/imported/copper_converter_front_3.png-d70c1e7afbe0bf8e25a8058d0feed406.ctex"
+uid="uid://dg4qq1pgojk8d"
+path="res://.godot/imported/copper_converter_front_3.png-b5633cd8b2b9353cf9b41b07df79cc44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/copper_converter_front_3.png"
-dest_files=["res://.godot/imported/copper_converter_front_3.png-d70c1e7afbe0bf8e25a8058d0feed406.ctex"]
+source_file="res://entity/copper_to_silver/copper_converter_front_3.png"
+dest_files=["res://.godot/imported/copper_converter_front_3.png-b5633cd8b2b9353cf9b41b07df79cc44.ctex"]
 
 [params]
 
