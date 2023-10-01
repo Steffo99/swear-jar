@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqsdmghnrmhy"
-path="res://.godot/imported/coin_gold_outline.png-a9a15b5756ee7fa7d320f210be0aa93e.ctex"
+uid="uid://vmedndbi8crf"
+path="res://.godot/imported/glass_tileset.png-57c4af482ec4effcdc3bd1c8bfc5a751.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/coin_gold_outline.png"
-dest_files=["res://.godot/imported/coin_gold_outline.png-a9a15b5756ee7fa7d320f210be0aa93e.ctex"]
+source_file="res://entity/glass_tileset.png"
+dest_files=["res://.godot/imported/glass_tileset.png-57c4af482ec4effcdc3bd1c8bfc5a751.ctex"]
 
 [params]
 

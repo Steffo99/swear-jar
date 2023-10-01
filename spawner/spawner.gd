@@ -3,6 +3,7 @@ class_name Spawner
 
 
 @export var scene: PackedScene
+@export var target: Node
 
 var buffer: int = 0
 @export var buffer_cap: int
@@ -43,9 +44,9 @@ func _do_spawn():
 	if _count_overlapping_bodies() > overlapping_body_count_limit:
 		return
 	var scene_instant = scene.instantiate()
-	scene_instant.position = _select_spawn_position()
+	scene_instant.global_position = global_position + _select_spawn_position()
 	scene_instant.rotation_degrees = _select_spawn_rotation()
-	add_child(scene_instant)
+	target.add_child(scene_instant)
 	emit_signal("spawned", scene_instant)
 	buffer -= 1
 
