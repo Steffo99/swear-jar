@@ -1,5 +1,5 @@
 extends Node
-class_name Root
+class_name Main
 
 
 @onready var tree: SceneTree = get_tree()

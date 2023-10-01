@@ -3,7 +3,7 @@
 		".godot": true,
 		"**/*.godot": true,
 		"**/*.tres": true,
-		"**/*.tscn": false,
+		"**/*.tscn": true,
 		"**/*.import": true,
 	},
 	"files.associations": {

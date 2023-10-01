@@ -1,29 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbccs6kwwf265"]
+[gd_scene load_steps=4 format=3 uid="uid://cbccs6kwwf265"]
 
-[ext_resource type="Script" path="res://root.gd" id="1_8jrhk"]
-[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_h26ax"]
+[ext_resource type="Script" path="res://main.gd" id="1_ncl4v"]
 [ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="3_hrdyr"]
-[ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="3_lvefk"]
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="5_2cc15"]
 
-[node name="Root" type="Node" node_paths=PackedStringArray("game_ui", "shop_ui")]
-script = ExtResource("1_8jrhk")
-game_ui = NodePath("View/SafeUI/GameUI")
-shop_ui = NodePath("View/SafeUI/ShopUI")
+[node name="Root" type="Node"]
+script = ExtResource("1_ncl4v")
 
-[node name="UI" type="Control" parent="."]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-theme = ExtResource("1_h26ax")
-
-[node name="CenterUI" type="CenterContainer" parent="View"]
-layout_mode = 1
+[node name="View@CenterUI" type="CenterContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -32,43 +16,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ViewportContainer" type="SubViewportContainer" parent="View/CenterUI"]
+[node name="View@CenterUI@ViewportContainer" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(270, 480)
-layout_mode = 2
 stretch = true
 
-[node name="Viewport" type="SubViewport" parent="View/CenterUI/ViewportContainer"]
+[node name="View@CenterUI@ViewportContainer@Viewport" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(270, 480)
 render_target_update_mode = 4
 
-[node name="Game" parent="View/CenterUI/ViewportContainer/Viewport" instance=ExtResource("3_8gkpc")]
+[node name="View@CenterUI@ViewportContainer@Viewport@Game" parent="." instance=ExtResource("3_hrdyr")]
 
-[node name="Camera2D" type="Camera2D" parent="View/CenterUI/ViewportContainer/Viewport"]
+[node name="View@CenterUI@ViewportContainer@Viewport@Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="SafeUI" type="MarginContainer" parent="View"]
-layout_mode = 1
+[node name="View@SafeUI" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_grf0c")
 
-[node name="GameUI" parent="View/SafeUI" instance=ExtResource("5_2cc15")]
+[node name="View@SafeUI@GameUI" parent="." instance=ExtResource("5_2cc15")]
 process_mode = 3
-layout_mode = 1
-
-[node name="ShopUI" parent="UI" instance=ExtResource("3_lvefk")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
-[connection signal="score_button_pressed" from="View/SafeUI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
-[connection signal="shop_button_pressed" from="View/SafeUI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
-[connection signal="spawn_button_pressed" from="View/SafeUI/GameUI" to="View/CenterUI/ViewportContainer/Viewport/Game" method="trigger_spawn"]
-[connection signal="back_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
-[connection signal="delete_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
-[connection signal="purchase_begin" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
-[connection signal="score_button_pressed" from="View/SafeUI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqm0h5h0baqcg"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_fqt34"]
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_je7w1"]
+[ext_resource type="PackedScene" uid="uid://c3rxmcwa5nqng" path="res://game/game.tscn" id="2_32lou"]
+[ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="2_qj86l"]
+[ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="4_siim3"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("game_ui", "shop_ui")]
+script = ExtResource("1_fqt34")
+game_ui = NodePath("UI/GameUI")
+shop_ui = NodePath("UI/ShopUI")
+
+[node name="UI" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme = ExtResource("1_je7w1")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+custom_minimum_size = Vector2(270, 480)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="UI/CenterContainer/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(270, 480)
+render_target_update_mode = 4
+
+[node name="Game" parent="UI/CenterContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_32lou")]
+
+[node name="Camera2D" type="Camera2D" parent="UI/CenterContainer/SubViewportContainer/SubViewport"]
+anchor_mode = 0
+
+[node name="GameUI" parent="UI" instance=ExtResource("4_siim3")]
+layout_mode = 1
+
+[node name="ShopUI" parent="UI" instance=ExtResource("2_qj86l")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[connection signal="score_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
+[connection signal="shop_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
+[connection signal="spawn_button_pressed" from="UI/GameUI" to="UI/CenterContainer/SubViewportContainer/SubViewport/Game" method="trigger_spawn"]
+[connection signal="back_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
+[connection signal="delete_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
+[connection signal="purchase_begin" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
+[connection signal="purchase_cancel" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_cancel"]
+[connection signal="purchase_success" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_success"]
+[connection signal="score_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]
