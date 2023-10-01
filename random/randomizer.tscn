@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cldl3smm1c2pm"]
+
+[ext_resource type="Script" path="res://random/randomizer.gd" id="1_nvy1v"]
+
+[node name="Randomizer" type="Node2D"]
+script = ExtResource("1_nvy1v")
