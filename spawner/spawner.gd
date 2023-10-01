@@ -13,12 +13,23 @@ var buffer: int = 0
 @export_range(0, 90) var spawn_rotation_range: float
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+@export_flags_2d_physics var overlapping_bodies_collision_mask: int
+@export_range(0, 16) var overlapping_body_count_limit: int
+
 
 func spawn():
 	buffer += 1
 	if buffer > buffer_cap:
 		print("Hit buffer!")
 		buffer = buffer_cap
+
+func _count_overlapping_bodies() -> int:
+	var overlapping_bodies = area.get_overlapping_bodies()
+	var overlapping_body_count = 0
+	for overlapping_body in overlapping_bodies:
+		if overlapping_body.collision_layer && overlapping_bodies_collision_mask:
+			overlapping_body_count += 1
+	return overlapping_body_count
 
 
 func _select_spawn_position() -> Vector2:
@@ -28,10 +39,8 @@ func _select_spawn_rotation() -> float:
 	return rng.randf_range(-spawn_rotation_range, spawn_rotation_range)
 
 func _do_spawn():
-	var overlapping_bodies = area.get_overlapping_bodies()
-	for overlapping_body in overlapping_bodies:
-		if overlapping_body.collision_layer && 0b100:
-			return
+	if _count_overlapping_bodies() > overlapping_body_count_limit:
+		return
 	var scene_instant = scene.instantiate()
 	scene_instant.position = _select_spawn_position()
 	scene_instant.rotation_degrees = _select_spawn_rotation()

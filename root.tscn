@@ -16,6 +16,45 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 
+[node name="GameContainer" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Game" type="Node2D" parent="UI/GameContainer"]
+texture_filter = 1
+
+[node name="Bottle" parent="UI/GameContainer/Game" instance=ExtResource("1_4fmd3")]
+
+[node name="GravityFromGyro" parent="UI/GameContainer/Game/Bottle" instance=ExtResource("2_m7p4p")]
+
+[node name="TimeSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
+position = Vector2(0, -480)
+scene = ExtResource("2_dv01l")
+buffer_cap = 1
+spawn_position_range_x = 32.0
+spawn_rotation_range = 15.0
+overlapping_bodies_collision_mask = 4
+overlapping_body_count_limit = 4
+
+[node name="Timer" type="Timer" parent="UI/GameContainer/Game/TimeSpawner"]
+wait_time = 0.03
+autostart = true
+
+[node name="ButtonSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
+position = Vector2(0, -480)
+scene = ExtResource("2_dv01l")
+buffer_cap = 50
+spawn_position_range_x = 32.0
+spawn_rotation_range = 15.0
+overlapping_bodies_collision_mask = 4
+overlapping_body_count_limit = 4
+
 [node name="Rows" type="VBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -61,39 +100,5 @@ size_flags_horizontal = 8
 text = "Shop"
 alignment = 2
 
-[node name="GameContainer" type="Control" parent="UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Game" type="Node2D" parent="UI/GameContainer"]
-texture_filter = 1
-
-[node name="Bottle" parent="UI/GameContainer/Game" instance=ExtResource("1_4fmd3")]
-
-[node name="GravityFromGyro" parent="UI/GameContainer/Game/Bottle" instance=ExtResource("2_m7p4p")]
-
-[node name="TimeSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
-position = Vector2(0, -480)
-scene = ExtResource("2_dv01l")
-buffer_cap = 1
-spawn_position_range_x = 32.0
-spawn_rotation_range = 15.0
-
-[node name="Timer" type="Timer" parent="UI/GameContainer/Game/TimeSpawner"]
-autostart = true
-
-[node name="ButtonSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
-position = Vector2(0, -480)
-scene = ExtResource("2_dv01l")
-buffer_cap = 50
-spawn_position_range_x = 32.0
-spawn_rotation_range = 15.0
-
-[connection signal="pressed" from="UI/Rows/UpperButtons/SpawnButton" to="UI/GameContainer/Game/ButtonSpawner" method="spawn"]
 [connection signal="timeout" from="UI/GameContainer/Game/TimeSpawner/Timer" to="UI/GameContainer/Game/TimeSpawner" method="spawn"]
+[connection signal="pressed" from="UI/Rows/UpperButtons/SpawnButton" to="UI/GameContainer/Game/ButtonSpawner" method="spawn"]
