@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ratkps4plkhl"]
+
+[ext_resource type="Script" path="res://convertors/copper_to_silver.gd" id="1_jjv83"]
+[ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver.tscn" id="2_orv64"]
+[ext_resource type="Texture2D" uid="uid://b0uefih0ccwp3" path="res://entity/copper_converter_front_1.png" id="2_vm6by"]
+[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="3_a4naa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
+size = Vector2(26, 5)
+
+[node name="CopperToSilver" type="StaticBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_jjv83")
+scene = ExtResource("2_orv64")
+
+[node name="CopperConverterFront1" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_vm6by")
+
+[node name="Collector" parent="." instance=ExtResource("3_a4naa")]
+collecting_types = Array[StringName]([&"Copper"])
+collecting_collision_mask = 4
+collecting_amount = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_k11if")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -15.5, -13, -15.5, -13, 12, 13, 12, 13, -15.5, 16, -15.5, 16, 14.5, -16, 14.5)
+
+[connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
+[connection signal="goal" from="Collector" to="." method="_on_collector_goal"]
