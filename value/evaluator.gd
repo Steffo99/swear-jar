@@ -15,9 +15,11 @@ var total_value: int = 0
 @export_flags_2d_physics var collecting_collision_mask: int
 
 ## The evaluator has added the value of an object to the total.
-signal added(what: PhysicsBody2D)
+signal added(what: PhysicsBody2D, total_value: int)
 ## The evaluator has removed the value of an object to the total.
 signal removed(what: PhysicsBody2D)
+
+signal score_changed(total_value: int)
 
 func _on_body_entered(body):
 	if body is PhysicsBody2D:
@@ -26,7 +28,7 @@ func _on_body_entered(body):
 			print("sommato")
 			total_value += evaluable.value
 			evaluable.evaluate()
-			added.emit(body)
+			score_changed.emit(total_value)
 			print("totale= "+str(total_value))
 			
 func _on_body_exited(body):
@@ -36,6 +38,6 @@ func _on_body_exited(body):
 			print("sottratto")
 			total_value -= evaluable.value
 			evaluable.evaluate()
-			added.emit(body)
+			score_changed.emit(total_value)
 			print("totale= "+str(total_value))
 
