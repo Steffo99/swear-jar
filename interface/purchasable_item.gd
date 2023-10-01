@@ -1,6 +1,14 @@
 extends Panel
 class_name PurchasableItem
 
+## Icon of the item that can be purchased.
+@export var item_icon: Texture2D:
+	get: 
+		return item_icon
+	set(value):
+		item_icon = value
+		$Contents/Header/IconRect.texture = item_icon
+
 ## Name of the item that can be purchased.
 @export var item_name: String:
 	get:
@@ -39,7 +47,17 @@ class_name PurchasableItem
 		return can_buy
 	set(value):
 		can_buy = value
-		$Contents/Action/BuyButton.disabled = not can_buy
+		$Contents/Action/BuyButton.disabled = not (can_buy && has_unlocked)
+
+## Whether the player has unlocked this item for purchase.
+##
+## Used to force the player to follow the tech tree.
+@export var has_unlocked: bool = true:
+	get:
+		return has_unlocked
+	set(value):
+		has_unlocked = value
+		$Contents/Action/BuyButton.disabled = not (can_buy && has_unlocked)
 
 ## Whether the player is currently buying this item.
 ##
@@ -71,7 +89,6 @@ func _on_buy_button_pressed():
 	else:
 		is_buying = true
 		purchase_begin.emit()
-
 
 func complete_purchase():
 	is_buying = false

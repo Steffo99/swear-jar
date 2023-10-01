@@ -45,7 +45,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
-text = "Garasaut"
+text = "ITEMNAME"
 uppercase = true
 
 [node name="NamePaddingRight" type="Control" parent="Contents/Header"]
@@ -69,7 +69,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
-text = "Garasa tutte le auto della zona per ottenere upgrade"
+text = "What does this item do? Nobody knows."
 autowrap_mode = 2
 
 [node name="DescriptionPaddingRight" type="Control" parent="Contents/Description"]
@@ -101,7 +101,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 8
-text = "3 copper coins"
+text = "3 fiorygi"
 vertical_alignment = 1
 
 [node name="CostLabelPaddingRight" type="Control" parent="Contents/Action"]
