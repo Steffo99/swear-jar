@@ -16,6 +16,8 @@ var buffer: int = 0
 @export_flags_2d_physics var overlapping_bodies_collision_mask: int
 @export_range(0, 16) var overlapping_body_count_limit: int
 
+signal spawned(what: RigidBody2D)
+
 
 func spawn():
 	buffer += 1
@@ -45,6 +47,7 @@ func _do_spawn():
 	scene_instant.position = _select_spawn_position()
 	scene_instant.rotation_degrees = _select_spawn_rotation()
 	add_child(scene_instant)
+	emit_signal("spawned", scene_instant)
 	buffer -= 1
 
 
