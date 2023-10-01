@@ -24,6 +24,8 @@ overlapping_bodies_collision_mask = 4
 overlapping_body_count_limit = 4
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
+wait_time = 0.017
+autostart = true
 
 [node name="ButtonSpawner" parent="." instance=ExtResource("3_qwsty")]
 position = Vector2(0, -480)
