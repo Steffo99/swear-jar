@@ -20,13 +20,14 @@ var collected_count: int = 0
 @export var collecting_amount: int
 
 ## The collector has picked up an object.
-signal collected(what: PhysicsBody2D)
+signal collected(body: PhysicsBody2D)
 
 ## The collector has received its collection goal and is about to reset.
 signal goal
 
 
 func _on_body_entered(body: Node2D):
+
 	if body is PhysicsBody2D:
 		if body.collision_layer & collecting_collision_mask:
 			var collectible: Collectible = body.get_node("Collectible")

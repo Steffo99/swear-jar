@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_r2qbu"]
 
 [node name="PurchasableItem" type="Panel"]
-custom_minimum_size = Vector2(0, 256)
+custom_minimum_size = Vector2(0, 240)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
