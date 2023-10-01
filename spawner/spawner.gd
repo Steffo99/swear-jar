@@ -28,7 +28,7 @@ func _count_overlapping_bodies() -> int:
 	var overlapping_bodies = area.get_overlapping_bodies()
 	var overlapping_body_count = 0
 	for overlapping_body in overlapping_bodies:
-		if overlapping_body.collision_layer && overlapping_bodies_collision_mask:
+		if overlapping_body.collision_layer & overlapping_bodies_collision_mask:
 			overlapping_body_count += 1
 	return overlapping_body_count
 
