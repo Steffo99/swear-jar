@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo5unrhqpoyim"]
+[gd_scene load_steps=3 format=3 uid="uid://bo5unrhqpoyim"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_ppf8y"]
+[ext_resource type="Script" path="res://interface/game_ui.gd" id="2_33nqa"]
 
 [node name="GameUI" type="VBoxContainer"]
 anchors_preset = 15
@@ -9,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ppf8y")
+script = ExtResource("2_33nqa")
 
 [node name="UpperButtons" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 54)
