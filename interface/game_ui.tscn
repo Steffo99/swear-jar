@@ -23,7 +23,7 @@ size_flags_horizontal = 0
 text = "$0"
 alignment = 0
 
-[node name="UpperButtonsSpacerLeft" type="PanelContainer" parent="UpperButtons"]
+[node name="UpperButtonsSpacerLeft" type="Control" parent="UpperButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -33,7 +33,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Drop"
 
-[node name="UpperButtonsSpacerRight" type="PanelContainer" parent="UpperButtons"]
+[node name="UpperButtonsSpacerRight" type="Control" parent="UpperButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 
