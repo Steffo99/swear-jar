@@ -22,7 +22,7 @@ signal purchase_cancel(what: PurchasableItem)
 signal purchase_success(what: PurchasableItem)
 
 ## Array of all PurchasableItems that this ShopUI should control.
-@onready var purchasable_items: Array[PurchasableItem] = find_children("*", "PurchasableItem") as Array[PurchasableItem]
+@onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem") as Array[Node]
 
 
 func _ready():
@@ -31,21 +31,30 @@ func _ready():
 		item.purchase_cancel.connect(_on_any_purchase_cancel.bind(item))
 		item.purchase_success.connect(_on_any_purchase_success.bind(item))
 
-func _on_any_purchase_begin(what: PurchasableItem):
+func _on_any_purchase_begin(what: Node):
+	if not what is PurchasableItem:
+		push_error("Purchase began outside a PurchasableItem")
+		return
 	purchase_begin.emit(what)
 	for item in purchasable_items:
 		if item == what:
 			continue
 		item.can_buy = false
 
-func _on_any_purchase_cancel(what: PurchasableItem):
+func _on_any_purchase_cancel(what: Node):
+	if not what is PurchasableItem:
+		push_error("Purchase cancelled outside a PurchasableItem")
+		return
 	purchase_cancel.emit(what)
 	for item in purchasable_items:
 		if item == what:
 			continue
 		item.can_buy = true
 
-func _on_any_purchase_success(what: PurchasableItem):
+func _on_any_purchase_success(what: Node):
+	if not what is PurchasableItem:
+		push_error("Purchase succeeded outside a PurchasableItem")
+		return
 	purchase_success.emit(what)
 	for item in purchasable_items:
 		if item == what:
