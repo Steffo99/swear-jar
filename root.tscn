@@ -25,4 +25,5 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="ShopUI" parent="UI" instance=ExtResource("3_lvefk")]
+visible = false
 layout_mode = 1
