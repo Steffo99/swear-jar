@@ -31,3 +31,4 @@ texture_filter = 1
 texture = ExtResource("2_2ifq3")
 
 [node name="Collectible" parent="." instance=ExtResource("4_yefrx")]
+type = &"Copper"
