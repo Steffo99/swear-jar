@@ -18,9 +18,9 @@ Converts ten gold coins into a randomly colored gem!
 
 Consumes ten gold coins to create either a precious white diamond or an useless lump of coal!
 
-### ![](entity/crown_converter.png) Artifactomatic
+### ![](entity/crown_converter.png) Artifactic
 
-Assembles an awesome artifact from twentyfive gold coins and either a gem or a diamond!
+Assembles an awesome artifact from twenty-five gold coins and either a gem or a diamond!
 
 ## Get rich quick!
 

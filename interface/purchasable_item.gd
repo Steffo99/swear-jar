@@ -23,7 +23,7 @@ class_name PurchasableItem
 		return item_description
 	set(value):
 		item_description = value
-		$Contents/Header/DescriptionLabel.text = value
+		$Contents/Description/DescriptionLabel.text = value
 
 ## Text to be displayed on the cost label of the item.
 @export var item_cost_text: String: 
@@ -67,7 +67,7 @@ var is_buying: bool:
 		return is_buying
 	set(value):
 		is_buying = value
-		$Contents/Action/BuyButton.text = "Cancel" if value else "Buy"
+		$Contents/Action/BuyButton.text = "Undo" if value else "Buy"
 
 
 ## Emitted when a purchase has started.
