@@ -1,0 +1,8 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://b2edg3n5pyluh"]
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_l4qbw"]
+resource_name = "Amplify"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectAmplify_l4qbw")
+bus/0/effect/0/enabled = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0uefih0ccwp3"
-path="res://.godot/imported/copper_converter_front_1.png-4a922506c789b120b43bf92ad029b601.ctex"
+uid="uid://qy1fubii8tqi"
+path="res://.godot/imported/coin_gold.png-0c230a4cf47b2f846ae95a49942eff1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/copper_converter_front_1.png"
-dest_files=["res://.godot/imported/copper_converter_front_1.png-4a922506c789b120b43bf92ad029b601.ctex"]
+source_file="res://entity/coin_gold.png"
+dest_files=["res://.godot/imported/coin_gold.png-0c230a4cf47b2f846ae95a49942eff1e.ctex"]
 
 [params]
 

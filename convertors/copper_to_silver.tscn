@@ -1,10 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://ratkps4plkhl"]
+[gd_scene load_steps=20 format=3 uid="uid://ratkps4plkhl"]
 
 [ext_resource type="Script" path="res://convertors/copper_to_silver.gd" id="1_jjv83"]
 [ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver.tscn" id="2_orv64"]
-[ext_resource type="Texture2D" uid="uid://b0uefih0ccwp3" path="res://entity/copper_converter_front_1.png" id="2_vm6by"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="3_a4naa"]
+[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="3_uxx6n"]
+[ext_resource type="Texture2D" uid="uid://dq5aowbt2wxec" path="res://entity/copper_to_silver/copper_converter_front_1.png" id="4_04v4v"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="5_1n0vw"]
+[ext_resource type="Texture2D" uid="uid://ck254fewe4l41" path="res://entity/copper_to_silver/copper_converter_front_2.png" id="5_tbfff"]
+[ext_resource type="Texture2D" uid="uid://dg4qq1pgojk8d" path="res://entity/copper_to_silver/copper_converter_front_3.png" id="6_8ghce"]
+[ext_resource type="Texture2D" uid="uid://60502lbpup6" path="res://entity/copper_to_silver/copper_converter_front_4.png" id="7_e53sb"]
+[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="10_uc0v7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
+atlas = ExtResource("4_04v4v")
+region = Rect2(0, 2, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs3wo"]
+atlas = ExtResource("5_tbfff")
+region = Rect2(0, 2, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tboq2"]
+atlas = ExtResource("6_8ghce")
+region = Rect2(0, 2, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okgf4"]
+atlas = ExtResource("7_e53sb")
+region = Rect2(0, 2, 32, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4m3dg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs3wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tboq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgf4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
 size = Vector2(26, 5)
@@ -19,18 +60,22 @@ size = Vector2(3, 28)
 size = Vector2(25.8333, 5)
 
 [node name="CopperToSilver" type="StaticBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 script = ExtResource("1_jjv83")
 scene = ExtResource("2_orv64")
 
-[node name="CopperConverterFront1" type="Sprite2D" parent="."]
+[node name="converter_working" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uxx6n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_vm6by")
+sprite_frames = SubResource("SpriteFrames_4m3dg")
+frame_progress = 0.143561
 
 [node name="Collector" parent="." instance=ExtResource("3_a4naa")]
 collecting_types = Array[StringName]([&"Copper"])
 collecting_collision_mask = 4
-collecting_amount = 10
+collecting_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
 position = Vector2(0, 9.5)
@@ -52,7 +97,18 @@ shape = SubResource("RectangleShape2D_eqmlo")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.3333)
+rotation = 3.14159
 shape = SubResource("RectangleShape2D_31dtl")
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.998
+one_shot = true
+
+[node name="New_item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_uc0v7")
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
