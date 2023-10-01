@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo5unrhqpoyim"]
+[gd_scene load_steps=4 format=3 uid="uid://bo5unrhqpoyim"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_ppf8y"]
 [ext_resource type="Script" path="res://interface/game_ui.gd" id="2_33nqa"]
+[ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="3_vobar"]
 
-[node name="GameUI" type="Control"]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("score_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,18 +13,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ppf8y")
 script = ExtResource("2_33nqa")
+score_button = NodePath("ScoreButton")
 
-[node name="ScoreButton" type="Button" parent="."]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 1
-offset_right = 72.0
-offset_bottom = 54.0
-size_flags_horizontal = 0
-text = "$0"
-alignment = 0
+[node name="ScoreButton" parent="." instance=ExtResource("3_vobar")]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 0
+text = "$0.00"
 
 [node name="SpawnButton" type="Button" parent="."]
-custom_minimum_size = Vector2(72, 0)
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -36,7 +34,7 @@ size_flags_horizontal = 4
 text = "Drop"
 
 [node name="ShopButton" type="Button" parent="."]
-custom_minimum_size = Vector2(72, 0)
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -48,6 +46,5 @@ size_flags_horizontal = 8
 text = "Shop"
 alignment = 2
 
-[connection signal="pressed" from="ScoreButton" to="." method="_on_score_button_pressed"]
 [connection signal="pressed" from="SpawnButton" to="." method="_on_spawn_button_pressed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

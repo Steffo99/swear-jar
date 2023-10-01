@@ -22,7 +22,7 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme = ExtResource("1_je7w1")
 
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
+[node name="GameWorld" type="CenterContainer" parent="UI"]
 custom_minimum_size = Vector2(270, 480)
 layout_mode = 1
 anchors_preset = 15
@@ -31,18 +31,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/CenterContainer"]
+[node name="GameViewport" type="SubViewportContainer" parent="UI/GameWorld"]
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="UI/CenterContainer/SubViewportContainer"]
+[node name="Viewport" type="SubViewport" parent="UI/GameWorld/GameViewport"]
 disable_3d = true
 handle_input_locally = false
 size = Vector2i(270, 480)
 render_target_update_mode = 4
 
-[node name="Game" parent="UI/CenterContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_32lou")]
+[node name="Game" parent="UI/GameWorld/GameViewport/Viewport" instance=ExtResource("2_32lou")]
 
-[node name="Camera2D" type="Camera2D" parent="UI/CenterContainer/SubViewportContainer/SubViewport"]
+[node name="Camera" type="Camera2D" parent="UI/GameWorld/GameViewport/Viewport"]
 anchor_mode = 0
 
 [node name="GameUI" parent="UI" instance=ExtResource("4_siim3")]
@@ -53,9 +53,10 @@ process_mode = 3
 visible = false
 layout_mode = 1
 
+[connection signal="score_changed" from="UI/GameWorld/GameViewport/Viewport/Game" to="UI/GameUI" method="_on_game_score_changed"]
 [connection signal="score_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
 [connection signal="shop_button_pressed" from="UI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
-[connection signal="spawn_button_pressed" from="UI/GameUI" to="UI/CenterContainer/SubViewportContainer/SubViewport/Game" method="trigger_spawn"]
+[connection signal="spawn_button_pressed" from="UI/GameUI" to="UI/GameWorld/GameViewport/Viewport/Game" method="trigger_spawn"]
 [connection signal="back_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
 [connection signal="delete_button_pressed" from="UI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
 [connection signal="purchase_begin" from="UI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]

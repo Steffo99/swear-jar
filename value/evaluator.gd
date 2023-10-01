@@ -4,36 +4,27 @@ class_name Evaluator
 
 
 ## The current amount of value evaluated.
-var total_value: int = 0
-
-## The types of [Collectible]s to value.
-##
-## The strings will match only if exactly the same.
-#@export var collecting_types: Array[StringName]
-
-## The collision mask to check colliding body against.
-@export_flags_2d_physics var collecting_collision_mask: int
+var total: int = 0
 
 ## The evaluator has added the value of an object to the total.
-signal added(what: PhysicsBody2D, total_value: int)
+signal added(what: Valuable, total: int)
+
 ## The evaluator has removed the value of an object to the total.
-signal removed(what: PhysicsBody2D)
+signal removed(what: Valuable, total: int)
 
-signal score_changed(total_value: int)
+## The total value of the evaluated items has changed.
+signal changed(total: int)
 
-func _on_body_entered(body):
-	if body is PhysicsBody2D:
-		if body.collision_layer & collecting_collision_mask:
-			var evaluable: Valuable = body.get_node("Valuable")
-			total_value += evaluable.value
-			evaluable.evaluate()
-			score_changed.emit(total_value)
+
+func _on_body_entered(body: PhysicsBody2D):
+	var valuable: Valuable = body.get_node("Valuable")
+	total += valuable.value
+	added.emit(valuable, total)
+	changed.emit(total)
 			
-func _on_body_exited(body):
-	if body is PhysicsBody2D:
-		if body.collision_layer & collecting_collision_mask:
-			var evaluable: Valuable = body.get_node("Valuable")
-			total_value -= evaluable.value
-			evaluable.evaluate()
-			score_changed.emit(total_value)
+func _on_body_exited(body: PhysicsBody2D):
+	var valuable: Valuable = body.get_node("Valuable")
+	total -= valuable.value
+	removed.emit(valuable, total)
+	changed.emit(total)
 

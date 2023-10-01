@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=9 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_h2pfr"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="4_e5nwi"]
+[ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
 size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
+size = Vector2(240, 384)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -44,4 +48,12 @@ shape = SubResource("RectangleShape2D_4uksi")
 
 [node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
 
+[node name="Evaluator" parent="." instance=ExtResource("6_my6nv")]
+position = Vector2(128, 256)
+
+[node name="BottleShape" type="CollisionShape2D" parent="Evaluator"]
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_rh35r")
+
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
+[connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]
