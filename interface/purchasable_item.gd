@@ -34,7 +34,7 @@ class_name PurchasableItem
 ## Whether the player can click or not the Buy button.
 ##
 ## Used to prevent two items from getting bought at the same time.
-@export var can_buy: bool:
+@export var can_buy: bool = true:
 	get:
 		return can_buy
 	set(value):
