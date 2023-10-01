@@ -3,7 +3,8 @@
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_ppf8y"]
 [ext_resource type="Script" path="res://interface/game_ui.gd" id="2_33nqa"]
 
-[node name="GameUI" type="VBoxContainer"]
+[node name="GameUI" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,40 +13,41 @@ grow_vertical = 2
 theme = ExtResource("1_ppf8y")
 script = ExtResource("2_33nqa")
 
-[node name="UpperButtons" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 54)
-layout_mode = 2
-size_flags_vertical = 8
-alignment = 1
-
-[node name="ScoreButton" type="Button" parent="UpperButtons"]
+[node name="ScoreButton" type="Button" parent="."]
 custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 54.0
 size_flags_horizontal = 0
 text = "$0"
 alignment = 0
 
-[node name="UpperButtonsSpacerLeft" type="Control" parent="UpperButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpawnButton" type="Button" parent="UpperButtons"]
+[node name="SpawnButton" type="Button" parent="."]
 custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 54.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 text = "Drop"
 
-[node name="UpperButtonsSpacerRight" type="Control" parent="UpperButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ShopButton" type="Button" parent="UpperButtons"]
+[node name="ShopButton" type="Button" parent="."]
 custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_bottom = 54.0
+grow_horizontal = 0
 size_flags_horizontal = 8
 text = "Shop"
 alignment = 2
 
-[connection signal="pressed" from="UpperButtons/ScoreButton" to="." method="_on_score_button_pressed"]
-[connection signal="pressed" from="UpperButtons/SpawnButton" to="." method="_on_spawn_button_pressed"]
-[connection signal="pressed" from="UpperButtons/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="ScoreButton" to="." method="_on_score_button_pressed"]
+[connection signal="pressed" from="SpawnButton" to="." method="_on_spawn_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

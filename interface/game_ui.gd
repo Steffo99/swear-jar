@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 class_name GameUI
 
 ## Emitted when the Score button is pressed.
