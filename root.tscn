@@ -79,17 +79,21 @@ texture_filter = 1
 [node name="GravityFromGyro" parent="UI/GameContainer/Game/Bottle" instance=ExtResource("2_m7p4p")]
 
 [node name="TimeSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
-position = Vector2(0, -490)
+position = Vector2(0, -480)
 scene = ExtResource("2_dv01l")
 buffer_cap = 1
+spawn_position_range_x = 32.0
+spawn_rotation_range = 15.0
 
 [node name="Timer" type="Timer" parent="UI/GameContainer/Game/TimeSpawner"]
 autostart = true
 
 [node name="ButtonSpawner" parent="UI/GameContainer/Game" instance=ExtResource("3_pubxn")]
-position = Vector2(0, -490)
+position = Vector2(0, -480)
 scene = ExtResource("2_dv01l")
 buffer_cap = 50
+spawn_position_range_x = 32.0
+spawn_rotation_range = 15.0
 
 [connection signal="pressed" from="UI/Rows/UpperButtons/SpawnButton" to="UI/GameContainer/Game/ButtonSpawner" method="spawn"]
 [connection signal="timeout" from="UI/GameContainer/Game/TimeSpawner/Timer" to="UI/GameContainer/Game/TimeSpawner" method="spawn"]

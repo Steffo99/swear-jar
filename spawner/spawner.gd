@@ -8,8 +8,9 @@ var buffer: int = 0
 @export var buffer_cap: int
 
 @onready var area: Area2D = $Area
-@onready var shape: CollisionShape2D = $Area/Shape
 
+@export var spawn_position_range_x: float
+@export_range(0, 90) var spawn_rotation_range: float
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
@@ -21,9 +22,10 @@ func spawn():
 
 
 func _select_spawn_position() -> Vector2:
-	var variance = shape.shape.size.x / 2
-	var x = rng.randf_range(-variance, +variance)
-	return Vector2(x, 0)
+	return Vector2(rng.randf_range(-spawn_position_range_x, +spawn_position_range_x), 0)
+
+func _select_spawn_rotation() -> float:
+	return rng.randf_range(-spawn_rotation_range, spawn_rotation_range)
 
 func _do_spawn():
 	var overlapping_bodies = area.get_overlapping_bodies()
@@ -31,7 +33,8 @@ func _do_spawn():
 		if overlapping_body.collision_layer && 0b100:
 			return
 	var scene_instant = scene.instantiate()
-	scene_instant.position = _select_spawn_location()
+	scene_instant.position = _select_spawn_position()
+	scene_instant.rotation_degrees = _select_spawn_rotation()
 	add_child(scene_instant)
 	buffer -= 1
 
