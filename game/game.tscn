@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=6 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_h2pfr"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper.tscn" id="4_e5nwi"]
-[ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://convertors/copper_to_silver.tscn" id="6_tf2pv"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -16,13 +15,10 @@ position = Vector2(0, 240)
 
 [node name="GravityFromGyro" parent="Bottle" instance=ExtResource("2_h2pfr")]
 
-[node name="CopperToSilver" parent="." instance=ExtResource("6_tf2pv")]
-z_index = 10
-position = Vector2(2, -314)
-
-[node name="TimeSpawner" parent="." instance=ExtResource("3_qwsty")]
+[node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(0, -144)
 scene = ExtResource("4_e5nwi")
+target = NodePath("..")
 buffer_cap = 1
 spawn_position_range_x = 32.0
 spawn_rotation_range = 15.0
@@ -30,10 +26,13 @@ overlapping_bodies_collision_mask = 4
 overlapping_body_count_limit = 4
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
+wait_time = 0.017
+autostart = true
 
-[node name="ButtonSpawner" parent="." instance=ExtResource("3_qwsty")]
+[node name="ButtonSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(0, -144)
 scene = ExtResource("4_e5nwi")
+target = NodePath("..")
 buffer_cap = 50
 spawn_position_range_x = 32.0
 spawn_rotation_range = 15.0
