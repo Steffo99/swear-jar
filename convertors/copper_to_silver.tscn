@@ -1,12 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://ratkps4plkhl"]
+[gd_scene load_steps=10 format=3 uid="uid://ratkps4plkhl"]
 
 [ext_resource type="Script" path="res://convertors/copper_to_silver.gd" id="1_jjv83"]
 [ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver.tscn" id="2_orv64"]
 [ext_resource type="Texture2D" uid="uid://b0uefih0ccwp3" path="res://entity/copper_converter_front_1.png" id="2_vm6by"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="3_a4naa"]
+[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="5_1n0vw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
 size = Vector2(26, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i6q7"]
+size = Vector2(3, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqmlo"]
+size = Vector2(3, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31dtl"]
+size = Vector2(25.8333, 5)
 
 [node name="CopperToSilver" type="StaticBody2D"]
 scale = Vector2(3, 3)
@@ -20,14 +30,29 @@ texture = ExtResource("2_vm6by")
 [node name="Collector" parent="." instance=ExtResource("3_a4naa")]
 collecting_types = Array[StringName]([&"Copper"])
 collecting_collision_mask = 4
-collecting_amount = 1
+collecting_amount = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
 position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_k11if")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-16, -15.5, -13, -15.5, -13, 12, 13, 12, 13, -15.5, 16, -15.5, 16, 14.5, -16, 14.5)
+[node name="Spawner" parent="." instance=ExtResource("5_1n0vw")]
+position = Vector2(-0.333333, 19.3333)
+scene = ExtResource("2_orv64")
+buffer_cap = 1
+spawn_rotation_range = 90.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14.3333, -1)
+shape = SubResource("RectangleShape2D_3i6q7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, -1.66667)
+shape = SubResource("RectangleShape2D_eqmlo")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.3333)
+shape = SubResource("RectangleShape2D_31dtl")
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]

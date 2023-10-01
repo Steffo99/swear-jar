@@ -53,3 +53,5 @@ func _do_spawn():
 func _physics_process(_delta):
 	if buffer > 0:
 		_do_spawn()
+
+

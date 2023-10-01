@@ -55,25 +55,36 @@ size_flags_horizontal = 8
 text = "Back"
 alignment = 2
 
-[node name="Scrollable" type="ScrollContainer" parent="Rows"]
-clip_contents = false
+[node name="PaddedScrollable" type="HBoxContainer" parent="Rows"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="PaddedScrollableLeft" type="Control" parent="Rows/PaddedScrollable"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Scrollable" type="ScrollContainer" parent="Rows/PaddedScrollable"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="ScrollableItems" type="VBoxContainer" parent="Rows/Scrollable"]
+[node name="ScrollableItems" type="VBoxContainer" parent="Rows/PaddedScrollable/Scrollable"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ConvertCategory" type="VBoxContainer" parent="Rows/Scrollable/ScrollableItems"]
+[node name="ConvertCategory" type="VBoxContainer" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems"]
 layout_mode = 2
 
-[node name="PurchasableItemPadding5" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding5" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="ImproveYourItemsLabel" type="Label" parent="Rows/Scrollable/ScrollableItems/ConvertCategory"]
+[node name="ImproveYourItemsLabel" type="Label" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Improve your items!"
@@ -82,10 +93,10 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="PurchasableItemPadding3" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding3" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuySilverifier" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuySilverifier" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_icon = ExtResource("5_lu2tr")
 item_name = "Silverifier"
@@ -94,56 +105,56 @@ item_cost_text = "35 copper"
 item_cost_type = &"Copper"
 item_cost_goal = 35
 
-[node name="PurchasableItemPadding" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyGoldenser" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyGoldenser" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Goldenser"
 item_description = "Trades in ten silver coins for a sparkly gold coin!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding2" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyGemificator" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyGemificator" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Gemificator"
 item_description = "Converts ten gold coins into a randomly colored gem!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding4" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding4" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyCompressor" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyCompressor" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Compressor"
 item_description = "Consumes ten gold coins to create either a precious white diamond or an useless lump of coal!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding6" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding6" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyArtifactomatic" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyArtifactomatic" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Artifactic"
 item_description = "Assembles an artifact from twenty-five gold coins and a gem or a diamond!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding7" parent="Rows/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding7" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="ManualCategory" type="VBoxContainer" parent="Rows/Scrollable/ScrollableItems"]
+[node name="ManualCategory" type="VBoxContainer" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems"]
 layout_mode = 2
 
-[node name="PurchasableItemPadding5" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding5" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="EarnCoinsLabel" type="Label" parent="Rows/Scrollable/ScrollableItems/ManualCategory"]
+[node name="EarnCoinsLabel" type="Label" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Get rich quick!"
@@ -152,76 +163,76 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="PurchasableItemPadding3" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding3" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyAutoCopper" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyAutoCopper" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Auto-copper"
 item_description = "Receive two copper coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyHeliCopper" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyHeliCopper" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Heli-copper"
 item_description = "Receive eight copper coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding2" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyAutoSilver" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyAutoSilver" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Auto-silver"
 item_description = "Receive two silver coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding4" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding4" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuySuperSilver" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuySuperSilver" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Super silver"
 item_description = "Receive eight silver coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding6" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding6" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyAutoGold" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyAutoGold" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Auto-gold"
 item_description = "Receive two gold coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding7" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding7" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyMidasTouch" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyMidasTouch" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Midas Touch"
 item_description = "Receive eight gold coins per second!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding8" parent="Rows/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding8" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="AutomaticCategory" type="VBoxContainer" parent="Rows/Scrollable/ScrollableItems"]
+[node name="AutomaticCategory" type="VBoxContainer" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems"]
 layout_mode = 2
 
-[node name="PurchasableItemPadding5" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding5" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="EarnCoinsLabel" type="Label" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory"]
+[node name="EarnCoinsLabel" type="Label" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Automatic coin dropper"
@@ -230,28 +241,33 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="PurchasableItemPadding3" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding3" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuySilverStar" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuySilverStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Silver star"
 item_description = "Create a silver coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
 
-[node name="BuyGoldStar" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
+[node name="BuyGoldStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_name = "Gold star"
 item_description = "Create a gold coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false
 
-[node name="PurchasableItemPadding2" parent="Rows/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
+[node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
+
+[node name="PaddedScrollableRight" type="Control" parent="Rows/PaddedScrollable"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 
 [connection signal="pressed" from="Rows/UpperButtons/ScoreButton" to="." method="_on_score_button_pressed"]
 [connection signal="pressed" from="Rows/UpperButtons/DeleteButton" to="." method="_on_delete_button_pressed"]
