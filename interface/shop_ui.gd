@@ -6,9 +6,6 @@ class_name ShopUI
 ## Emitted when the Score button is pressed.
 signal score_button_pressed
 
-## Emitted when the Delete button is pressed.
-signal delete_button_pressed 
-
 ## Emitted when the Back button is presesd.
 signal back_button_pressed
 
@@ -74,9 +71,6 @@ func _on_game_score_changed(total: int):
 		
 func _on_score_button_pressed():
 	score_button_pressed.emit()
-	
-func _on_delete_button_pressed():
-	delete_button_pressed.emit()
 
 func _on_back_button_pressed():
 	back_button_pressed.emit()
@@ -151,3 +145,17 @@ func _on_buy_compressor_purchase_success():
 
 func _on_buy_artifactomatic_purchase_success():
 	print("[ShopUI] Completing Arti-factory...")
+
+
+var is_deleting = false
+
+signal delete_begin
+signal delete_cancel
+
+func _on_delete_button_pressed():
+	if is_deleting:
+		is_deleting = false
+		delete_cancel.emit()
+	else:
+		is_deleting = true
+		delete_begin.emit()

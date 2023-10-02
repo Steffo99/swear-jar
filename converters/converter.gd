@@ -29,3 +29,18 @@ func _on_timer_timeout():
 	sound_working.stop()
 	sound_complete.play()
 	spawner.spawn()
+
+var is_pending_deletion: bool = false
+
+func pending_deletion():
+	sprite_front.modulate = Color.RED
+	is_pending_deletion = true
+
+func ending_deletion():
+	sprite_front.modulate = Color.WHITE
+	is_pending_deletion = false
+
+func _input(event: InputEvent):
+	if is_pending_deletion:
+		if event is InputEventMouseButton or event is InputEventScreenTouch:
+			queue_free()
