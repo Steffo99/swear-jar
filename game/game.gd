@@ -92,6 +92,9 @@ func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
 
 func _on_ghost_materialize():
 	var instantiated = ghost.materialize()
+	if not instantiated:
+		print("[Game] The ghost can't materialize; the spawning is cancelled!")
+		return
 	var spawner = instantiated.find_child("Spawner")
 	if spawner != null:
 		spawner.target = self
