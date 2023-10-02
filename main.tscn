@@ -86,6 +86,7 @@ layout_mode = 2
 [connection signal="delete_begin" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_shop_ui_delete_begin"]
 [connection signal="delete_begin" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameSafeUI/GameUI" method="_on_shop_ui_delete_begin"]
 [connection signal="delete_cancel" from="CustomUI/ShopSafeUI/ShopUI" to="." method="_on_shop_ui_delete_cancel"]
+[connection signal="delete_cancel" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_shop_ui_delete_cancel"]
 [connection signal="delete_cancel" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameSafeUI/GameUI" method="_on_shop_ui_delete_cancel"]
 [connection signal="ghost_materialize" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_ghost_materialize"]
 [connection signal="ghost_requested" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_ghost_requested"]

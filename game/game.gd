@@ -110,7 +110,7 @@ func _on_shop_ui_delete_begin():
 	for converter in item_converters:
 		converter.pending_deletion()
 
-func _on_shop_ui_delete_end():
+func _on_shop_ui_delete_cancel():
 	var converters = find_children("*", "Converter", true, false)
 	for converter in converters:
 		converter.ending_deletion()
