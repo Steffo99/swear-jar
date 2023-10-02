@@ -3,8 +3,10 @@ class_name Main
 
 
 @onready var tree: SceneTree = get_tree()
-@onready var game_ui: GameUI = $CustomUI/SafeUI/GameUI
-@onready var shop_ui: ShopUI = $CustomUI/SafeUI/ShopUI
+@onready var game_safe_ui: MarginContainer = $CustomUI/GameSafeUI
+@onready var game_ui: GameUI = $CustomUI/GameSafeUI/GameUI
+@onready var shop_safe_ui: MarginContainer = $CustomUI/ShopSafeUI
+@onready var shop_ui: ShopUI = $CustomUI/ShopSafeUI/ShopUI
 
 
 enum UIState {
@@ -20,12 +22,14 @@ enum UIState {
 		match value:
 			UIState.GAME:
 				tree.paused = false
-				game_ui.show()
-				shop_ui.hide()
+				game_safe_ui.show()
+				shop_safe_ui.hide()
+				shop_safe_ui.process_mode = Node.PROCESS_MODE_DISABLED
 			UIState.SHOP:
 				tree.paused = true
-				game_ui.hide()
-				shop_ui.show()
+				game_safe_ui.hide()
+				shop_safe_ui.show()
+				shop_safe_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 			UIState.SCORE:
 				pass
 

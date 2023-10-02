@@ -75,4 +75,3 @@ func update_counter_icon():
 		store_collector_texturerect.texture = upgrade_gold_texture
 	else:
 		store_collector_texturerect.texture = null
-	

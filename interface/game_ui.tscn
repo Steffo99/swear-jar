@@ -5,12 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="3_vobar"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("score_button")]
+custom_minimum_size = Vector2(0, 54)
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("1_ppf8y")
 script = ExtResource("2_33nqa")
 score_button = NodePath("ScoreButton")
@@ -18,7 +17,6 @@ score_button = NodePath("ScoreButton")
 [node name="ScoreButton" parent="." instance=ExtResource("3_vobar")]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 0
-text = "$0.00"
 
 [node name="SpawnButton" type="Button" parent="."]
 custom_minimum_size = Vector2(88, 0)

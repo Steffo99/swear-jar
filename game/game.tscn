@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=22 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
+[ext_resource type="PackedScene" path="res://entity/gem/gemstone.tscn" id="7_13ofu"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
@@ -37,6 +38,11 @@ script = ExtResource("1_i3ly0")
 upgrade_copper_texture = ExtResource("11_lt33g")
 upgrade_silver_texture = ExtResource("3_8wvr1")
 upgrade_gold_texture = ExtResource("4_i557v")
+
+[node name="Ghost" parent="." instance=ExtResource("16_8vhx6")]
+position = Vector2(90, 306)
+collision_layer = 8
+collision_mask = 6
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
 
