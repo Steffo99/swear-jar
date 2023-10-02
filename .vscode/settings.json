@@ -5,6 +5,7 @@
 		"**/*.tres": true,
 		"**/*.tscn": true,
 		"**/*.import": true,
+		"**/*.png": true,
 	},
 	"files.associations": {
 		"*.gdignore": "ignore",

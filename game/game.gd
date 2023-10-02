@@ -35,6 +35,7 @@ func _on_purchase_begin(what: PurchasableItem):
 	print("[Game] Beginning purchase of ", what.name, " costing ", what.item_cost_goal, "x ", what.item_cost_type)
 	store_collector.collecting_types = [what.item_cost_type]
 	store_collector.collecting_amount = what.item_cost_goal
+	store_collector.collected_count = 0
 	store_collector.goal.connect(_handle_purchase_success.bind(what))
 	update_counter_icon()
 	update_counter_text()

@@ -227,6 +227,7 @@ frame_progress = 0.228399
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("17_udaa3")]
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]
 [connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout" flags=18]

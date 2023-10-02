@@ -40,7 +40,7 @@ func ending_deletion():
 	sprite_front.modulate = Color.WHITE
 	is_pending_deletion = false
 
-func _input(event: InputEvent):
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if is_pending_deletion:
 		if event is InputEventMouseButton or event is InputEventScreenTouch:
 			queue_free()

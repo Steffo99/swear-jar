@@ -122,6 +122,7 @@ stream = ExtResource("11_ow0vy")
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("12_37x2h")]
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]
 [connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout"]

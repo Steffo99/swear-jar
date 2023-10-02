@@ -67,7 +67,7 @@ position = Vector2(136, 0)
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
-overlapping_body_count_limit = 4
+overlapping_body_count_limit = 16
 metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="TimeSpawner"]
@@ -99,7 +99,7 @@ scene = ExtResource("13_4j8om")
 target = NodePath("..")
 buffer_cap = 10
 spawn_rect = Rect2(-20, 0, 40, 0)
-overlapping_body_count_limit = 4
+overlapping_body_count_limit = 16
 metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="ButtonSpawner"]

@@ -39,20 +39,14 @@ func _on_any_purchase_begin(what: Node):
 	if what.item_scene:
 		ghost_requested.emit(what.item_scene, what.item_icon)
 	purchase_begin.emit(what)
-	for item in purchasable_items:
-		if item == what:
-			continue
-		item.can_buy = false
+	set_all_can_buy(false, what)
 
 func _on_any_purchase_cancel(what: Node):
 	if not what is PurchasableItem:
 		push_error("Purchase cancelled outside a PurchasableItem")
 		return
 	purchase_cancel.emit(what)
-	for item in purchasable_items:
-		if item == what:
-			continue
-		item.can_buy = true
+	set_all_can_buy(true, what)
 
 func _on_any_purchase_success(what: Node):
 	if not what is PurchasableItem:
@@ -61,10 +55,7 @@ func _on_any_purchase_success(what: Node):
 	if what.item_scene:
 		ghost_materialize.emit()
 	purchase_success.emit(what)
-	for item in purchasable_items:
-		if item == what:
-			continue
-		item.can_buy = true
+	set_all_can_buy(true, what)
 
 func _on_game_score_changed(total: int):
 	score_button.set_score(total)
@@ -159,9 +150,18 @@ func _on_delete_button_pressed():
 		is_deleting = false
 		delete_button.text = "Del"
 		delete_button.modulate = Color.WHITE
+		set_all_can_buy(true, null)
 		delete_cancel.emit()
 	else:
 		is_deleting = true
 		delete_button.text = "Undo"
 		delete_button.modulate = Color.RED
+		set_all_can_buy(false, null)
 		delete_begin.emit()
+
+
+func set_all_can_buy(state: bool, except: PurchasableItem):
+	for item in purchasable_items:
+		if item == except:
+			continue
+		item.can_buy = state
