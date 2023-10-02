@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=22 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
+[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="7_hh80i"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
@@ -42,7 +43,7 @@ upgrade_gold_texture = ExtResource("4_i557v")
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
-scene = ExtResource("4_5oayc")
+scene = ExtResource("7_hh80i")
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
@@ -54,6 +55,7 @@ shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
+wait_time = 0.02
 autostart = true
 
 [node name="ButtonSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
@@ -79,7 +81,7 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(140, 151)
+position = Vector2(53, 156)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
@@ -89,8 +91,8 @@ target = NodePath("../..")
 position = Vector2(0, 4.08333)
 
 [node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
-position = Vector2(139, 254)
-rotation = -3.14159
+position = Vector2(53, 273)
+rotation = -6.28319
 metadata/_edit_group_ = true
 
 [node name="CollectShape" parent="SilverConverter/Collector" index="1"]
@@ -177,7 +179,7 @@ shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
 [node name="GemConverter" parent="." instance=ExtResource("16_e62br")]
-position = Vector2(139, 371)
+position = Vector2(144, 184)
 metadata/_edit_group_ = true
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]

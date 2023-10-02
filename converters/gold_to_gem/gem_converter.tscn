@@ -1,47 +1,55 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4ew8x4gch275"]
+[gd_scene load_steps=23 format=3 uid="uid://c4ew8x4gch275"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_f5plk"]
-[ext_resource type="Texture2D" uid="uid://440yhlpwpfw4" path="res://converters/copper_to_silver/copper_converter_back.png" id="2_10qqc"]
-[ext_resource type="Texture2D" uid="uid://dq5aowbt2wxec" path="res://converters/copper_to_silver/copper_converter_front_1.png" id="3_m7rs2"]
-[ext_resource type="Texture2D" uid="uid://ck254fewe4l41" path="res://converters/copper_to_silver/copper_converter_front_2.png" id="4_aibvv"]
-[ext_resource type="Texture2D" uid="uid://dg4qq1pgojk8d" path="res://converters/copper_to_silver/copper_converter_front_3.png" id="5_vqrfc"]
-[ext_resource type="Texture2D" uid="uid://60502lbpup6" path="res://converters/copper_to_silver/copper_converter_front_4.png" id="6_r2hfj"]
+[ext_resource type="Texture2D" uid="uid://bbn8t32v1ie0y" path="res://entity/gold_converter_back.png" id="2_4abgr"]
+[ext_resource type="Texture2D" uid="uid://0u8wtb38l3s5" path="res://entity/gold_converter_front_1.png" id="3_rtp3d"]
+[ext_resource type="Texture2D" uid="uid://bo46tom7khspd" path="res://entity/gold_converter_front_2.png" id="4_oathm"]
+[ext_resource type="Texture2D" uid="uid://dclhuc7h26brj" path="res://entity/gold_converter_front_3.png" id="5_5deah"]
+[ext_resource type="Texture2D" uid="uid://dn433fvnhgp5v" path="res://entity/gold_converter_front_4.png" id="6_isyc7"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_m34js"]
+[ext_resource type="Texture2D" uid="uid://bfxmurfe4o44s" path="res://entity/gold_converter_front_5.png" id="7_w8dcp"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_qwbjp"]
-[ext_resource type="PackedScene" uid="uid://w2er6cmul5yx" path="res://entity/gem/gem.tscn" id="9_2ugi1"]
+[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="10_5hiv4"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_f1h6i"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_ywwn2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
-atlas = ExtResource("3_m7rs2")
-region = Rect2(0, 2, 32, 33)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy1v3"]
+atlas = ExtResource("3_rtp3d")
+region = Rect2(0, 4, 32, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gs3wo"]
-atlas = ExtResource("4_aibvv")
-region = Rect2(0, 2, 32, 33)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2164d"]
+atlas = ExtResource("4_oathm")
+region = Rect2(0, 4, 32, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tboq2"]
-atlas = ExtResource("5_vqrfc")
-region = Rect2(0, 2, 32, 33)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5584"]
+atlas = ExtResource("5_5deah")
+region = Rect2(0, 4, 32, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_okgf4"]
-atlas = ExtResource("6_r2hfj")
-region = Rect2(0, 2, 32, 33)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qad4c"]
+atlas = ExtResource("6_isyc7")
+region = Rect2(0, 4, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_600qi"]
+atlas = ExtResource("7_w8dcp")
+region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4m3dg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_62dyi")
+"texture": SubResource("AtlasTexture_wy1v3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gs3wo")
+"texture": SubResource("AtlasTexture_2164d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tboq2")
+"texture": SubResource("AtlasTexture_i5584")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_okgf4")
+"texture": SubResource("AtlasTexture_qad4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_600qi")
 }],
 "loop": true,
 "name": &"default",
@@ -68,12 +76,14 @@ script = ExtResource("1_f5plk")
 [node name="SpriteBack" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
-texture = ExtResource("2_10qqc")
+texture = ExtResource("2_4abgr")
 
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
 texture_filter = 1
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_4m3dg")
+frame_progress = 0.0969002
 
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 2
@@ -102,7 +112,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="Spawner" parent="." instance=ExtResource("8_qwbjp")]
 position = Vector2(0, 8)
-scene = ExtResource("9_2ugi1")
+scene = ExtResource("10_5hiv4")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
