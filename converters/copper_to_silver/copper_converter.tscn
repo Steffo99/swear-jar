@@ -99,6 +99,7 @@ z_index = 3
 position = Vector2(0, 4.5)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_31dtl")
+one_way_collision = true
 
 [node name="Collector" parent="." instance=ExtResource("8_tc2oo")]
 z_index = 2
