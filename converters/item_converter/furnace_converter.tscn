@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0hcrkf1s2mww"]
+
+[ext_resource type="Script" path="res://converters/converter.gd" id="1_h0rfu"]
+[ext_resource type="Texture2D" uid="uid://440yhlpwpfw4" path="res://converters/copper_to_silver/copper_converter_back.png" id="2_dgtpa"]
+[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="3_t872f"]
+[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="4_jko1c"]
+[ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver/coin_silver.tscn" id="5_4nt0s"]
+[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="6_4vucc"]
+[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="7_dw32b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aslkt"]
+radius = 1.5
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31dtl"]
+size = Vector2(26, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
+size = Vector2(26, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
+size = Vector2(26, 8.83334)
+
+[node name="ItemConverter" type="StaticBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_h0rfu")
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+texture = ExtResource("2_dgtpa")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-14.5, -3)
+shape = SubResource("CapsuleShape2D_aslkt")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(14.5, -3)
+shape = SubResource("CapsuleShape2D_aslkt")
+
+[node name="InnerWall" type="CollisionShape2D" parent="."]
+z_index = 3
+position = Vector2(0, 4.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_31dtl")
+
+[node name="Collector" parent="." instance=ExtResource("3_t872f")]
+z_index = 2
+collecting_types = Array[StringName]([&"Copper"])
+collecting_amount = 10
+
+[node name="CollectShape" type="CollisionShape2D" parent="Collector"]
+shape = SubResource("RectangleShape2D_k11if")
+debug_color = Color(0, 0.701961, 0.188235, 0.419608)
+
+[node name="Spawner" parent="." instance=ExtResource("4_jko1c")]
+position = Vector2(0, 8)
+scene = ExtResource("5_4nt0s")
+buffer_cap = 1
+spawn_rect = Rect2(-8, 0, 16, 4)
+spawn_rotation_degrees_min = 80.0
+spawn_rotation_degrees_max = 100.0
+overlapping_body_count_limit = 4
+
+[node name="PreventSpawnShape" type="CollisionShape2D" parent="Spawner"]
+z_index = 3
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_jeo5f")
+debug_color = Color(0.701961, 0, 0, 0.419608)
+
+[node name="ConversionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4vucc")
+
+[node name="SoundWorking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4vucc")
+
+[node name="SoundComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dw32b")
+
+[connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
+[connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]
+[connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout" flags=18]
