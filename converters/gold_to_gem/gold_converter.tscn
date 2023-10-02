@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="9_ojqfv"]
 [ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="10_op7xt"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="11_lofho"]
-[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="12_vklpo"]
+[ext_resource type="AudioStream" uid="uid://cc4mqxq6mxmdg" path="res://audio/conversione/coin_to_gem.wav" id="11_sk30q"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="13_6o73w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wy1v3"]
@@ -79,7 +79,7 @@ script = ExtResource("1_fgju3")
 sprite_front = NodePath("SpriteFront")
 conversion_timer = NodePath("ConversionTimer")
 sound_working = NodePath("SoundWorking")
-sound_complete = NodePath("SoundComplete")
+sound_complete = NodePath("Spawner/SoundComplete")
 spawner = NodePath("Spawner")
 
 [node name="SpriteBack" type="Sprite2D" parent="."]
@@ -119,7 +119,7 @@ collecting_amount = 10
 shape = SubResource("RectangleShape2D_k11if")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
-[node name="Spawner" parent="." instance=ExtResource("9_ojqfv")]
+[node name="Spawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("9_ojqfv")]
 position = Vector2(0, 8)
 scene = ExtResource("10_op7xt")
 buffer_cap = 1
@@ -127,12 +127,16 @@ spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
 spawn_rotation_degrees_max = 100.0
 overlapping_body_count_limit = 4
+sound_complete = NodePath("SoundComplete")
 
 [node name="PreventSpawnShape" type="CollisionShape2D" parent="Spawner"]
 z_index = 3
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
+
+[node name="SoundComplete" type="AudioStreamPlayer" parent="Spawner"]
+stream = ExtResource("11_sk30q")
 
 [node name="ConversionTimer" type="Timer" parent="."]
 one_shot = true
@@ -142,9 +146,6 @@ stream = ExtResource("11_lofho")
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_lofho")
-
-[node name="SoundComplete" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_vklpo")
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("13_6o73w")]
 

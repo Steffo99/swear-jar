@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://diy8fj7mcc00p"]
+[gd_scene load_steps=5 format=3 uid="uid://diy8fj7mcc00p"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_ftt7x"]
-[ext_resource type="Texture2D" uid="uid://bnfwmlf7ems16" path="res://entity/coal_diamond/coal.png" id="2_dcrph"]
+[ext_resource type="Texture2D" uid="uid://bnfwmlf7ems16" path="res://entity/coal_diamond/coal.png" id="2_ok4kf"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_e8hbs"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_3e4d8"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x6m8s"]
-radius = 10.5
 
 [node name="Coal" type="RigidBody2D"]
 collision_layer = 4
@@ -19,13 +16,13 @@ can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_x6m8s")
+polygon = PackedVector2Array(-4.5, 8, 4.5, 8, 8.5, 4, 8.5, -3, 3.5, -8, -3.5, -8, -7.5, -4, -8.5, 0, -8.5, 3)
 
 [node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
 texture_filter = 1
-texture = ExtResource("2_dcrph")
+texture = ExtResource("2_ok4kf")
 
 [node name="Collectible" parent="." instance=ExtResource("4_e8hbs")]
 type = &"Coal"
