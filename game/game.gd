@@ -89,3 +89,6 @@ func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
 	ghost.preview_texture = texture
 	ghost.process_mode = Node.PROCESS_MODE_INHERIT
 	ghost.show()
+
+func _on_ghost_materialize():
+	ghost.materialize()
