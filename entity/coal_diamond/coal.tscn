@@ -28,5 +28,3 @@ texture = ExtResource("2_ok4kf")
 type = &"Coal"
 
 [node name="Valuable" parent="." instance=ExtResource("5_3e4d8")]
-
-[connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]

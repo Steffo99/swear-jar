@@ -48,5 +48,3 @@ max_value = 1300
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_svrnw")
-
-[connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]

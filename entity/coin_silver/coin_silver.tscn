@@ -42,5 +42,3 @@ value = 10
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tmdfg")
-
-[connection signal="collected" from="Collectible" to="Collectible" method="_on_done"]
