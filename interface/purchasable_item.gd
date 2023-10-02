@@ -47,7 +47,7 @@ class_name PurchasableItem
 		return can_buy
 	set(value):
 		can_buy = value
-		$Contents/Action/BuyButton.disabled = not (can_buy && has_unlocked)
+		$Contents/Action/BuyButton.disabled = not (has_bought or (can_buy and has_unlocked))
 
 ## Whether the player has unlocked this item for purchase.
 ##
@@ -57,17 +57,33 @@ class_name PurchasableItem
 		return has_unlocked
 	set(value):
 		has_unlocked = value
-		$Contents/Action/BuyButton.disabled = not (can_buy && has_unlocked)
+		$Contents/Action/BuyButton.disabled = not (has_bought or (can_buy and has_unlocked))
+		$Contents/Action/BuyButton.text = "Buy" if value else "Lock"
 
 ## Whether the player is currently buying this item.
 ##
 ## Used to cancel the purchase.
-var is_buying: bool: 
+var is_buying: bool = false: 
 	get:
 		return is_buying
 	set(value):
 		is_buying = value
 		$Contents/Action/BuyButton.text = "Undo" if value else "Buy"
+
+## Whether this item can be bought one or infinite times.
+@export var one_shot: bool
+
+## Whether the player has already bought this item.
+##
+## Always false if one_shot is true.
+var has_bought: bool:
+	get:
+		return has_bought
+	set(value):
+		has_bought = value
+		$Contents/Action/BuyButton.disabled = (has_bought or (can_buy and has_unlocked))
+		$Contents/Action/BuyButton.add_theme_color_override("font_color", Color.GREEN)
+		$Contents/Action/BuyButton.text = "Buy" if value else "Own"
 
 
 ## Emitted when a purchase has started.

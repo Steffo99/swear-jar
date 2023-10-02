@@ -1,7 +1,7 @@
 extends Panel
 class_name ShopUI
 
-@export var score_button: ScoreButton
+@onready var score_button: ScoreButton = $Rows/UpperButtons/ScoreButton
 
 ## Emitted when the Score button is pressed.
 signal score_button_pressed
@@ -24,7 +24,7 @@ signal purchase_cancel(what: PurchasableItem)
 signal purchase_success(what: PurchasableItem)
 
 ## Array of all PurchasableItems that this ShopUI should control.
-@onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem") as Array[Node]
+@onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem")
 
 
 func _ready():
@@ -74,3 +74,51 @@ func _on_delete_button_pressed():
 
 func _on_back_button_pressed():
 	back_button_pressed.emit()
+
+
+@export var copper_coin_scene: PackedScene
+@export var silver_coin_scene: PackedScene
+@export var gold_coin_scene: PackedScene
+
+
+signal upgraded_auto_spawn(scene: PackedScene, period: float)
+
+func _on_buy_auto_copper_purchase_success():
+	print("[ShopUI] Upgrading to Auto Copper * 2...")
+	upgraded_auto_spawn.emit(copper_coin_scene, 0.5)
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyHeliCopper.has_unlocked = true
+
+func _on_buy_heli_copper_purchase_success():
+	print("[ShopUI] Upgrading to Auto Copper * 8...")
+	upgraded_auto_spawn.emit(copper_coin_scene, 0.125)
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyAutoSilver.has_unlocked = true
+
+func _on_buy_auto_silver_purchase_success():
+	print("[ShopUI] Upgrading to Auto Silver * 2...")
+	upgraded_auto_spawn.emit(silver_coin_scene, 0.5)
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuySuperSilver.has_unlocked = true
+
+func _on_buy_super_silver_purchase_success():
+	print("[ShopUI] Upgrading to Auto Silver * 8...")
+	upgraded_auto_spawn.emit(silver_coin_scene, 0.125)
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyAutoGold.has_unlocked = true
+
+func _on_buy_auto_gold_purchase_success():
+	print("[ShopUI] Upgrading to Auto Gold * 2...")
+	upgraded_auto_spawn.emit(gold_coin_scene, 0.5)
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyMidasTouch.has_unlocked = true
+
+func _on_buy_midas_touch_purchase_success():
+	print("[ShopUI] Upgrading to Auto Gold * 8...")
+	upgraded_auto_spawn.emit(gold_coin_scene, 0.125)
+
+
+signal upgraded_manual_spawn(scene: PackedScene)
+
+func _on_buy_silver_star_purchase_success():
+	print("[ShopUI] Upgrading to Manual Silver...")
+	upgraded_manual_spawn.emit(silver_coin_scene)
+
+func _on_buy_gold_star_purchase_success():
+	print("[ShopUI] Upgrading to Manual Gold...")
+	upgraded_manual_spawn.emit(gold_coin_scene)

@@ -1,17 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://cklkdygv61bny"]
+[gd_scene load_steps=14 format=3 uid="uid://cklkdygv61bny"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_qdf0y"]
 [ext_resource type="PackedScene" uid="uid://dul1fpyh733t7" path="res://interface/purchasable_item.tscn" id="2_2dtc0"]
 [ext_resource type="Script" path="res://interface/shop_ui.gd" id="2_iyr7m"]
 [ext_resource type="PackedScene" uid="uid://wodgj6rp2ewm" path="res://interface/purchasable_item_padding.tscn" id="3_4feaj"]
+[ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="3_6o10r"]
 [ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="3_7vro3"]
+[ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver/coin_silver.tscn" id="4_phiuj"]
 [ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="5_lu2tr"]
+[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="5_yvhlq"]
 [ext_resource type="Texture2D" uid="uid://bnctqi24r6ycr" path="res://converters/silver_to_gold/silver_converter.png" id="6_70u64"]
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="8_270dw"]
 [ext_resource type="Texture2D" uid="uid://7b12rwclhrq0" path="res://interface/upgrade_silver.png" id="8_caq4i"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="9_amnej"]
 
-[node name="ShopUI" type="Panel" node_paths=PackedStringArray("score_button")]
+[node name="ShopUI" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,7 +22,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qdf0y")
 script = ExtResource("2_iyr7m")
-score_button = NodePath("Rows/UpperButtons/ScoreButton")
+copper_coin_scene = ExtResource("3_6o10r")
+silver_coin_scene = ExtResource("4_phiuj")
+gold_coin_scene = ExtResource("5_yvhlq")
 
 [node name="Rows" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -174,8 +179,10 @@ layout_mode = 2
 item_icon = ExtResource("8_270dw")
 item_name = "Auto-copper"
 item_description = "Receive two copper coins per second!"
-item_cost_text = "??"
-has_unlocked = false
+item_cost_text = "50 copper"
+item_cost_type = &"Copper"
+item_cost_goal = 50
+one_shot = true
 
 [node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -185,8 +192,11 @@ layout_mode = 2
 item_icon = ExtResource("8_270dw")
 item_name = "Heli-copper"
 item_description = "Receive eight copper coins per second!"
-item_cost_text = "??"
+item_cost_text = "8 silver"
+item_cost_type = &"Silver"
+item_cost_goal = 8
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -198,6 +208,7 @@ item_name = "Auto-silver"
 item_description = "Receive two silver coins per second!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding4" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -209,6 +220,7 @@ item_name = "Super silver"
 item_description = "Receive eight silver coins per second!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding6" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -220,6 +232,7 @@ item_name = "Auto-gold"
 item_description = "Receive two gold coins per second!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding7" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -231,6 +244,7 @@ item_name = "Midas Touch"
 item_description = "Receive eight gold coins per second!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding8" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -260,6 +274,7 @@ item_name = "Silver star"
 item_description = "Create a silver coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -271,6 +286,7 @@ item_name = "Gold star"
 item_description = "Create a gold coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false
+one_shot = true
 
 [node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -283,3 +299,11 @@ size_flags_horizontal = 8
 [connection signal="pressed" from="Rows/UpperButtons/ScoreButton" to="." method="_on_score_button_pressed"]
 [connection signal="pressed" from="Rows/UpperButtons/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="Rows/UpperButtons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyAutoCopper" to="." method="_on_buy_auto_copper_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyHeliCopper" to="." method="_on_buy_heli_copper_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyAutoSilver" to="." method="_on_buy_auto_silver_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuySuperSilver" to="." method="_on_buy_super_silver_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyAutoGold" to="." method="_on_buy_auto_gold_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory/BuyMidasTouch" to="." method="_on_buy_midas_touch_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory/BuySilverStar" to="." method="_on_buy_silver_star_purchase_success"]
+[connection signal="purchase_success" from="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory/BuyGoldStar" to="." method="_on_buy_gold_star_purchase_success"]

@@ -37,3 +37,5 @@ type = &"Silver"
 
 [node name="Valuable" parent="." instance=ExtResource("5_u3bvw")]
 value = 10
+
+[connection signal="collected" from="Collectible" to="Collectible" method="_on_done"]

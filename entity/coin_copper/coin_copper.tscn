@@ -36,3 +36,5 @@ type = &"Copper"
 
 [node name="Valuable" parent="." instance=ExtResource("5_fd0r7")]
 value = 1
+
+[connection signal="collected" from="Collectible" to="Collectible" method="_on_done"]

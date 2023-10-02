@@ -1,6 +1,19 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba5utvfhnxa5i"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ba5utvfhnxa5i"]
 
 [ext_resource type="FontFile" uid="uid://cs8tiwyb76gig" path="res://interface/font/press-start/prstart.ttf" id="1_mtdor"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knce4"]
+bg_color = Color(0.0901961, 0.227451, 0.290196, 0.929412)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.341176, 0.635294, 0.772549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [resource]
 default_font = ExtResource("1_mtdor")
+Panel/styles/panel = SubResource("StyleBoxFlat_knce4")

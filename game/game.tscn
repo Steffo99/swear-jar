@@ -1,14 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=20 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_h2pfr"]
+[ext_resource type="Texture2D" uid="uid://7b12rwclhrq0" path="res://interface/upgrade_silver.png" id="3_8wvr1"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
+[ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
+[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
+[ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
 size = Vector2(80, 80)
@@ -16,12 +21,21 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i50bq"]
+size = Vector2(540, 135)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auxq0"]
-size = Vector2(270, 270)
+size = Vector2(1080, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jed57"]
+size = Vector2(270, 810)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_i3ly0")
+upgrade_copper_texture = ExtResource("11_lt33g")
+upgrade_silver_texture = ExtResource("3_8wvr1")
+upgrade_gold_texture = ExtResource("4_i557v")
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
 
@@ -39,8 +53,6 @@ shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
-wait_time = 0.1
-autostart = true
 
 [node name="ButtonSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
@@ -65,26 +77,101 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(63, 337)
+position = Vector2(63, 197)
+
+[node name="CollectShape" parent="CopperConverter/Collector" index="0"]
+debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
 
 [node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
-position = Vector2(136, 417)
-rotation = -1.57079
+position = Vector2(205, 337)
+rotation = -3.14159
 
 [node name="Spawner" parent="SilverConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
 
-[node name="UniversalCollector" parent="." instance=ExtResource("9_7op48")]
-position = Vector2(135, -135)
+[node name="StoreCollector" parent="." instance=ExtResource("9_evdhb")]
+position = Vector2(135, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UniversalCollector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoreCollector"]
+position = Vector2(0, -67)
+shape = SubResource("RectangleShape2D_i50bq")
+debug_color = Color(0, 0.701961, 0.188235, 0.419608)
+
+[node name="Panel" type="Panel" parent="StoreCollector"]
+visible = false
+z_index = -10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 88.0
+offset_right = 32.0
+offset_bottom = 124.0
+grow_horizontal = 2
+theme = ExtResource("10_sayqn")
+
+[node name="TextureRect" type="TextureRect" parent="StoreCollector/Panel"]
+modulate = Color(1, 1, 1, 0.521569)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_lt33g")
+
+[node name="Label" type="Label" parent="StoreCollector/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -9.5
+offset_right = 32.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+text = "250"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UniversalCollectorTop" parent="." instance=ExtResource("9_7op48")]
+position = Vector2(135, -270)
+
+[node name="ShapeTop" type="CollisionShape2D" parent="UniversalCollectorTop"]
 shape = SubResource("RectangleShape2D_auxq0")
+debug_color = Color(0, 0, 0, 0.419608)
+
+[node name="ShapeBottom" type="CollisionShape2D" parent="UniversalCollectorTop"]
+position = Vector2(0, 1080)
+shape = SubResource("RectangleShape2D_auxq0")
+debug_color = Color(0, 0, 0, 0.419608)
+
+[node name="ShapeLeft" type="CollisionShape2D" parent="UniversalCollectorTop"]
+position = Vector2(-405, 540)
+shape = SubResource("RectangleShape2D_jed57")
+debug_color = Color(0, 0, 0, 0.419608)
+
+[node name="ShapeRight" type="CollisionShape2D" parent="UniversalCollectorTop"]
+position = Vector2(405, 540)
+shape = SubResource("RectangleShape2D_jed57")
+debug_color = Color(0, 0, 0, 0.419608)
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]
+[connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
 
 [editable path="CopperConverter"]
 [editable path="SilverConverter"]
