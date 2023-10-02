@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://diy8fj7mcc00p"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_ftt7x"]
+[ext_resource type="Texture2D" uid="uid://bgq5afrrpc4a3" path="res://entity/coal_diamond/diamond_white.png" id="2_ug7o0"]
+[ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_e8hbs"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_3e4d8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6m8s"]
+radius = 10.5119
+
+[node name="Coal" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 14
+mass = 2.0
+inertia = 600.0
+physics_material_override = ExtResource("1_ftt7x")
+continuous_cd = 1
+can_sleep = false
+linear_damp = 0.1
+angular_damp = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_x6m8s")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("2_ug7o0")
+
+[node name="Collectible" parent="." instance=ExtResource("4_e8hbs")]
+type = &"Coal"
+
+[node name="Valuable" parent="." instance=ExtResource("5_3e4d8")]
+
+[connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]

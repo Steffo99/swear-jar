@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=25 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://7b12rwclhrq0" path="res://interface/upgrade_silver.png" id="3_8wvr1"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
-[ext_resource type="Texture2D" uid="uid://yx3gme4q4ote" path="res://interface/upgrade_gem.png" id="5_wbw72"]
 [ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="6_0jj8g"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
@@ -17,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="13_4j8om"]
 [ext_resource type="Script" path="res://game/DebugTimer.gd" id="13_6ai3c"]
+[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="13_8ux81"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost.tscn" id="16_8vhx6"]
+[ext_resource type="PackedScene" uid="uid://clanhkk4sg47w" path="res://converters/gold_to_coaldiamond/coal_diamond_converter.tscn" id="18_bjs6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -40,7 +41,6 @@ script = ExtResource("1_i3ly0")
 upgrade_copper_texture = ExtResource("11_lt33g")
 upgrade_silver_texture = ExtResource("3_8wvr1")
 upgrade_gold_texture = ExtResource("4_i557v")
-upgrade_gem_texture = ExtResource("5_wbw72")
 
 [node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
 
@@ -66,6 +66,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
+scene = ExtResource("13_8ux81")
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
@@ -77,6 +78,7 @@ shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
+one_shot = true
 
 [node name="DebugSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
@@ -84,7 +86,7 @@ scene = ExtResource("13_4j8om")
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
-overlapping_body_count_limit = 16
+overlapping_body_count_limit = 128
 metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="DebugSpawner"]
@@ -187,7 +189,15 @@ position = Vector2(405, 540)
 shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
+[node name="CoalDiamondConverter" parent="." instance=ExtResource("18_bjs6i")]
+position = Vector2(140, 217)
+
+[node name="Spawner" parent="CoalDiamondConverter" index="6" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
 [connection signal="changed" from="Bottle/Evaluator" to="." method="_on_score_changed"]
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="timeout" from="DebugSpawner/DebugTimer" to="DebugSpawner" method="spawn"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
+
+[editable path="CoalDiamondConverter"]
