@@ -35,7 +35,7 @@ texture = ExtResource("3_6jejy")
 shader = ExtResource("5_v6ppl")
 
 [node name="Collectible" parent="." instance=ExtResource("4_idoeu")]
-type = &"Gem"
+type = &"Silver"
 
 [node name="Valuable" parent="." instance=ExtResource("5_7bd6c")]
 value = 10

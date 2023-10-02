@@ -23,7 +23,7 @@ func _process(_delta):
 func _on_timer_timeout():
 	coda-=1
 	sprite_front.stop()
-	sprite_back.play()
+	sprite_back.stop()
 	sound_working.stop()
 	sound_complete.play()
 	spawner.spawn()
