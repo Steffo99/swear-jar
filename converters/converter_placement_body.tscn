@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bevj27e1ha8m3"]
+
+[ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="1_qs7xk"]
+
+[node name="ConverterPlacementBody" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="FullConverterShape" parent="." instance=ExtResource("1_qs7xk")]

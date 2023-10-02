@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ratkps4plkhl"]
+[gd_scene load_steps=22 format=3 uid="uid://ratkps4plkhl"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_mas6k"]
 [ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver/coin_silver.tscn" id="2_h5aul"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="9_2wvgu"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_6hhch"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_r8505"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_5qhgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
 atlas = ExtResource("4_exnn7")
@@ -131,6 +132,8 @@ stream = ExtResource("10_6hhch")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_r8505")
+
+[node name="ConverterPlacementBody" parent="." instance=ExtResource("12_5qhgs")]
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddrhfhebwtq5"]
+[gd_scene load_steps=34 format=3 uid="uid://ddrhfhebwtq5"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_qln0a"]
 [ext_resource type="Texture2D" uid="uid://devcho3gaigt0" path="res://converters/item_converter/item_converter_back_1.png" id="2_136t7"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://fqerky4lyps8" path="res://converters/item_converter/item_converter_front_3.png" id="9_88mk7"]
 [ext_resource type="Texture2D" uid="uid://bw0jgw0jen4lg" path="res://converters/item_converter/item_converter_front_4.png" id="10_fjv52"]
 [ext_resource type="Texture2D" uid="uid://4tg81ksibacf" path="res://converters/item_converter/item_converter_front_5.png" id="11_cg5dk"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="17_udaa3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqtie"]
 atlas = ExtResource("2_136t7")
@@ -183,6 +184,8 @@ stream = ExtResource("6_w6x4p")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_x4ti3")
+
+[node name="ConverterPlacementBody" parent="." instance=ExtResource("17_udaa3")]
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]

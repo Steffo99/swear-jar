@@ -2,22 +2,18 @@
 
 [ext_resource type="Script" path="res://interface/ghost.gd" id="1_gvls7"]
 [ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="1_lo8gj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmopu"]
-size = Vector2(34, 34)
+[ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="3_lskcf"]
 
 [node name="Ghost" type="Area2D"]
-scale = Vector2(3, 3)
-collision_layer = 16
-collision_mask = 10
+collision_layer = 0
+collision_mask = 16
 input_pickable = false
 script = ExtResource("1_gvls7")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="PlacementShape" parent="." instance=ExtResource("3_lskcf")]
+scale = Vector2(3, 3)
+
+[node name="PreviewSprite" type="Sprite2D" parent="PlacementShape"]
 modulate = Color(1, 1, 1, 0.5)
 z_index = 10
 texture = ExtResource("1_lo8gj")
-
-[node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hmopu")
-debug_color = Color(0, 0.6, 0.701961, 0)
