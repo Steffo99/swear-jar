@@ -9,14 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver/coin_silver.tscn" id="5_fp5qt"]
 [ext_resource type="Texture2D" uid="uid://c4vpmiwjfvcpy" path="res://converters/item_converter/item_converter_back_4.png" id="5_lk4ym"]
 [ext_resource type="Texture2D" uid="uid://c0kstbgsm65vq" path="res://converters/item_converter/item_converter_back_5.png" id="6_io2km"]
-[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="6_w6x4p"]
 [ext_resource type="Texture2D" uid="uid://crnu1x5n33yqu" path="res://converters/item_converter/item_converter_front_1.png" id="7_khayw"]
-[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="7_x4ti3"]
 [ext_resource type="Texture2D" uid="uid://b0vkliltyaljc" path="res://converters/item_converter/item_converter_front_2.png" id="8_w6rnl"]
 [ext_resource type="Texture2D" uid="uid://fqerky4lyps8" path="res://converters/item_converter/item_converter_front_3.png" id="9_88mk7"]
 [ext_resource type="Texture2D" uid="uid://bw0jgw0jen4lg" path="res://converters/item_converter/item_converter_front_4.png" id="10_fjv52"]
 [ext_resource type="Texture2D" uid="uid://4tg81ksibacf" path="res://converters/item_converter/item_converter_front_5.png" id="11_cg5dk"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="17_udaa3"]
+[ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="15_nahnf"]
+[ext_resource type="AudioStream" uid="uid://dv1e0wiiquxp0" path="res://audio/conversione/lava.wav" id="16_ptmks"]
+[ext_resource type="AudioStream" uid="uid://c0uhi1hrejyxg" path="res://audio/conversione/new_item.wav" id="17_4wm4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqtie"]
 atlas = ExtResource("2_136t7")
@@ -117,20 +118,26 @@ size = Vector2(26, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
 size = Vector2(26, 8.83334)
 
-[node name="ItemConverter" type="StaticBody2D"]
+[node name="ItemConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "sprite_back", "conversion_timer", "sound_working", "sound_complete", "spawner")]
 scale = Vector2(3, 3)
 script = ExtResource("1_qln0a")
+sprite_front = NodePath("SpriteFront")
+sprite_back = NodePath("SpriteBack")
+conversion_timer = NodePath("ConversionTimer")
+sound_working = NodePath("SoundWorking")
+sound_complete = NodePath("SoundComplete")
+spawner = NodePath("Spawner")
 
 [node name="SpriteBack" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_psnir")
-frame_progress = 0.0929807
+frame_progress = 0.883907
 
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
+z_index = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qqah4")
-frame_progress = 0.859387
 
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 2
@@ -148,9 +155,10 @@ position = Vector2(0, 4.5)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_31dtl")
 
-[node name="Collector" parent="." instance=ExtResource("3_qehi7")]
+[node name="Collector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("3_qehi7")]
 z_index = 2
-collecting_types = Array[StringName]([&"Copper"])
+collecting_types = Array[StringName]([&"Gold", &"Gem"])
+sound_absorb = NodePath("../SoundAbsorb")
 collecting_amount = 10
 
 [node name="CollectShape" type="CollisionShape2D" parent="Collector"]
@@ -173,17 +181,22 @@ shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="ConversionTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_w6x4p")
+stream = ExtResource("15_nahnf")
+volume_db = -12.291
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_w6x4p")
+stream = ExtResource("16_ptmks")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_x4ti3")
+stream = ExtResource("17_4wm4w")
+
+[node name="SpriteBack2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_psnir")
+frame_progress = 0.228399
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("17_udaa3")]
 
