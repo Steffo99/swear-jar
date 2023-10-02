@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://w2er6cmul5yx"]
+[gd_scene load_steps=8 format=3 uid="uid://w2er6cmul5yx"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_vmemd"]
-[ext_resource type="Script" path="res://entity/gem/gem.gd" id="2_0b343"]
 [ext_resource type="Texture2D" uid="uid://b21bsbo5f0ed7" path="res://entity/gem/gemstone.png" id="3_6jejy"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_idoeu"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_7bd6c"]
@@ -21,7 +20,6 @@ physics_material_override = ExtResource("1_vmemd")
 continuous_cd = 1
 linear_damp = 0.1
 angular_damp = 0.1
-script = ExtResource("2_0b343")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
