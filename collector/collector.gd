@@ -10,7 +10,7 @@ var collected_count: int = 0
 ##
 ## The strings will match only if exactly the same.
 @export var collecting_types: Array[StringName]
-
+@export var sound_absorb: AudioStreamPlayer
 ## The goal amount of entities to collect.
 ##
 ## When [collected_count] reaches it, it will be reset to zero, and the "goal" signal will be emitted.
@@ -29,6 +29,7 @@ func _on_body_entered(body: Node2D):
 		if collectible and collectible.type in collecting_types:
 			collected_count += 1
 			collectible.collect()
+			$sound_absorb.play()
 			emit_signal("collected", body)
 			if collected_count >= collecting_amount:
 				emit_signal("goal")

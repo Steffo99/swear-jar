@@ -77,13 +77,14 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(63, 197)
-
-[node name="CollectShape" parent="CopperConverter/Collector" index="0"]
-debug_color = Color(0, 0.701961, 0.188235, 0.419608)
+position = Vector2(131, 199)
+metadata/_edit_group_ = true
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
+
+[node name="PreventSpawnShape" parent="CopperConverter/Spawner" index="0"]
+position = Vector2(0, 4.08333)
 
 [node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
 position = Vector2(205, 337)
