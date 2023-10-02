@@ -4,3 +4,4 @@
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1

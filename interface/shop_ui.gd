@@ -1,6 +1,8 @@
 extends Panel
 class_name ShopUI
 
+@export var score_button: ScoreButton
+
 ## Emitted when the Score button is pressed.
 signal score_button_pressed
 
@@ -61,6 +63,9 @@ func _on_any_purchase_success(what: Node):
 			continue
 		item.can_buy = true
 
+func _on_game_score_changed(total: int):
+	score_button.set_score(total)
+		
 func _on_score_button_pressed():
 	score_button_pressed.emit()
 	

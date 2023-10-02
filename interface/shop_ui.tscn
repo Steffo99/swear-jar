@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cklkdygv61bny"]
+[gd_scene load_steps=8 format=3 uid="uid://cklkdygv61bny"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_qdf0y"]
 [ext_resource type="PackedScene" uid="uid://dul1fpyh733t7" path="res://interface/purchasable_item.tscn" id="2_2dtc0"]
 [ext_resource type="Script" path="res://interface/shop_ui.gd" id="2_iyr7m"]
 [ext_resource type="PackedScene" uid="uid://wodgj6rp2ewm" path="res://interface/purchasable_item_padding.tscn" id="3_4feaj"]
-[ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://entity/copper_converter.png" id="5_lu2tr"]
+[ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="3_7vro3"]
+[ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="5_lu2tr"]
+[ext_resource type="Texture2D" uid="uid://bnctqi24r6ycr" path="res://converters/silver_to_gold/silver_converter.png" id="6_70u64"]
 
-[node name="ShopUI" type="Panel"]
+[node name="ShopUI" type="Panel" node_paths=PackedStringArray("score_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qdf0y")
 script = ExtResource("2_iyr7m")
+score_button = NodePath("Rows/UpperButtons/ScoreButton")
 
 [node name="Rows" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,12 +30,8 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 
-[node name="ScoreButton" type="Button" parent="Rows/UpperButtons"]
-custom_minimum_size = Vector2(72, 0)
+[node name="ScoreButton" parent="Rows/UpperButtons" instance=ExtResource("3_7vro3")]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "$0"
-alignment = 0
 
 [node name="UpperButtonsSpacerLeft" type="Control" parent="Rows/UpperButtons"]
 layout_mode = 2
@@ -56,6 +55,7 @@ text = "Back"
 alignment = 2
 
 [node name="PaddedScrollable" type="HBoxContainer" parent="Rows"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -109,6 +109,7 @@ layout_mode = 2
 
 [node name="BuyGoldenser" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("6_70u64")
 item_name = "Goldenser"
 item_description = "Trades in ten silver coins for a sparkly gold coin!"
 item_cost_text = "??"
@@ -234,7 +235,7 @@ layout_mode = 2
 [node name="EarnCoinsLabel" type="Label" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Automatic coin dropper"
+text = "Be more efficient!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

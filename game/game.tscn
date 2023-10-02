@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=13 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -8,12 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
+[ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
 size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auxq0"]
+size = Vector2(270, 270)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -72,6 +76,12 @@ rotation = -1.57079
 
 [node name="Spawner" parent="SilverConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
+
+[node name="UniversalCollector" parent="." instance=ExtResource("9_7op48")]
+position = Vector2(135, -135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UniversalCollector"]
+shape = SubResource("RectangleShape2D_auxq0")
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]

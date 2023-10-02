@@ -28,13 +28,16 @@ script = ExtResource("3_xav0n")
 [node name="GameWorld" type="CenterContainer" parent="CustomUI"]
 custom_minimum_size = Vector2(270, 480)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -135.0
+offset_top = -480.0
 offset_right = 135.0
-offset_bottom = 480.0
 grow_horizontal = 2
+grow_vertical = 0
 
 [node name="GameViewport" type="SubViewportContainer" parent="CustomUI/GameWorld"]
 layout_mode = 2
@@ -68,6 +71,7 @@ visible = false
 layout_mode = 2
 
 [connection signal="score_changed" from="CustomUI/GameWorld/GameViewport/Viewport/Game" to="CustomUI/SafeUI/GameUI" method="_on_game_score_changed"]
+[connection signal="score_changed" from="CustomUI/GameWorld/GameViewport/Viewport/Game" to="CustomUI/SafeUI/ShopUI" method="_on_game_score_changed"]
 [connection signal="score_button_pressed" from="CustomUI/SafeUI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
 [connection signal="shop_button_pressed" from="CustomUI/SafeUI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
 [connection signal="spawn_button_pressed" from="CustomUI/SafeUI/GameUI" to="CustomUI/GameWorld/GameViewport/Viewport/Game" method="trigger_spawn"]
