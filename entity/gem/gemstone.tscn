@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://6pp1pebasum3"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_1d567"]
+[ext_resource type="Texture2D" uid="uid://b21bsbo5f0ed7" path="res://entity/gem/gemstone.png" id="2_gmg5g"]
+[ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_01x0a"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_wdbjk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_130vq"]
+radius = 4.0
+height = 10.0
+
+[node name="Gemstone" type="RigidBody2D"]
+collision_layer = 5
+collision_mask = 7
+mass = 1.5
+inertia = 800.0
+physics_material_override = ExtResource("1_1d567")
+continuous_cd = 1
+linear_damp = 0.1
+angular_damp = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_130vq")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("2_gmg5g")
+
+[node name="Collectible" parent="." instance=ExtResource("4_01x0a")]
+type = &"Gem"
+
+[node name="Valuable" parent="." instance=ExtResource("5_wdbjk")]
+value = 10
+
+[connection signal="collected" from="Collectible" to="Collectible" method="_on_done"]
