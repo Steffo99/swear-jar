@@ -54,3 +54,6 @@ func _on_shop_ui_delete_begin():
 
 func _on_shop_ui_delete_cancel():
 	ui_state = UIState.GAME
+
+func _on_shop_ui_purchase_cancel(_what):
+	ui_state = UIState.GAME
