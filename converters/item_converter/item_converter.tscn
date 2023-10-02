@@ -156,7 +156,7 @@ shape = SubResource("RectangleShape2D_31dtl")
 
 [node name="Collector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("3_qehi7")]
 z_index = 2
-collecting_types = Array[StringName]([&"Gold"])
+collecting_types = Array[StringName]([&"Gold", &"Gem"])
 sound_absorb = NodePath("../SoundAbsorb")
 collecting_amount = 10
 
