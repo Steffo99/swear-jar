@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=22 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://4d0al27t7axe" path="res://bottle/placeable_area.tscn" id="7_muqgj"]
-[ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
@@ -40,6 +39,8 @@ upgrade_copper_texture = ExtResource("11_lt33g")
 upgrade_silver_texture = ExtResource("3_8wvr1")
 upgrade_gold_texture = ExtResource("4_i557v")
 
+[node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
+
 [node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_8vhx6")]
 process_mode = 4
 visible = false
@@ -47,8 +48,10 @@ position = Vector2(135, 360)
 preview_texture = ExtResource("6_0jj8g")
 scene_to_instantiate = ExtResource("7_ipeok")
 target = NodePath("..")
+metadata/_edit_lock_ = true
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
+metadata/_edit_lock_ = true
 
 [node name="PlaceableArea" parent="Bottle" instance=ExtResource("7_muqgj")]
 
@@ -65,6 +68,7 @@ target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
 overlapping_body_count_limit = 4
+metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="TimeSpawner"]
 position = Vector2(0, 40)
@@ -80,33 +84,16 @@ target = NodePath("..")
 buffer_cap = 10
 spawn_rect = Rect2(-20, 0, 40, 0)
 overlapping_body_count_limit = 4
+metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="ButtonSpawner"]
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
-
-[node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(62, 176)
-metadata/_edit_group_ = true
-
-[node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
-target = NodePath("../..")
-
-[node name="PreventSpawnShape" parent="CopperConverter/Spawner" index="0"]
-position = Vector2(0, 4.08333)
-
-[node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
-position = Vector2(205, 337)
-rotation = -3.14159
-
-[node name="Spawner" parent="SilverConverter" index="6" node_paths=PackedStringArray("target")]
-target = NodePath("../..")
-
 [node name="StoreCollector" parent="." instance=ExtResource("9_evdhb")]
 position = Vector2(135, 0)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoreCollector"]
 position = Vector2(0, -67)
@@ -162,6 +149,7 @@ vertical_alignment = 1
 
 [node name="UniversalCollectorTop" parent="." instance=ExtResource("9_7op48")]
 position = Vector2(135, -270)
+metadata/_edit_lock_ = true
 
 [node name="ShapeTop" type="CollisionShape2D" parent="UniversalCollectorTop"]
 shape = SubResource("RectangleShape2D_auxq0")
@@ -185,6 +173,3 @@ debug_color = Color(0, 0, 0, 0.419608)
 [connection signal="changed" from="Bottle/Evaluator" to="." method="_on_score_changed"]
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
-
-[editable path="CopperConverter"]
-[editable path="SilverConverter"]
