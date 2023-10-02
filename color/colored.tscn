@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vkvtap437nnf"]
+
+[ext_resource type="Script" path="res://color/Colored.gd" id="1_wy58a"]
+
+[node name="Colored" type="Node"]
+script = ExtResource("1_wy58a")

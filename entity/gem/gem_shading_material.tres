@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dbnxaw6yecsyv"]
+
+[ext_resource type="Shader" path="res://entity/gem/gem_shading_material.gdshader" id="1_h813y"]
+
+[resource]
+shader = ExtResource("1_h813y")
+shader_parameter/hue = 0.0
