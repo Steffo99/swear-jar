@@ -24,7 +24,7 @@ func _on_body_entered(body: Node2D):
 		if collectible:
 			collected_count += 1
 			collectible.collect()
-			emit_signal("collected", body)
+			collected.emit(body)
 			if collected_count >= collecting_amount:
-				emit_signal("goal")
+				goal.emit()
 				collected_count = 0
