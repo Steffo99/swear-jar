@@ -42,7 +42,9 @@ upgrade_silver_texture = ExtResource("3_8wvr1")
 upgrade_gold_texture = ExtResource("4_i557v")
 
 [node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_8vhx6")]
-position = Vector2(90, 306)
+process_mode = 4
+visible = false
+position = Vector2(135, 360)
 preview_texture = ExtResource("6_0jj8g")
 scene_to_instantiate = ExtResource("7_ipeok")
 target = NodePath("..")

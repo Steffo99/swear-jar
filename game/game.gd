@@ -9,6 +9,7 @@ class_name Game
 @onready var store_collector_panel: Panel = $StoreCollector/Panel
 @onready var store_collector_texturerect: TextureRect = $StoreCollector/Panel/TextureRect
 @onready var store_collector_counter: Label = $StoreCollector/Panel/Label
+@onready var ghost: Ghost = $Ghost
 
 
 func trigger_spawn():
@@ -38,6 +39,8 @@ func _on_purchase_begin(what: PurchasableItem):
 	update_counter_icon()
 	update_counter_text()
 	store_collector_panel.show()
+	ghost.process_mode = Node.PROCESS_MODE_INHERIT
+	ghost.show()
 
 func _handle_purchase_success(what: PurchasableItem):
 	what.complete_purchase()
@@ -47,12 +50,16 @@ func _on_purchase_cancel(what: PurchasableItem):
 	store_collector.collecting_types = []
 	store_collector.goal.disconnect(_handle_purchase_success)
 	store_collector_panel.hide()
+	ghost.process_mode = Node.PROCESS_MODE_DISABLED
+	ghost.hide()
 
 func _on_purchase_success(what: PurchasableItem):
 	print("[Game] Succedeed purchase of ", what.name, " costing ", what.item_cost_goal, "x ", what.item_cost_type)
 	store_collector.collecting_types = []
 	store_collector.goal.disconnect(_handle_purchase_success)
 	store_collector_panel.hide()
+	ghost.process_mode = Node.PROCESS_MODE_DISABLED
+	ghost.hide()
 
 func _on_store_collector_collected(_body: RigidBody2D):
 	update_counter_text()

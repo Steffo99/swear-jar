@@ -13,7 +13,7 @@ size = Vector2(14, 3)
 
 [node name="CoinCopper" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 14
 inertia = 1000.0
 physics_material_override = ExtResource("1_1fypc")
 continuous_cd = 1

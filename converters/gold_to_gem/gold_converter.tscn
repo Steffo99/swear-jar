@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cqshgmptdav2b"]
+[gd_scene load_steps=24 format=3 uid="uid://cb1t7ylnkmt3t"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_fgju3"]
 [ext_resource type="Texture2D" uid="uid://chc8wqc1pclbk" path="res://converters/gold_to_gem/gold_converter_back.png" id="2_hh4ft"]
