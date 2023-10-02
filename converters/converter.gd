@@ -1,5 +1,5 @@
 extends StaticBody2D
-class_name CopperConverter
+class_name Converter
 
 var coda : int = 0
 

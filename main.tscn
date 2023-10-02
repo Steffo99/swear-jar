@@ -28,16 +28,13 @@ script = ExtResource("3_xav0n")
 [node name="GameWorld" type="CenterContainer" parent="CustomUI"]
 custom_minimum_size = Vector2(270, 480)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -135.0
-offset_top = -480.0
 offset_right = 135.0
+offset_bottom = 480.0
 grow_horizontal = 2
-grow_vertical = 0
 
 [node name="GameViewport" type="SubViewportContainer" parent="CustomUI/GameWorld"]
 layout_mode = 2

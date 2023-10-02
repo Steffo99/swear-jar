@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=11 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
+[ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
 size = Vector2(80, 80)
@@ -21,7 +22,7 @@ script = ExtResource("1_i3ly0")
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
-position = Vector2(136, 40)
+position = Vector2(136, 0)
 scene = ExtResource("4_5oayc")
 target = NodePath("..")
 buffer_cap = 1
@@ -29,6 +30,7 @@ spawn_rect = Rect2(-20, 0, 40, 0)
 overlapping_body_count_limit = 4
 
 [node name="NeckShape" type="CollisionShape2D" parent="TimeSpawner"]
+position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
@@ -59,12 +61,20 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(136, 176)
+position = Vector2(63, 337)
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
+[node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
+position = Vector2(136, 417)
+rotation = -1.57079
+
+[node name="Spawner" parent="SilverConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]
 
 [editable path="CopperConverter"]
+[editable path="SilverConverter"]
