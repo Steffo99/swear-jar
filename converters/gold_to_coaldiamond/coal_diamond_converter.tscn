@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://clanhkk4sg47w"]
+[gd_scene load_steps=27 format=3 uid="uid://clanhkk4sg47w"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_mf1ls"]
 [ext_resource type="Texture2D" uid="uid://2dhqp2liete7" path="res://converters/gold_to_coaldiamond/diamond_converter_back.png" id="2_nj8gd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_yel0k"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_hy4ck"]
 [ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="10_ry7ak"]
+[ext_resource type="AudioStream" uid="uid://db1i6rqitk0e" path="res://audio/conversione/coal_funny.wav" id="11_601lg"]
 [ext_resource type="PackedScene" uid="uid://cr5tiep20hk0s" path="res://entity/coal_diamond/diamond.tscn" id="11_ekhmr"]
 [ext_resource type="AudioStream" uid="uid://cc4mqxq6mxmdg" path="res://audio/conversione/coin_to_gem.wav" id="12_pddsd"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_xld3l"]
@@ -139,7 +140,8 @@ shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="Spawner"]
-stream = ExtResource("12_pddsd")
+stream = ExtResource("11_601lg")
+volume_db = -10.011
 
 [node name="SpawnerAlt" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("8_yel0k")]
 position = Vector2(0, 8)
