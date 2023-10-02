@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="7_hh80i"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
-[ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="8_a3sk0"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
@@ -82,7 +81,7 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(53, 156)
+position = Vector2(56, 390)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
@@ -180,8 +179,11 @@ shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
 [node name="GemConverter" parent="." instance=ExtResource("16_e62br")]
-position = Vector2(144, 184)
+position = Vector2(145, 180)
 metadata/_edit_group_ = true
+
+[node name="Spawner" parent="GemConverter" index="6" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]
@@ -189,3 +191,4 @@ metadata/_edit_group_ = true
 
 [editable path="CopperConverter"]
 [editable path="SilverConverter"]
+[editable path="GemConverter"]

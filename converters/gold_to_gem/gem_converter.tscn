@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_m34js"]
 [ext_resource type="Texture2D" uid="uid://bfxmurfe4o44s" path="res://entity/gold_converter_front_5.png" id="7_w8dcp"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_qwbjp"]
-[ext_resource type="PackedScene" uid="uid://w2er6cmul5yx" path="res://entity/gem/gem.tscn" id="9_2ugi1"]
+[ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="9_2ugi1"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_f1h6i"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_ywwn2"]
 
