@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_r2qbu"]
 
 [node name="PurchasableItem" type="Panel"]
-custom_minimum_size = Vector2(0, 240)
+custom_minimum_size = Vector2(0, 150)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
@@ -52,6 +52,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "ITEMNAME"
+vertical_alignment = 1
+autowrap_mode = 2
 uppercase = true
 
 [node name="NamePaddingRight" type="Control" parent="Contents/Header"]
@@ -78,7 +80,7 @@ mouse_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 8
 text = "What does this item do? Nobody knows."
 autowrap_mode = 2
 
@@ -115,7 +117,7 @@ mouse_filter = 1
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_filter = 1
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 8
 text = "3 fiorygi"
 horizontal_alignment = 2
 vertical_alignment = 1

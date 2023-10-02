@@ -14,8 +14,8 @@ radius = 4.0
 height = 10.0
 
 [node name="Gem" type="RigidBody2D"]
-collision_layer = 5
-collision_mask = 7
+collision_layer = 4
+collision_mask = 14
 mass = 1.5
 inertia = 800.0
 physics_material_override = ExtResource("1_vmemd")
@@ -24,7 +24,7 @@ linear_damp = 0.1
 angular_damp = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_jkfas")
 
 [node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
@@ -35,13 +35,15 @@ texture = ExtResource("3_6jejy")
 shader = ExtResource("5_v6ppl")
 
 [node name="Collectible" parent="." instance=ExtResource("4_idoeu")]
-type = &"Silver"
+type = &"Gem"
 
 [node name="Valuable" parent="." instance=ExtResource("5_7bd6c")]
-value = 10
+value = 1000
 
 [node name="RandomValue" type="Node" parent="Valuable"]
 script = ExtResource("6_3lulr")
+min_value = 900
+max_value = 1300
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_svrnw")

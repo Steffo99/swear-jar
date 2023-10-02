@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://y2p6j177k3nr"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_yyeot"]
+[ext_resource type="Texture2D" uid="uid://dcw3cq3ni253t" path="res://entity/item/item_ring.png" id="2_kevks"]
+[ext_resource type="Texture2D" uid="uid://dnfkvj0usdb6n" path="res://entity/item/item_ring_gems.png" id="3_foriv"]
+[ext_resource type="PackedScene" uid="uid://vkvtap437nnf" path="res://color/colored.tscn" id="4_dscrk"]
+[ext_resource type="Shader" path="res://entity/gem/gem_shading_material.gdshader" id="5_pu8lc"]
+[ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="6_lont5"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="7_37tvl"]
+[ext_resource type="Script" path="res://entity/gem/RandomValue.gd" id="8_ddhh8"]
+[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="9_0enei"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka4h2"]
+radius = 5.64
+height = 17.01
+
+[node name="ItemRing" type="RigidBody2D"]
+collision_layer = 5
+collision_mask = 7
+mass = 1.5
+inertia = 800.0
+physics_material_override = ExtResource("1_yyeot")
+continuous_cd = 1
+linear_damp = 0.1
+angular_damp = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_ka4h2")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("2_kevks")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("3_foriv")
+
+[node name="Colored" parent="CollisionShape2D/Sprite" instance=ExtResource("4_dscrk")]
+shader = ExtResource("5_pu8lc")
+
+[node name="Collectible" parent="." instance=ExtResource("6_lont5")]
+type = &"Gem"
+
+[node name="Valuable" parent="." instance=ExtResource("7_37tvl")]
+value = 10
+
+[node name="RandomValue" type="Node" parent="Valuable"]
+script = ExtResource("8_ddhh8")
+
+[node name="SoundWorking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0enei")
+
+[connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]

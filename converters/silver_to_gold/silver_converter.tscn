@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://but1bdslxp5jl"]
+[gd_scene load_steps=18 format=3 uid="uid://but1bdslxp5jl"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_chhfg"]
 [ext_resource type="Texture2D" uid="uid://c1fu70mb51gyd" path="res://converters/silver_to_gold/silver_converter_back.png" id="2_rpdc3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="9_t8y3t"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_0dr47"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_ow0vy"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_37x2h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1qp6y"]
 animations = [{
@@ -47,6 +48,8 @@ size = Vector2(26, 10)
 
 [node name="SilverConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
 scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_chhfg")
 sprite_front = NodePath("SpriteFront")
 conversion_timer = NodePath("ConversionTimer")
@@ -115,6 +118,8 @@ stream = ExtResource("10_0dr47")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ow0vy")
+
+[node name="ConverterPlacementBody" parent="." instance=ExtResource("12_37x2h")]
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]

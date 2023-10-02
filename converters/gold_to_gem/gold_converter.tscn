@@ -1,36 +1,37 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4ew8x4gch275"]
+[gd_scene load_steps=24 format=3 uid="uid://cb1t7ylnkmt3t"]
 
-[ext_resource type="Script" path="res://converters/converter.gd" id="1_f5plk"]
-[ext_resource type="Texture2D" uid="uid://bbn8t32v1ie0y" path="res://entity/gold_converter_back.png" id="2_4abgr"]
-[ext_resource type="Texture2D" uid="uid://0u8wtb38l3s5" path="res://entity/gold_converter_front_1.png" id="3_rtp3d"]
-[ext_resource type="Texture2D" uid="uid://bo46tom7khspd" path="res://entity/gold_converter_front_2.png" id="4_oathm"]
-[ext_resource type="Texture2D" uid="uid://dclhuc7h26brj" path="res://entity/gold_converter_front_3.png" id="5_5deah"]
-[ext_resource type="Texture2D" uid="uid://dn433fvnhgp5v" path="res://entity/gold_converter_front_4.png" id="6_isyc7"]
-[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_m34js"]
-[ext_resource type="Texture2D" uid="uid://bfxmurfe4o44s" path="res://entity/gold_converter_front_5.png" id="7_w8dcp"]
-[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_qwbjp"]
-[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="10_5hiv4"]
-[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_f1h6i"]
-[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_ywwn2"]
+[ext_resource type="Script" path="res://converters/converter.gd" id="1_fgju3"]
+[ext_resource type="Texture2D" uid="uid://chc8wqc1pclbk" path="res://converters/gold_to_gem/gold_converter_back.png" id="2_hh4ft"]
+[ext_resource type="Texture2D" uid="uid://dgw5ip5qf5k7a" path="res://converters/gold_to_gem/gold_converter_front_1.png" id="3_ofrsl"]
+[ext_resource type="Texture2D" uid="uid://h7hu4paxjq84" path="res://converters/gold_to_gem/gold_converter_front_2.png" id="4_bfibv"]
+[ext_resource type="Texture2D" uid="uid://dlog0f5nk4b3c" path="res://converters/gold_to_gem/gold_converter_front_3.png" id="5_grq6d"]
+[ext_resource type="Texture2D" uid="uid://cj5m5k0hr3wmw" path="res://converters/gold_to_gem/gold_converter_front_4.png" id="6_m1sjp"]
+[ext_resource type="Texture2D" uid="uid://b5uershakuq20" path="res://converters/gold_to_gem/gold_converter_front_5.png" id="7_ccs4f"]
+[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="8_77gmi"]
+[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="9_ojqfv"]
+[ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="10_op7xt"]
+[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="11_lofho"]
+[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="12_vklpo"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="13_6o73w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wy1v3"]
-atlas = ExtResource("3_rtp3d")
+atlas = ExtResource("3_ofrsl")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2164d"]
-atlas = ExtResource("4_oathm")
+atlas = ExtResource("4_bfibv")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5584"]
-atlas = ExtResource("5_5deah")
+atlas = ExtResource("5_grq6d")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qad4c"]
-atlas = ExtResource("6_isyc7")
+atlas = ExtResource("6_m1sjp")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_600qi"]
-atlas = ExtResource("7_w8dcp")
+atlas = ExtResource("7_ccs4f")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4m3dg"]
@@ -53,7 +54,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 10.5
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aslkt"]
@@ -69,14 +70,20 @@ size = Vector2(26, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
 size = Vector2(26, 8.83334)
 
-[node name="GemConverter" type="StaticBody2D"]
-scale = Vector2(3, 3)
-script = ExtResource("1_f5plk")
+[node name="GoldConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_fgju3")
+sprite_front = NodePath("SpriteFront")
+conversion_timer = NodePath("ConversionTimer")
+sound_working = NodePath("SoundWorking")
+sound_complete = NodePath("SoundComplete")
+spawner = NodePath("Spawner")
 
 [node name="SpriteBack" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
-texture = ExtResource("2_4abgr")
+texture = ExtResource("2_hh4ft")
 
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -101,7 +108,7 @@ position = Vector2(0, 4.5)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_31dtl")
 
-[node name="Collector" parent="." instance=ExtResource("7_m34js")]
+[node name="Collector" parent="." instance=ExtResource("8_77gmi")]
 z_index = 2
 collecting_types = Array[StringName]([&"Gold"])
 collecting_amount = 10
@@ -110,9 +117,9 @@ collecting_amount = 10
 shape = SubResource("RectangleShape2D_k11if")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
-[node name="Spawner" parent="." instance=ExtResource("8_qwbjp")]
+[node name="Spawner" parent="." instance=ExtResource("9_ojqfv")]
 position = Vector2(0, 8)
-scene = ExtResource("10_5hiv4")
+scene = ExtResource("10_op7xt")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
@@ -126,17 +133,18 @@ shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="ConversionTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_f1h6i")
+stream = ExtResource("11_lofho")
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_f1h6i")
+stream = ExtResource("11_lofho")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ywwn2")
+stream = ExtResource("12_vklpo")
+
+[node name="ConverterPlacementBody" parent="." instance=ExtResource("13_6o73w")]
 
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]

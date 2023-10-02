@@ -33,6 +33,9 @@ class_name PurchasableItem
 		item_cost_text = value
 		$Contents/Action/CostLabel.text = value
 
+## If this is a converter, the scene to instantiate.
+@export var item_scene: PackedScene
+
 ## Collectible type of the item required to buy the item.
 @export var item_cost_type: StringName
 

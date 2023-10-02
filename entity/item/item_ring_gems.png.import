@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l7kr24oe0fc8"
-path="res://.godot/imported/item_crown_gems.png-57e99547b8bc3470cb75cd17193c0abd.ctex"
+uid="uid://dnfkvj0usdb6n"
+path="res://.godot/imported/item_ring_gems.png-83a22b3deeb0b23cf11f84fd34725cf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/item_crown_gems.png"
-dest_files=["res://.godot/imported/item_crown_gems.png-57e99547b8bc3470cb75cd17193c0abd.ctex"]
+source_file="res://entity/item/item_ring_gems.png"
+dest_files=["res://.godot/imported/item_ring_gems.png-83a22b3deeb0b23cf11f84fd34725cf7.ctex"]
 
 [params]
 

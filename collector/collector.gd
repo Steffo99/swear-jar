@@ -29,7 +29,8 @@ func _on_body_entered(body: Node2D):
 		if collectible and collectible.type in collecting_types:
 			collected_count += 1
 			collectible.collect()
-			$sound_absorb.play()
+			if sound_absorb:
+				sound_absorb.play()
 			emit_signal("collected", body)
 			if collected_count >= collecting_amount:
 				emit_signal("goal")

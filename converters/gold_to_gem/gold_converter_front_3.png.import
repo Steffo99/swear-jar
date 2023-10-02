@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chc8wqc1pclbk"
-path="res://.godot/imported/gold_converter_back.png-542530d6d643b64e20755f9b54d1da49.ctex"
+uid="uid://dlog0f5nk4b3c"
+path="res://.godot/imported/gold_converter_front_3.png-850e0ec6590a97fe109779989afaac4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/gold_converter_back.png"
-dest_files=["res://.godot/imported/gold_converter_back.png-542530d6d643b64e20755f9b54d1da49.ctex"]
+source_file="res://converters/gold_to_gem/gold_converter_front_3.png"
+dest_files=["res://.godot/imported/gold_converter_front_3.png-850e0ec6590a97fe109779989afaac4a.ctex"]
 
 [params]
 

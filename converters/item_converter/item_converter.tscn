@@ -1,0 +1,231 @@
+[gd_scene load_steps=45 format=3 uid="uid://ddrhfhebwtq5"]
+
+[ext_resource type="Script" path="res://converters/converter.gd" id="1_qln0a"]
+[ext_resource type="Texture2D" uid="uid://devcho3gaigt0" path="res://converters/item_converter/item_converter_back_1.png" id="2_136t7"]
+[ext_resource type="Texture2D" uid="uid://bq54rpw5jufyd" path="res://converters/item_converter/item_converter_back_2.png" id="3_6gyd6"]
+[ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="3_qehi7"]
+[ext_resource type="Texture2D" uid="uid://dsolplf1s7va6" path="res://converters/item_converter/item_converter_back_3.png" id="4_bs7n5"]
+[ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="4_ihtl7"]
+[ext_resource type="Texture2D" uid="uid://c4vpmiwjfvcpy" path="res://converters/item_converter/item_converter_back_4.png" id="5_lk4ym"]
+[ext_resource type="Texture2D" uid="uid://c0kstbgsm65vq" path="res://converters/item_converter/item_converter_back_5.png" id="6_io2km"]
+[ext_resource type="Texture2D" uid="uid://crnu1x5n33yqu" path="res://converters/item_converter/item_converter_front_1.png" id="7_khayw"]
+[ext_resource type="Texture2D" uid="uid://b0vkliltyaljc" path="res://converters/item_converter/item_converter_front_2.png" id="8_w6rnl"]
+[ext_resource type="Texture2D" uid="uid://fqerky4lyps8" path="res://converters/item_converter/item_converter_front_3.png" id="9_88mk7"]
+[ext_resource type="Texture2D" uid="uid://bw0jgw0jen4lg" path="res://converters/item_converter/item_converter_front_4.png" id="10_fjv52"]
+[ext_resource type="Texture2D" uid="uid://4tg81ksibacf" path="res://converters/item_converter/item_converter_front_5.png" id="11_cg5dk"]
+[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="14_t5rsp"]
+[ext_resource type="Texture2D" uid="uid://wpen8vmuyvqv" path="res://entity/item/item_chalice.png" id="15_4mivw"]
+[ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="15_nahnf"]
+[ext_resource type="Texture2D" uid="uid://dvthocklcjh15" path="res://entity/item/item_chalice_gems.png" id="16_b46dj"]
+[ext_resource type="AudioStream" uid="uid://dv1e0wiiquxp0" path="res://audio/conversione/lava.wav" id="16_ptmks"]
+[ext_resource type="AudioStream" uid="uid://c0uhi1hrejyxg" path="res://audio/conversione/new_item.wav" id="17_4wm4w"]
+[ext_resource type="PackedScene" uid="uid://vkvtap437nnf" path="res://color/colored.tscn" id="17_ickrn"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="17_udaa3"]
+[ext_resource type="Shader" path="res://entity/gem/gem_shading_material.gdshader" id="18_36lk7"]
+[ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="19_ih6j4"]
+[ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="20_rkbv1"]
+[ext_resource type="Script" path="res://entity/gem/RandomValue.gd" id="21_wmo4c"]
+[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="22_5s1fv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqtie"]
+atlas = ExtResource("2_136t7")
+region = Rect2(0, 0, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aej48"]
+atlas = ExtResource("3_6gyd6")
+region = Rect2(0, 0, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc0dd"]
+atlas = ExtResource("4_bs7n5")
+region = Rect2(0, 0, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xunws"]
+atlas = ExtResource("5_lk4ym")
+region = Rect2(0, 0, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf4dp"]
+atlas = ExtResource("6_io2km")
+region = Rect2(0, 0, 32, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psnir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqtie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aej48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc0dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xunws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf4dp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnpyk"]
+atlas = ExtResource("7_khayw")
+region = Rect2(0, 5, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7447"]
+atlas = ExtResource("8_w6rnl")
+region = Rect2(0, 5, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwul"]
+atlas = ExtResource("9_88mk7")
+region = Rect2(0, 5, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee880"]
+atlas = ExtResource("10_fjv52")
+region = Rect2(0, 5, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs650"]
+atlas = ExtResource("11_cg5dk")
+region = Rect2(0, 5, 32, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqah4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnpyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7447")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cwul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee880")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs650")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aslkt"]
+radius = 1.5
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31dtl"]
+size = Vector2(26, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
+size = Vector2(26, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwdjv"]
+radius = 18.5017
+
+[sub_resource type="PackedScene" id="PackedScene_srx0t"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(5, 5, 30, 29, 18, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Item", "collision_layer", "collision_mask", "mass", "inertia", "physics_material_override", "continuous_cd", "linear_damp", "angular_damp", "RigidBody2D", "CollisionShape2D", "scale", "shape", "Sprite2D", "texture_filter", "texture", "Sprite", "Colored", "shader", "Collectible", "type", "Valuable", "value", "RandomValue", "script", "Node", "SoundWorking", "stream", "AudioStreamPlayer", "_on_done", "collected"),
+"node_count": 9,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 9, 0, -1, 8, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 8, 6, 0, 0, 0, 10, 10, -1, 2, 11, 7, 12, 8, 0, 1, 0, 13, 13, -1, 2, 14, 5, 15, 9, 0, 1, 0, 13, 16, -1, 2, 14, 5, 15, 10, 0, 3, 0, 2147483647, 17, 11, 1, 18, 12, 0, 0, 0, 2147483647, 19, 13, 1, 20, 14, 0, 0, 0, 2147483647, 21, 15, 1, 22, 16, 0, 6, 0, 25, 23, -1, 1, 24, 17, 0, 0, 0, 28, 26, -1, 1, 27, 18, 0),
+"variants": [5, 7, 1.5, 800.0, ExtResource("14_t5rsp"), 1, 0.1, Vector2(4, 4), SubResource("CircleShape2D_hwdjv"), ExtResource("15_4mivw"), ExtResource("16_b46dj"), ExtResource("17_ickrn"), ExtResource("18_36lk7"), ExtResource("19_ih6j4"), &"Gem", ExtResource("20_rkbv1"), 10, ExtResource("21_wmo4c"), ExtResource("22_5s1fv")],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
+size = Vector2(26, 8.83334)
+
+[node name="ItemConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "sprite_back", "conversion_timer", "sound_working", "sound_complete", "spawner")]
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_qln0a")
+sprite_front = NodePath("SpriteFront")
+sprite_back = NodePath("SpriteBack")
+conversion_timer = NodePath("ConversionTimer")
+sound_working = NodePath("SoundWorking")
+sound_complete = NodePath("SoundComplete")
+spawner = NodePath("Spawner")
+
+[node name="SpriteBack" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_psnir")
+frame_progress = 0.883907
+
+[node name="SpriteFront" type="AnimatedSprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qqah4")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-14.5, -3)
+shape = SubResource("CapsuleShape2D_aslkt")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(14.5, -3)
+shape = SubResource("CapsuleShape2D_aslkt")
+
+[node name="InnerWall" type="CollisionShape2D" parent="."]
+z_index = 3
+position = Vector2(0, 4.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_31dtl")
+
+[node name="Collector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("3_qehi7")]
+z_index = 2
+collecting_types = Array[StringName]([&"Gold", &"Gem"])
+sound_absorb = NodePath("../SoundAbsorb")
+collecting_amount = 10
+
+[node name="CollectShape" type="CollisionShape2D" parent="Collector"]
+shape = SubResource("RectangleShape2D_k11if")
+debug_color = Color(0, 0.701961, 0.188235, 0.419608)
+
+[node name="Spawner" parent="." instance=ExtResource("4_ihtl7")]
+position = Vector2(0, 8)
+scene = SubResource("PackedScene_srx0t")
+buffer_cap = 1
+spawn_rect = Rect2(-8, 0, 16, 4)
+spawn_rotation_degrees_min = 80.0
+spawn_rotation_degrees_max = 100.0
+overlapping_body_count_limit = 4
+
+[node name="PreventSpawnShape" type="CollisionShape2D" parent="Spawner"]
+z_index = 3
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_jeo5f")
+debug_color = Color(0.701961, 0, 0, 0.419608)
+
+[node name="ConversionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_nahnf")
+volume_db = -12.291
+
+[node name="SoundWorking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ptmks")
+
+[node name="SoundComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_4wm4w")
+
+[node name="SpriteBack2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_psnir")
+frame_progress = 0.228399
+
+[node name="ConverterPlacementBody" parent="." instance=ExtResource("17_udaa3")]
+
+[connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
+[connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]
+[connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout" flags=18]
