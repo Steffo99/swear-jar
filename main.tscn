@@ -77,11 +77,13 @@ apply_margin_bottom = true
 layout_mode = 2
 
 [connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/GameSafeUI/GameUI" method="_on_game_score_changed"]
+[connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/ShopSafeUI/ShopUI" method="_on_game_score_changed"]
 [connection signal="score_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
 [connection signal="shop_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
 [connection signal="spawn_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="CustomUI/GameViewport/Viewport/Game" method="trigger_spawn"]
 [connection signal="back_button_pressed" from="CustomUI/ShopSafeUI/ShopUI" to="." method="_on_shop_ui_back_button_pressed"]
 [connection signal="delete_button_pressed" from="CustomUI/ShopSafeUI/ShopUI" to="." method="_on_shop_ui_delete_button_pressed"]
+[connection signal="ghost_requested" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_shop_ui_ghost_requested"]
 [connection signal="purchase_begin" from="CustomUI/ShopSafeUI/ShopUI" to="." method="_on_shop_ui_purchase_begin"]
 [connection signal="purchase_begin" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_purchase_begin"]
 [connection signal="purchase_cancel" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_purchase_cancel"]

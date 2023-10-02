@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://d05b8jy3xmpcb" path="res://bottle/gravity_from_gyro.tscn" id="2_h2pfr"]
 [ext_resource type="Texture2D" uid="uid://7b12rwclhrq0" path="res://interface/upgrade_silver.png" id="3_8wvr1"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
-[ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="6_0jj8g"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
+[ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="13_4j8om"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost.tscn" id="16_8vhx6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
@@ -79,7 +79,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="ButtonSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
-scene = ExtResource("4_5oayc")
+scene = ExtResource("13_4j8om")
 target = NodePath("..")
 buffer_cap = 10
 spawn_rect = Rect2(-20, 0, 40, 0)

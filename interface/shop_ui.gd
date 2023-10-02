@@ -26,6 +26,8 @@ signal purchase_success(what: PurchasableItem)
 ## Array of all PurchasableItems that this ShopUI should control.
 @onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem")
 
+signal ghost_requested(scene: PackedScene, texture: Texture2D)
+
 
 func _ready():
 	for item in purchasable_items:
@@ -37,6 +39,8 @@ func _on_any_purchase_begin(what: Node):
 	if not what is PurchasableItem:
 		push_error("Purchase began outside a PurchasableItem")
 		return
+	if what.item_scene:
+		ghost_requested.emit(what.item_scene, what.item_icon)
 	purchase_begin.emit(what)
 	for item in purchasable_items:
 		if item == what:
@@ -57,6 +61,8 @@ func _on_any_purchase_success(what: Node):
 	if not what is PurchasableItem:
 		push_error("Purchase succeeded outside a PurchasableItem")
 		return
+	if what.item_scene:
+		ghost_materialize.emit()
 	purchase_success.emit(what)
 	for item in purchasable_items:
 		if item == what:
@@ -122,3 +128,26 @@ func _on_buy_silver_star_purchase_success():
 func _on_buy_gold_star_purchase_success():
 	print("[ShopUI] Upgrading to Manual Gold...")
 	upgraded_manual_spawn.emit(gold_coin_scene)
+
+
+signal ghost_materialize
+
+func _on_buy_silverifier_purchase_success():
+	print("[ShopUI] Completing Silver-ifier...")
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory/BuyGoldenser.has_unlocked = true
+
+func _on_buy_goldenser_purchase_success():
+	print("[ShopUI] Completing Gold-enser...")
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory/BuyGemificator.has_unlocked = true
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory/BuyCompressor.has_unlocked = true
+
+func _on_buy_gemificator_purchase_begin():
+	print("[ShopUI] Completing Gem-ificator...")
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory/BuyArtifactomatic.has_unlocked = true
+
+func _on_buy_compressor_purchase_success():
+	print("[ShopUI] Completing Coal-pressor...")
+	$Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory/BuyArtifactomatic.has_unlocked = true
+
+func _on_buy_artifactomatic_purchase_success():
+	print("[ShopUI] Completing Arti-factory...")

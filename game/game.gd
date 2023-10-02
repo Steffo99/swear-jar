@@ -39,8 +39,6 @@ func _on_purchase_begin(what: PurchasableItem):
 	update_counter_icon()
 	update_counter_text()
 	store_collector_panel.show()
-	ghost.process_mode = Node.PROCESS_MODE_INHERIT
-	ghost.show()
 	time_spawner_timer.stop()
 
 func _handle_purchase_success(what: PurchasableItem):
@@ -85,3 +83,9 @@ func update_counter_icon():
 		store_collector_texturerect.texture = upgrade_gold_texture
 	else:
 		store_collector_texturerect.texture = null
+
+func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
+	ghost.scene_to_instantiate = scene
+	ghost.preview_texture = texture
+	ghost.process_mode = Node.PROCESS_MODE_INHERIT
+	ghost.show()
