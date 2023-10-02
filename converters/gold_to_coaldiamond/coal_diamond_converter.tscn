@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://clanhkk4sg47w"]
+[gd_scene load_steps=25 format=3 uid="uid://clanhkk4sg47w"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_mf1ls"]
 [ext_resource type="Texture2D" uid="uid://2dhqp2liete7" path="res://converters/gold_to_coaldiamond/diamond_converter_back.png" id="2_nj8gd"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="10_ry7ak"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_5c46k"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_xld3l"]
+[ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="13_jvouj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00uxa"]
 atlas = ExtResource("3_p4wsd")
@@ -133,7 +134,6 @@ shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="ConversionTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
@@ -141,6 +141,10 @@ stream = ExtResource("10_hy4ck")
 
 [node name="SoundComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5c46k")
+
+[node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_jvouj")
+volume_db = -12.291
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("12_xld3l")]
 
