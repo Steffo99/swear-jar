@@ -121,10 +121,10 @@ layout_mode = 2
 item_icon = ExtResource("5_lu2tr")
 item_name = "Silver-ifier"
 item_description = "Exchanges ten copper coins for a shiny silver coin!"
-item_cost_text = "35 copper"
+item_cost_text = "100 copper"
 item_scene = ExtResource("10_dui5v")
 item_cost_type = &"Copper"
-item_cost_goal = 35
+item_cost_goal = 100
 
 [node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -134,8 +134,10 @@ layout_mode = 2
 item_icon = ExtResource("6_70u64")
 item_name = "Gold-enser"
 item_description = "Trades in ten silver coins for a sparkly gold coin!"
-item_cost_text = "??"
+item_cost_text = "40 silver"
 item_scene = ExtResource("12_ml4jm")
+item_cost_type = &"Silver"
+item_cost_goal = 40
 has_unlocked = false
 
 [node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
@@ -146,8 +148,10 @@ layout_mode = 2
 item_icon = ExtResource("13_gsd84")
 item_name = "Gem-ificator"
 item_description = "Converts ten gold coins into a randomly colored gem!"
-item_cost_text = "??"
+item_cost_text = "20 gold"
 item_scene = ExtResource("13_m0kio")
+item_cost_type = &"Gold"
+item_cost_goal = 20
 has_unlocked = false
 
 [node name="PurchasableItemPadding4" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
@@ -171,6 +175,8 @@ item_name = "Arti-factory"
 item_description = "Assembles an artifact from twenty-five gold coins and a gem or a diamond!"
 item_cost_text = "??"
 item_scene = ExtResource("14_tgckt")
+item_cost_type = &"Gem"
+item_cost_goal = 20
 has_unlocked = false
 
 [node name="PurchasableItemPadding7" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
@@ -199,9 +205,9 @@ layout_mode = 2
 item_icon = ExtResource("8_270dw")
 item_name = "Auto-copper"
 item_description = "Receive two copper coins per second!"
-item_cost_text = "50 copper"
+item_cost_text = "40 copper"
 item_cost_type = &"Copper"
-item_cost_goal = 50
+item_cost_goal = 40
 one_shot = true
 
 [node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("3_4feaj")]
@@ -212,9 +218,9 @@ layout_mode = 2
 item_icon = ExtResource("8_270dw")
 item_name = "Heli-copper"
 item_description = "Receive eight copper coins per second!"
-item_cost_text = "8 silver"
-item_cost_type = &"Silver"
-item_cost_goal = 8
+item_cost_text = "160 copper"
+item_cost_type = &"Copper"
+item_cost_goal = 160
 has_unlocked = false
 one_shot = true
 
@@ -226,7 +232,9 @@ layout_mode = 2
 item_icon = ExtResource("8_caq4i")
 item_name = "Auto-silver"
 item_description = "Receive two silver coins per second!"
-item_cost_text = "??"
+item_cost_text = "40 silver"
+item_cost_type = &"Silver"
+item_cost_goal = 40
 has_unlocked = false
 one_shot = true
 
@@ -236,9 +244,11 @@ layout_mode = 2
 [node name="BuySuperSilver" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_icon = ExtResource("8_caq4i")
-item_name = "Super silver"
+item_name = "Super-silver"
 item_description = "Receive eight silver coins per second!"
-item_cost_text = "??"
+item_cost_text = "5 gold"
+item_cost_type = &"Gold"
+item_cost_goal = 5
 has_unlocked = false
 one_shot = true
 
@@ -250,7 +260,9 @@ layout_mode = 2
 item_icon = ExtResource("9_amnej")
 item_name = "Auto-gold"
 item_description = "Receive two gold coins per second!"
-item_cost_text = "??"
+item_cost_text = "15 gems"
+item_cost_type = &"Gem"
+item_cost_goal = 15
 has_unlocked = false
 one_shot = true
 
@@ -260,9 +272,11 @@ layout_mode = 2
 [node name="BuyMidasTouch" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_icon = ExtResource("9_amnej")
-item_name = "Midas Touch"
+item_name = "Tera-gold"
 item_description = "Receive eight gold coins per second!"
-item_cost_text = "??"
+item_cost_text = "5 gems"
+item_cost_type = &"Gem"
+item_cost_goal = 5
 has_unlocked = false
 one_shot = true
 
@@ -290,7 +304,7 @@ layout_mode = 2
 [node name="BuySilverStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_icon = ExtResource("8_caq4i")
-item_name = "Silver star"
+item_name = "Quick silver"
 item_description = "Create a silver coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false
@@ -302,7 +316,7 @@ layout_mode = 2
 [node name="BuyGoldStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
 item_icon = ExtResource("9_amnej")
-item_name = "Gold star"
+item_name = "Midas Touch"
 item_description = "Create a gold coin when tapping!"
 item_cost_text = "??"
 has_unlocked = false

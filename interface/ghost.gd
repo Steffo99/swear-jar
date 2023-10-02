@@ -105,3 +105,4 @@ func materialize():
 	instantiated.rotation = rotation
 	target.add_child(instantiated)
 	materialized.emit(instantiated)
+	return instantiated
