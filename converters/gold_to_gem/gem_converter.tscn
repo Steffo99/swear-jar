@@ -1,25 +1,36 @@
 [gd_scene load_steps=17 format=3 uid="uid://c4ew8x4gch275"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_f5plk"]
+[ext_resource type="Texture2D" uid="uid://chc8wqc1pclbk" path="res://converters/gold_to_gem/gold_converter_back.png" id="2_icys1"]
+[ext_resource type="Texture2D" uid="uid://dgw5ip5qf5k7a" path="res://converters/gold_to_gem/gold_converter_front_1.png" id="3_n6auo"]
+[ext_resource type="Texture2D" uid="uid://h7hu4paxjq84" path="res://converters/gold_to_gem/gold_converter_front_2.png" id="4_dxxyk"]
+[ext_resource type="Texture2D" uid="uid://dlog0f5nk4b3c" path="res://converters/gold_to_gem/gold_converter_front_3.png" id="5_lnr8u"]
+[ext_resource type="Texture2D" uid="uid://cj5m5k0hr3wmw" path="res://converters/gold_to_gem/gold_converter_front_4.png" id="6_nh41p"]
+[ext_resource type="Texture2D" uid="uid://b5uershakuq20" path="res://converters/gold_to_gem/gold_converter_front_5.png" id="7_jfv3m"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_m34js"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_qwbjp"]
-[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="10_5hiv4"]
+[ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="9_2ugi1"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_f1h6i"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_ywwn2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wy1v3"]
+atlas = ExtResource("3_n6auo")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2164d"]
+atlas = ExtResource("4_dxxyk")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5584"]
+atlas = ExtResource("5_lnr8u")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qad4c"]
+atlas = ExtResource("6_nh41p")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_600qi"]
+atlas = ExtResource("7_jfv3m")
 region = Rect2(0, 4, 32, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4m3dg"]
@@ -58,15 +69,21 @@ size = Vector2(26, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
 size = Vector2(26, 8.83334)
 
-[node name="GemConverter" type="StaticBody2D"]
+[node name="GemConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_f5plk")
+sprite_front = NodePath("SpriteFront")
+conversion_timer = NodePath("ConversionTimer")
+sound_working = NodePath("SoundWorking")
+sound_complete = NodePath("SoundComplete")
+spawner = NodePath("Spawner")
 
 [node name="SpriteBack" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
+texture = ExtResource("2_icys1")
 
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
@@ -102,7 +119,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="Spawner" parent="." instance=ExtResource("8_qwbjp")]
 position = Vector2(0, 8)
-scene = ExtResource("10_5hiv4")
+scene = ExtResource("9_2ugi1")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
