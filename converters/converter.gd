@@ -7,6 +7,8 @@ class_name Converter
 @export var sound_working: AudioStreamPlayer
 @export var sound_complete: AudioStreamPlayer
 @export var spawner: Spawner
+@export var spawner_alt: Spawner
+@export_range(0.0, 1.0, 0.01) var spawner_alt_chance: float
 
 ## Amount of scenes this converter should produce.
 var to_produce: int = 0
@@ -32,7 +34,10 @@ func produce():
 		sound_working.play()
 
 func _on_timer_timeout():
-	spawner.spawn()
+	if spawner_alt and Randomizer.rng.randf() < spawner_alt_chance:
+		spawner_alt.spawn()
+	else:
+		spawner.spawn()
 	if sprite_front:
 		sprite_front.stop()
 	if sprite_back:
