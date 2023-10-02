@@ -313,7 +313,6 @@ item_description = "Create a silver coin when tapping!"
 item_cost_text = "5 gold"
 item_cost_type = &"Gold"
 item_cost_goal = 5
-has_unlocked = false
 one_shot = true
 
 [node name="PurchasableItemPadding" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("3_4feaj")]

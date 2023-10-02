@@ -72,6 +72,7 @@ func update_counter_text():
 @export var upgrade_copper_texture: Texture2D
 @export var upgrade_silver_texture: Texture2D
 @export var upgrade_gold_texture: Texture2D
+@export var upgrade_gem_texture: Texture2D
 
 func update_counter_icon():
 	if len(store_collector.collecting_types) == 0:
@@ -82,6 +83,8 @@ func update_counter_icon():
 		store_collector_texturerect.texture = upgrade_silver_texture
 	elif store_collector.collecting_types[0] == &"Gold":
 		store_collector_texturerect.texture = upgrade_gold_texture
+	elif store_collector.collecting_types[0] == &"Gem":
+		store_collector_texturerect.texture = upgrade_gem_texture
 	else:
 		store_collector_texturerect.texture = null
 
