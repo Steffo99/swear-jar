@@ -116,4 +116,4 @@ func _on_shop_ui_delete_cancel():
 		converter.ending_deletion()
 	var item_converters = find_children("*", "ItemConverter", true, false)
 	for converter in item_converters:
-		converter.pending_deletion()
+		converter.ending_deletion()
