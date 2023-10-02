@@ -52,10 +52,10 @@ func _do_spawn():
 	if len(get_overlapping_bodies()) > overlapping_body_count_limit:
 		return
 	var instantiated = scene.instantiate()
-	instantiated.position = position - target.position + _select_spawn_position()
+	instantiated.global_position = global_position + _select_spawn_position()
 	instantiated.rotation_degrees = _select_spawn_rotation()
 	target.add_child(instantiated)
-	emit_signal("spawned", instantiated)
+	spawned.emit()
 	buffer -= 1
 
 func _physics_process(_delta):

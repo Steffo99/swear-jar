@@ -16,15 +16,19 @@ signal removed(what: Valuable, total: int)
 signal changed(total: int)
 
 
-func _on_body_entered(body: PhysicsBody2D):
-	var valuable: Valuable = body.get_node("Valuable")
-	total += valuable.value
-	added.emit(valuable, total)
-	changed.emit(total)
+func _on_body_entered(body: Node2D):
+	if body is PhysicsBody2D:
+		var valuable: Valuable = body.find_child("Valuable", false, false)
+		if valuable:
+			total += valuable.value
+			added.emit(valuable, total)
+			changed.emit(total)
 			
-func _on_body_exited(body: PhysicsBody2D):
-	var valuable: Valuable = body.get_node("Valuable")
-	total -= valuable.value
-	removed.emit(valuable, total)
-	changed.emit(total)
+func _on_body_exited(body: Node2D):
+	if body is PhysicsBody2D:
+		var valuable: Valuable = body.find_child("Valuable", false, false)
+		if valuable:
+			total -= valuable.value
+			removed.emit(valuable, total)
+			changed.emit(total)
 

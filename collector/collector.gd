@@ -11,9 +11,6 @@ var collected_count: int = 0
 ## The strings will match only if exactly the same.
 @export var collecting_types: Array[StringName]
 
-## The collision mask to check colliding body against.
-@export_flags_2d_physics var collecting_collision_mask: int
-
 ## The goal amount of entities to collect.
 ##
 ## When [collected_count] reaches it, it will be reset to zero, and the "goal" signal will be emitted.
@@ -27,14 +24,12 @@ signal goal
 
 
 func _on_body_entered(body: Node2D):
-
 	if body is PhysicsBody2D:
-		if body.collision_layer & collecting_collision_mask:
-			var collectible: Collectible = body.get_node("Collectible")
-			if collectible.type in collecting_types:
-				collected_count += 1
-				collectible.collect()
-				emit_signal("collected", body)
-				if collected_count >= collecting_amount:
-					emit_signal("goal")
-					collected_count = 0
+		var collectible: Collectible = body.find_child("Collectible")
+		if collectible and collectible.type in collecting_types:
+			collected_count += 1
+			collectible.collect()
+			emit_signal("collected", body)
+			if collected_count >= collecting_amount:
+				emit_signal("goal")
+				collected_count = 0
