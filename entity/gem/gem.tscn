@@ -10,8 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="6_svrnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkfas"]
-radius = 4.0
-height = 10.0
+radius = 13.25
+height = 32.0
 
 [node name="Gem" type="RigidBody2D"]
 collision_layer = 4

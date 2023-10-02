@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brlo5pqo0x86l"
-path="res://.godot/imported/item_crown.png-b1fdb9663d17347d4fbd39044017f645.ctex"
+uid="uid://wpen8vmuyvqv"
+path="res://.godot/imported/item_chalice.png-c5df7a19dd55b2ba93c6d0a5ed67bc40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/item_crown.png"
-dest_files=["res://.godot/imported/item_crown.png-b1fdb9663d17347d4fbd39044017f645.ctex"]
+source_file="res://entity/item/item_chalice.png"
+dest_files=["res://.godot/imported/item_chalice.png-c5df7a19dd55b2ba93c6d0a5ed67bc40.ctex"]
 
 [params]
 

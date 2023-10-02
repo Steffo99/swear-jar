@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvthocklcjh15"
-path="res://.godot/imported/item_chalice_gems.png-182c84a35d2925a897cade98742ac714.ctex"
+path="res://.godot/imported/item_chalice_gems.png-00db24473f6cbe288664e42289ba7c68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/item_chalice_gems.png"
-dest_files=["res://.godot/imported/item_chalice_gems.png-182c84a35d2925a897cade98742ac714.ctex"]
+source_file="res://entity/item/item_chalice_gems.png"
+dest_files=["res://.godot/imported/item_chalice_gems.png-00db24473f6cbe288664e42289ba7c68.ctex"]
 
 [params]
 
