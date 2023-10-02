@@ -27,7 +27,7 @@ texture_filter = 1
 texture = ExtResource("2_4pvkj")
 
 [node name="Outline" type="Sprite2D" parent="CollisionShape2D"]
-z_index = -10
+z_index = -1
 texture_filter = 1
 texture = ExtResource("3_dq1f7")
 
