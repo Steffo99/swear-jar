@@ -13,9 +13,6 @@ class_name Converter
 ## Amount of scenes this converter should produce.
 var to_produce: int = 0
 
-## Amount of scenes this converter should spawn.
-var to_spawn: int = 0
-
 func _on_collector_goal():
 	to_produce += 1
 

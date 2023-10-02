@@ -49,6 +49,9 @@ func _on_game_ui_shop_button_pressed():
 func _on_shop_ui_purchase_begin(_what):
 	ui_state = UIState.GAME
 
+func _on_shop_ui_purchase_cancel(_what):
+	ui_state = UIState.GAME
+			
 func _on_shop_ui_delete_begin():
 	ui_state = UIState.GAME
 

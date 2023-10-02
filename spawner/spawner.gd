@@ -73,7 +73,7 @@ func _do_spawn():
 	if sound_complete:
 		sound_complete.pitch_scale = Randomizer.rng.randf_range(sound_complete_pitch_min, sound_complete_pitch_max)
 		sound_complete.play()
-	spawned.emit()
+	spawned.emit(instantiated)
 	buffer -= 1
 
 func _physics_process(_delta):
