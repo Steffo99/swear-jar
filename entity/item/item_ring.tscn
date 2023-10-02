@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://y2p6j177k3nr"]
+[gd_scene load_steps=10 format=3 uid="uid://y2p6j177k3nr"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_yyeot"]
 [ext_resource type="Texture2D" uid="uid://dcw3cq3ni253t" path="res://entity/item/item_ring.png" id="2_kevks"]
 [ext_resource type="Texture2D" uid="uid://dnfkvj0usdb6n" path="res://entity/item/item_ring_gems.png" id="3_foriv"]
 [ext_resource type="PackedScene" uid="uid://vkvtap437nnf" path="res://color/colored.tscn" id="4_dscrk"]
 [ext_resource type="Shader" path="res://entity/gem/gem_shading_material.gdshader" id="5_pu8lc"]
+[ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="6_mtl3w"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="7_37tvl"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="9_0enei"]
 
@@ -36,6 +37,9 @@ texture = ExtResource("3_foriv")
 
 [node name="Colored" parent="CollisionShape2D/Sprite" instance=ExtResource("4_dscrk")]
 shader = ExtResource("5_pu8lc")
+
+[node name="Collectible" parent="." instance=ExtResource("6_mtl3w")]
+type = &"Ring"
 
 [node name="Valuable" parent="." instance=ExtResource("7_37tvl")]
 value = 5000
