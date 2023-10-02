@@ -43,7 +43,7 @@ shader = ExtResource("5_c6qlx")
 type = &"Gem"
 
 [node name="Valuable" parent="." instance=ExtResource("7_7rpe6")]
-value = 10
+value = 10000
 
 [node name="RandomValue" type="Node" parent="Valuable"]
 script = ExtResource("8_utkrs")
