@@ -136,6 +136,5 @@ stream = ExtResource("11_r8505")
 
 [node name="ConverterPlacementBody" parent="." instance=ExtResource("12_5qhgs")]
 
-[connection signal="collected" from="Collector" to="." method="_on_collector_collected"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]
 [connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout"]

@@ -31,7 +31,8 @@ func _on_body_entered(body: Node2D):
 			collectible.collect()
 			if sound_absorb:
 				sound_absorb.play()
-			emit_signal("collected", body)
+			collected.emit(body)
 			if collected_count >= collecting_amount:
+				goal.emit()
 				emit_signal("goal")
 				collected_count = 0

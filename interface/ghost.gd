@@ -43,6 +43,9 @@ var can_place: bool:
 ## The last input event of the input that's dragging the ghost around, or null if the ghost isn't being dragged.
 var last_input_event: InputEvent
 
+## The last alternate input event.
+var last_alternate_event: InputEvent
+
 
 func _ready():
 	collision_mask = collision_mask_prevent_placement | collision_mask_delete_placement
@@ -55,10 +58,32 @@ func _input(event: InputEvent):
 		last_input_event = event if event.pressed else null
 	# Handle touch begin
 	elif event is InputEventScreenTouch:
-		last_input_event = event if event.pressed else null
+		print("Event: ", event)
+		print("Last: ", last_input_event)
+		print("Alt: ", last_alternate_event)
+		if not last_input_event:
+			last_input_event = event if event.pressed else null	
+		elif event.index == last_input_event.index:
+			last_input_event = event if event.pressed else null
+			last_alternate_event = null
+		else:
+			last_alternate_event = event if event.pressed else null
 	
+	# If is pinching
+	if last_alternate_event:
+		if event.index == last_input_event.index:
+			var last_vector: Vector2 = last_alternate_event.position - last_input_event.position
+			var vector: Vector2 = last_alternate_event.position - event.position
+			var angle = vector.angle_to(last_vector)
+			rotation += angle
+		else:
+			var last_vector: Vector2 = last_alternate_event.position - last_input_event.position
+			var vector: Vector2 = event.position - last_input_event.position
+			var angle = vector.angle_to(last_vector)
+			rotation += angle
+
 	# If is dragging
-	if last_input_event:
+	elif last_input_event:
 		# Handle mouse drag
 		if last_input_event is InputEventMouse and event is InputEventMouse:
 			var delta = event.position - last_input_event.position
@@ -70,6 +95,8 @@ func _input(event: InputEvent):
 				var delta = event.position - last_input_event.position
 				position += delta
 				last_input_event = event
+			else:
+				last_alternate_event = event
 
 ## Update the value of [can_place].
 # DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
@@ -89,7 +116,6 @@ func update_can_place():
 		if area is PlaceableArea:
 			is_in_placeable_area = true
 	
-	print("[Ghost] No overlap: ", no_overlapping_bodies, " | In area: ", is_in_placeable_area)
 	can_place = no_overlapping_bodies and is_in_placeable_area
 
 
