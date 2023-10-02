@@ -31,5 +31,6 @@ texture = ExtResource("2_abwth")
 type = &"Diamond"
 
 [node name="Valuable" parent="." instance=ExtResource("4_yfos5")]
+value = 1000
 
 [connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]

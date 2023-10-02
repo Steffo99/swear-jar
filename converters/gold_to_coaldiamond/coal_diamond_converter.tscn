@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_rxm8j"]
 [ext_resource type="Texture2D" uid="uid://b3vbqgitwo8la" path="res://converters/gold_to_coaldiamond/diamond_converter_front_5.png" id="7_swl1g"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_yel0k"]
-[ext_resource type="PackedScene" uid="uid://dme22vvfgme5f" path="res://entity/coin_silver/coin_silver.tscn" id="9_nosjr"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_hy4ck"]
+[ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="10_ry7ak"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_5c46k"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_xld3l"]
 
@@ -70,11 +70,16 @@ size = Vector2(26, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
 size = Vector2(26, 10)
 
-[node name="CoalDiamondConverter" type="StaticBody2D"]
+[node name="CoalDiamondConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_mf1ls")
+sprite_front = NodePath("SpriteFront")
+conversion_timer = NodePath("ConversionTimer")
+sound_working = NodePath("SoundWorking")
+sound_complete = NodePath("SoundComplete")
+spawner = NodePath("Spawner")
 
 [node name="SpriteBack" type="Sprite2D" parent="."]
 z_index = -2
@@ -114,7 +119,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="Spawner" parent="." instance=ExtResource("8_yel0k")]
 position = Vector2(0, 8)
-scene = ExtResource("9_nosjr")
+scene = ExtResource("10_ry7ak")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0

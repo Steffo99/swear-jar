@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_palpv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
-size = Vector2(27, 5)
+size = Vector2(20, 16)
 
 [node name="CoinGold" type="RigidBody2D"]
 collision_layer = 4
