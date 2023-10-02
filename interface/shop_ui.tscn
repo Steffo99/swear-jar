@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cklkdygv61bny"]
+[gd_scene load_steps=11 format=3 uid="uid://cklkdygv61bny"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_qdf0y"]
 [ext_resource type="PackedScene" uid="uid://dul1fpyh733t7" path="res://interface/purchasable_item.tscn" id="2_2dtc0"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="3_7vro3"]
 [ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="5_lu2tr"]
 [ext_resource type="Texture2D" uid="uid://bnctqi24r6ycr" path="res://converters/silver_to_gold/silver_converter.png" id="6_70u64"]
+[ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="8_270dw"]
+[ext_resource type="Texture2D" uid="uid://7b12rwclhrq0" path="res://interface/upgrade_silver.png" id="8_caq4i"]
+[ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="9_amnej"]
 
 [node name="ShopUI" type="Panel" node_paths=PackedStringArray("score_button")]
 anchors_preset = 15
@@ -168,6 +171,7 @@ layout_mode = 2
 
 [node name="BuyAutoCopper" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("8_270dw")
 item_name = "Auto-copper"
 item_description = "Receive two copper coins per second!"
 item_cost_text = "??"
@@ -178,6 +182,7 @@ layout_mode = 2
 
 [node name="BuyHeliCopper" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("8_270dw")
 item_name = "Heli-copper"
 item_description = "Receive eight copper coins per second!"
 item_cost_text = "??"
@@ -188,6 +193,7 @@ layout_mode = 2
 
 [node name="BuyAutoSilver" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("8_caq4i")
 item_name = "Auto-silver"
 item_description = "Receive two silver coins per second!"
 item_cost_text = "??"
@@ -198,6 +204,7 @@ layout_mode = 2
 
 [node name="BuySuperSilver" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("8_caq4i")
 item_name = "Super silver"
 item_description = "Receive eight silver coins per second!"
 item_cost_text = "??"
@@ -208,6 +215,7 @@ layout_mode = 2
 
 [node name="BuyAutoGold" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("9_amnej")
 item_name = "Auto-gold"
 item_description = "Receive two gold coins per second!"
 item_cost_text = "??"
@@ -218,6 +226,7 @@ layout_mode = 2
 
 [node name="BuyMidasTouch" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ManualCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("9_amnej")
 item_name = "Midas Touch"
 item_description = "Receive eight gold coins per second!"
 item_cost_text = "??"
@@ -246,6 +255,7 @@ layout_mode = 2
 
 [node name="BuySilverStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("8_caq4i")
 item_name = "Silver star"
 item_description = "Create a silver coin when tapping!"
 item_cost_text = "??"
@@ -256,6 +266,7 @@ layout_mode = 2
 
 [node name="BuyGoldStar" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/AutomaticCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("9_amnej")
 item_name = "Gold star"
 item_description = "Create a gold coin when tapping!"
 item_cost_text = "??"
