@@ -91,4 +91,7 @@ func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
 	ghost.show()
 
 func _on_ghost_materialize():
-	ghost.materialize()
+	var instantiated = ghost.materialize()
+	var spawner = instantiated.find_child("Spawner")
+	if spawner != null:
+		spawner.target = self

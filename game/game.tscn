@@ -21,7 +21,7 @@
 size = Vector2(240, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
-size = Vector2(80, 80)
+size = Vector2(80, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i50bq"]
 size = Vector2(540, 135)
@@ -44,11 +44,10 @@ upgrade_gold_texture = ExtResource("4_i557v")
 [node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_8vhx6")]
 process_mode = 4
 visible = false
-position = Vector2(135, 360)
+position = Vector2(253, 109)
 preview_texture = ExtResource("6_0jj8g")
 scene_to_instantiate = ExtResource("7_ipeok")
 target = NodePath("..")
-metadata/_edit_lock_ = true
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
 metadata/_edit_lock_ = true
@@ -71,7 +70,6 @@ overlapping_body_count_limit = 4
 metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="TimeSpawner"]
-position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
@@ -87,7 +85,6 @@ overlapping_body_count_limit = 4
 metadata/_edit_lock_ = true
 
 [node name="NeckShape" type="CollisionShape2D" parent="ButtonSpawner"]
-position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
