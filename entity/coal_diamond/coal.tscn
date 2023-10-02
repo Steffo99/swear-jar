@@ -8,8 +8,8 @@
 [node name="Coal" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 14
-mass = 2.0
-inertia = 600.0
+mass = 0.75
+inertia = 1200.0
 physics_material_override = ExtResource("1_ftt7x")
 continuous_cd = 1
 can_sleep = false
