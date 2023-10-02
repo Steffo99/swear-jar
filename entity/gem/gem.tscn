@@ -38,10 +38,12 @@ shader = ExtResource("5_v6ppl")
 type = &"Gem"
 
 [node name="Valuable" parent="." instance=ExtResource("5_7bd6c")]
-value = 10
+value = 1000
 
 [node name="RandomValue" type="Node" parent="Valuable"]
 script = ExtResource("6_3lulr")
+min_value = 900
+max_value = 1300
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_svrnw")
