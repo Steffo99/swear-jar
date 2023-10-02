@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
-[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="7_hh80i"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="8_a3sk0"]
@@ -18,11 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost.tscn" id="16_8vhx6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
-size = Vector2(80, 80)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
+size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i50bq"]
 size = Vector2(540, 135)
@@ -42,10 +41,24 @@ upgrade_gold_texture = ExtResource("4_i557v")
 
 [node name="Ghost" parent="." instance=ExtResource("16_8vhx6")]
 position = Vector2(90, 306)
-collision_layer = 8
-collision_mask = 6
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
+
+[node name="PlaceableArea" type="Area2D" parent="Bottle"]
+position = Vector2(136, 272)
+collision_layer = 16
+collision_mask = 0
+
+[node name="BottleShape" type="CollisionShape2D" parent="Bottle/PlaceableArea"]
+shape = SubResource("RectangleShape2D_rh35r")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Evaluator" parent="Bottle" instance=ExtResource("6_my6nv")]
+position = Vector2(136, 272)
+
+[node name="BottleShape" type="CollisionShape2D" parent="Bottle/Evaluator"]
+shape = SubResource("RectangleShape2D_rh35r")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
@@ -78,13 +91,6 @@ shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
-
-[node name="Evaluator" parent="." instance=ExtResource("6_my6nv")]
-position = Vector2(136, 272)
-
-[node name="BottleShape" type="CollisionShape2D" parent="Evaluator"]
-shape = SubResource("RectangleShape2D_rh35r")
-debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
 position = Vector2(62, 176)
@@ -180,8 +186,8 @@ position = Vector2(405, 540)
 shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
+[connection signal="changed" from="Bottle/Evaluator" to="." method="_on_score_changed"]
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
-[connection signal="changed" from="Evaluator" to="." method="_on_score_changed"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
 
 [editable path="CopperConverter"]

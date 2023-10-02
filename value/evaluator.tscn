@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://value/evaluator.gd" id="1_sjx78"]
 
 [node name="Evaluator" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_sjx78")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

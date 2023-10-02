@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_xqfmg"]
 
 [node name="Spawner" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_xqfmg")
