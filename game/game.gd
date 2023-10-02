@@ -41,6 +41,7 @@ func _on_purchase_begin(what: PurchasableItem):
 	store_collector_panel.show()
 	ghost.process_mode = Node.PROCESS_MODE_INHERIT
 	ghost.show()
+	time_spawner_timer.stop()
 
 func _handle_purchase_success(what: PurchasableItem):
 	what.complete_purchase()
@@ -52,6 +53,7 @@ func _on_purchase_cancel(what: PurchasableItem):
 	store_collector_panel.hide()
 	ghost.process_mode = Node.PROCESS_MODE_DISABLED
 	ghost.hide()
+	time_spawner_timer.start()
 
 func _on_purchase_success(what: PurchasableItem):
 	print("[Game] Succedeed purchase of ", what.name, " costing ", what.item_cost_goal, "x ", what.item_cost_type)
@@ -60,6 +62,7 @@ func _on_purchase_success(what: PurchasableItem):
 	store_collector_panel.hide()
 	ghost.process_mode = Node.PROCESS_MODE_DISABLED
 	ghost.hide()
+	time_spawner_timer.start()
 
 func _on_store_collector_collected(_body: RigidBody2D):
 	update_counter_text()

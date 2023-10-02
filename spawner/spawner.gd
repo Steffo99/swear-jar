@@ -52,6 +52,8 @@ func _do_spawn():
 	var overlapping_bodies = get_overlapping_bodies()
 	if len(overlapping_bodies) > overlapping_body_count_limit:
 		return
+	if scene == null:
+		return
 	var instantiated = scene.instantiate()
 	instantiated.global_position = global_position + _select_spawn_position()
 	instantiated.rotation_degrees = _select_spawn_rotation()
