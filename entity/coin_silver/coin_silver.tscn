@@ -22,7 +22,7 @@ linear_damp = 0.1
 angular_damp = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_c6byl")
 
 [node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]

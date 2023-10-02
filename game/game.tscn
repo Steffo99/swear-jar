@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="13_4j8om"]
 [ext_resource type="Script" path="res://game/DebugTimer.gd" id="13_6ai3c"]
-[ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="13_8ux81"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost.tscn" id="16_8vhx6"]
+[ext_resource type="PackedScene" uid="uid://ddrhfhebwtq5" path="res://converters/item_converter/item_converter.tscn" id="20_aqj42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -67,7 +67,6 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
-scene = ExtResource("13_8ux81")
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
@@ -79,7 +78,6 @@ shape = SubResource("RectangleShape2D_4uksi")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Timer" type="Timer" parent="TimeSpawner"]
-one_shot = true
 
 [node name="DebugSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
@@ -190,7 +188,24 @@ position = Vector2(405, 540)
 shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
+[node name="ItemConverter" parent="." instance=ExtResource("20_aqj42")]
+position = Vector2(137, 368)
+
+[node name="GoldCollector" parent="ItemConverter" index="5"]
+collecting_types = Array[StringName]([&"Copper"])
+
+[node name="RingSpawner" parent="ItemConverter" index="7" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
+[node name="ChaliceSpawner" parent="ItemConverter" index="8" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
+[node name="CrownSpawner" parent="ItemConverter" index="9" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
 [connection signal="changed" from="Bottle/Evaluator" to="." method="_on_score_changed"]
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
 [connection signal="timeout" from="DebugSpawner/DebugTimer" to="DebugSpawner" method="spawn"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
+
+[editable path="ItemConverter"]

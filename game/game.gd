@@ -99,19 +99,21 @@ func _on_ghost_materialize():
 	if not instantiated:
 		print("[Game] The ghost can't materialize; the spawning is cancelled!")
 		return
-	var spawner = instantiated.find_child("Spawner")
-	if spawner != null:
+	for spawner in instantiated.find_children("*", "Spawner", true, false):
 		spawner.target = self
-	var spawner_alt = instantiated.find_child("SpawnerAlt")
-	if spawner_alt != null:
-		spawner_alt.target = self
 
 func _on_shop_ui_delete_begin():
 	var converters = find_children("*", "Converter", true, false)
 	for converter in converters:
 		converter.pending_deletion()
+	var item_converters = find_children("*", "ItemConverter", true, false)
+	for converter in item_converters:
+		converter.pending_deletion()
 
-func _on_shop_ui_delete_end():
+func _on_shop_ui_delete_cancel():
 	var converters = find_children("*", "Converter", true, false)
 	for converter in converters:
+		converter.ending_deletion()
+	var item_converters = find_children("*", "ItemConverter", true, false)
+	for converter in item_converters:
 		converter.ending_deletion()

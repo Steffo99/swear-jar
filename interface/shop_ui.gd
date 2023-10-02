@@ -36,6 +36,7 @@ func _on_any_purchase_begin(what: Node):
 	if not what is PurchasableItem:
 		push_error("Purchase began outside a PurchasableItem")
 		return
+	delete_button.disabled = true
 	if what.item_scene:
 		ghost_requested.emit(what.item_scene, what.item_icon)
 	purchase_begin.emit(what)
@@ -45,6 +46,7 @@ func _on_any_purchase_cancel(what: Node):
 	if not what is PurchasableItem:
 		push_error("Purchase cancelled outside a PurchasableItem")
 		return
+	delete_button.disabled = false
 	purchase_cancel.emit(what)
 	set_all_can_buy(true, what)
 
@@ -54,6 +56,7 @@ func _on_any_purchase_success(what: Node):
 		return
 	if what.item_scene:
 		ghost_materialize.emit()
+		delete_button.disabled = false
 	purchase_success.emit(what)
 	set_all_can_buy(true, what)
 
