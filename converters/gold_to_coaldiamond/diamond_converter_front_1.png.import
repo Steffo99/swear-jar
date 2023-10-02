@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1lb0mobj4rb"
-path="res://.godot/imported/diamond_converter_front_3.png-347e37887088e77193c9e6bc0535a894.ctex"
+uid="uid://cxbiwq3sjp77w"
+path="res://.godot/imported/diamond_converter_front_1.png-c78bcf4d3dfc43a0fbe9df23d3eb68d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/diamond_converter_front_3.png"
-dest_files=["res://.godot/imported/diamond_converter_front_3.png-347e37887088e77193c9e6bc0535a894.ctex"]
+source_file="res://converters/gold_to_coaldiamond/diamond_converter_front_1.png"
+dest_files=["res://.godot/imported/diamond_converter_front_1.png-c78bcf4d3dfc43a0fbe9df23d3eb68d8.ctex"]
 
 [params]
 

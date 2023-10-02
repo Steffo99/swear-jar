@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cklkdygv61bny"]
+[gd_scene load_steps=21 format=3 uid="uid://cklkdygv61bny"]
 
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_qdf0y"]
 [ext_resource type="PackedScene" uid="uid://dul1fpyh733t7" path="res://interface/purchasable_item.tscn" id="2_2dtc0"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cb1t7ylnkmt3t" path="res://converters/gold_to_gem/gold_converter.tscn" id="13_m0kio"]
 [ext_resource type="Texture2D" uid="uid://bktdm8yu8tdfn" path="res://converters/item_converter/item_converter.png" id="14_1p6uj"]
 [ext_resource type="PackedScene" uid="uid://ddrhfhebwtq5" path="res://converters/item_converter/item_converter.tscn" id="14_tgckt"]
+[ext_resource type="Texture2D" uid="uid://caljydl4v2smk" path="res://converters/gold_to_coaldiamond/diamond_converter.png" id="15_ecie1"]
 
 [node name="ShopUI" type="Panel"]
 anchors_preset = 15
@@ -154,6 +155,7 @@ layout_mode = 2
 
 [node name="BuyCompressor" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("2_2dtc0")]
 layout_mode = 2
+item_icon = ExtResource("15_ecie1")
 item_name = "Coal-pressor"
 item_description = "Consumes ten gold coins to create either a precious white diamond or an useless lump of coal!"
 item_cost_text = "??"

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2dhqp2liete7"
-path="res://.godot/imported/diamond_converter_back.png-c4955e132244a62b38140e3d1ea5fb41.ctex"
+path="res://.godot/imported/diamond_converter_back.png-66576af8432f4983f34629210cf629e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/diamond_converter_back.png"
-dest_files=["res://.godot/imported/diamond_converter_back.png-c4955e132244a62b38140e3d1ea5fb41.ctex"]
+source_file="res://converters/gold_to_coaldiamond/diamond_converter_back.png"
+dest_files=["res://.godot/imported/diamond_converter_back.png-66576af8432f4983f34629210cf629e6.ctex"]
 
 [params]
 
