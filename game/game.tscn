@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=23 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -16,6 +16,7 @@
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" uid="uid://c4ew8x4gch275" path="res://converters/gold_to_gem/gem_converter.tscn" id="16_e62br"]
+[ext_resource type="PackedScene" uid="uid://ddrhfhebwtq5" path="res://converters/item_converter/item_converter.tscn" id="17_fi36f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uksi"]
 size = Vector2(80, 80)
@@ -81,7 +82,7 @@ shape = SubResource("RectangleShape2D_rh35r")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(56, 390)
+position = Vector2(-85, 454)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
@@ -91,7 +92,7 @@ target = NodePath("../..")
 position = Vector2(0, 4.08333)
 
 [node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
-position = Vector2(53, 273)
+position = Vector2(-86, 321)
 rotation = -6.28319
 metadata/_edit_group_ = true
 
@@ -179,10 +180,16 @@ shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
 [node name="GemConverter" parent="." instance=ExtResource("16_e62br")]
-position = Vector2(145, 180)
+position = Vector2(-89, 203)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="GemConverter" index="6" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
+[node name="ItemConverter" parent="." instance=ExtResource("17_fi36f")]
+position = Vector2(136, 378)
+
+[node name="Spawner" parent="ItemConverter" index="6" node_paths=PackedStringArray("target")]
 target = NodePath("../..")
 
 [connection signal="timeout" from="TimeSpawner/Timer" to="TimeSpawner" method="spawn"]
@@ -192,3 +199,4 @@ target = NodePath("../..")
 [editable path="CopperConverter"]
 [editable path="SilverConverter"]
 [editable path="GemConverter"]
+[editable path="ItemConverter"]
