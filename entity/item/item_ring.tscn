@@ -25,7 +25,6 @@ linear_damp = 0.1
 angular_damp = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_ka4h2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]

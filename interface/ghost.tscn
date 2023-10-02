@@ -12,7 +12,7 @@ collision_mask_prevent_placement = 16
 collision_mask_delete_placement = 4
 
 [node name="PlacementShape" parent="." instance=ExtResource("3_lskcf")]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 
 [node name="PreviewSprite" type="Sprite2D" parent="PlacementShape"]
 modulate = Color(1, 1, 1, 0.5)

@@ -21,7 +21,6 @@ linear_damp = 0.1
 angular_damp = 0.1
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(2, 2)
 polygon = PackedVector2Array(0, -15, -11.5, -13, -10.5, -1, -2.5, 5, -2.5, 8, -8.5, 12, -4.5, 15, 4.5, 15, 8.5, 12, 2.5, 8, 2.5, 5, 10.5, -1, 11.5, -12.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
