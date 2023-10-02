@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3kitncwpi42j"]
+[gd_scene load_steps=9 format=3 uid="uid://c3kitncwpi42j"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_1fypc"]
+[ext_resource type="Script" path="res://entity/coin_copper/coin_copper.gd" id="2_1r8w3"]
 [ext_resource type="Texture2D" uid="uid://dbdkb4vt7dh85" path="res://entity/coin_copper/coin_copper_4.png" id="2_4pvkj"]
 [ext_resource type="Texture2D" uid="uid://2vtvoj6ua3cb" path="res://entity/coin_copper/coin_copper_outline_2.png" id="3_dq1f7"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_npwn2"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_fd0r7"]
-[ext_resource type="AudioStream" uid="uid://wy7f2j0wg1ur" path="res://audio/tap/click5.wav" id="7_fxd28"]
+[ext_resource type="AudioStream" uid="uid://ds2rl6eg5jr1" path="res://audio/tap/click5.wav" id="7_fxd28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
 size = Vector2(14, 3)
 
 [node name="CoinCopper" type="RigidBody2D"]
-collision_layer = 5
-collision_mask = 7
+collision_layer = 4
+collision_mask = 6
 inertia = 1000.0
 physics_material_override = ExtResource("1_1fypc")
 continuous_cd = 1
@@ -20,6 +21,7 @@ max_contacts_reported = 1
 contact_monitor = true
 linear_damp = 0.1
 angular_damp = 0.1
+script = ExtResource("2_1r8w3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)

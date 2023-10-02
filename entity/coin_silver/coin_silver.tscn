@@ -11,8 +11,8 @@
 size = Vector2(21, 4)
 
 [node name="CoinSilver" type="RigidBody2D"]
-collision_layer = 5
-collision_mask = 7
+collision_layer = 4
+collision_mask = 6
 mass = 1.5
 inertia = 800.0
 physics_material_override = ExtResource("1_4sq1a")

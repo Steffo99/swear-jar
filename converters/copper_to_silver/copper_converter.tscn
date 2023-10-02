@@ -60,10 +60,12 @@ size = Vector2(26, 4)
 size = Vector2(26, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
-size = Vector2(26, 8.83334)
+size = Vector2(26, 10)
 
 [node name="CopperConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
 scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_mas6k")
 sprite_front = NodePath("SpriteFront")
 conversion_timer = NodePath("ConversionTimer")
@@ -124,9 +126,6 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 [node name="ConversionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_6hhch")
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6hhch")

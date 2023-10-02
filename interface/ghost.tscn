@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://qtk4tm6l367w"]
+[gd_scene load_steps=3 format=3 uid="uid://qtk4tm6l367w"]
 
 [ext_resource type="Script" path="res://interface/ghost.gd" id="1_gvls7"]
-[ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="1_lo8gj"]
 [ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="3_lskcf"]
 
 [node name="Ghost" type="Area2D"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 4294967295
 input_pickable = false
 script = ExtResource("1_gvls7")
+collision_mask_prevent_placement = 16
+collision_mask_delete_placement = 4
 
 [node name="PlacementShape" parent="." instance=ExtResource("3_lskcf")]
 scale = Vector2(3, 3)
@@ -16,4 +17,3 @@ scale = Vector2(3, 3)
 [node name="PreviewSprite" type="Sprite2D" parent="PlacementShape"]
 modulate = Color(1, 1, 1, 0.5)
 z_index = 10
-texture = ExtResource("1_lo8gj")
