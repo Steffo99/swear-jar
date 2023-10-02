@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="2_qj86l"]
 [ext_resource type="Script" path="res://interface/custom_ui.gd" id="3_xav0n"]
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="4_siim3"]
-[ext_resource type="PackedScene" path="res://safe_ui.tscn" id="5_2uxda"]
+[ext_resource type="PackedScene" uid="uid://bpvx3nkkbluip" path="res://safe_ui.tscn" id="5_2uxda"]
 [ext_resource type="Script" path="res://game_camera.gd" id="5_xxjtg"]
 
 [sub_resource type="GDScript" id="GDScript_kyj65"]
@@ -36,7 +36,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 5
 stretch = true
 
 [node name="Viewport" type="SubViewport" parent="CustomUI/GameViewport"]
@@ -58,6 +57,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
+apply_margin_left = true
+apply_margin_right = true
+apply_margin_top = true
 
 [node name="GameUI" parent="CustomUI/GameSafeUI" instance=ExtResource("4_siim3")]
 layout_mode = 2
@@ -66,6 +68,10 @@ layout_mode = 2
 process_mode = 4
 visible = false
 layout_mode = 1
+apply_margin_left = true
+apply_margin_right = true
+apply_margin_top = true
+apply_margin_bottom = true
 
 [node name="ShopUI" parent="CustomUI/ShopSafeUI" instance=ExtResource("2_qj86l")]
 layout_mode = 2
