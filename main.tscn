@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cklkdygv61bny" path="res://interface/shop_ui.tscn" id="2_qj86l"]
 [ext_resource type="Script" path="res://interface/custom_ui.gd" id="3_xav0n"]
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="4_siim3"]
-[ext_resource type="PackedScene" path="res://safe_ui.tscn" id="5_2uxda"]
+[ext_resource type="PackedScene" uid="uid://bpvx3nkkbluip" path="res://safe_ui.tscn" id="5_2uxda"]
 [ext_resource type="Script" path="res://game_camera.gd" id="5_xxjtg"]
 
 [sub_resource type="GDScript" id="GDScript_kyj65"]
