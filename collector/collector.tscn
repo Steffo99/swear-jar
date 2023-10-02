@@ -4,6 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://bpxjhl0aq3yrv" path="res://audio/conversione/suck2.wav" id="2_n0plc"]
 
 [node name="Collector" type="Area2D" node_paths=PackedStringArray("sound_absorb")]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_1xtt5")
 sound_absorb = NodePath("sound_absorb")
 
