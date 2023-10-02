@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://clanhkk4sg47w"]
+[gd_scene load_steps=25 format=3 uid="uid://clanhkk4sg47w"]
 
 [ext_resource type="Script" path="res://converters/converter.gd" id="1_mf1ls"]
 [ext_resource type="Texture2D" uid="uid://2dhqp2liete7" path="res://converters/gold_to_coaldiamond/diamond_converter_back.png" id="2_nj8gd"]
@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_5c46k"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_xld3l"]
 [ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="13_jvouj"]
-[ext_resource type="PackedScene" uid="uid://cr5tiep20hk0s" path="res://entity/coal_diamond/diamond.tscn" id="15_ey4am"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00uxa"]
 atlas = ExtResource("3_p4wsd")
@@ -127,9 +126,6 @@ spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
 spawn_rotation_degrees_max = 100.0
 overlapping_body_count_limit = 4
-
-[node name="Diamond" parent="Spawner" instance=ExtResource("15_ey4am")]
-position = Vector2(-34.3333, 1.66667)
 
 [node name="PreventSpawnShape" type="CollisionShape2D" parent="Spawner"]
 z_index = 3
