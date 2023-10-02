@@ -180,7 +180,6 @@ shape = SubResource("RectangleShape2D_jeo5f")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="ConversionTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]

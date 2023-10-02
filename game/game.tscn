@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=24 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" path="res://interface/ghost.tscn" id="16_8vhx6"]
 [ext_resource type="PackedScene" uid="uid://ddrhfhebwtq5" path="res://converters/item_converter/item_converter.tscn" id="17_fi36f"]
+[ext_resource type="PackedScene" uid="uid://cqshgmptdav2b" path="res://converters/gold_to_gem/gold_converter.tscn" id="17_lmxhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -94,7 +95,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
 
 [node name="CopperConverter" parent="." instance=ExtResource("7_ipeok")]
-position = Vector2(-81, 181)
+position = Vector2(-83, 227)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="CopperConverter" index="6" node_paths=PackedStringArray("target")]
@@ -104,7 +105,7 @@ target = NodePath("../..")
 position = Vector2(0, 4.08333)
 
 [node name="SilverConverter" parent="." instance=ExtResource("8_0bbpi")]
-position = Vector2(-84, 312)
+position = Vector2(354, 361)
 rotation = -3.14159
 metadata/_edit_group_ = true
 
@@ -188,8 +189,16 @@ position = Vector2(405, 540)
 shape = SubResource("RectangleShape2D_jed57")
 debug_color = Color(0, 0, 0, 0.419608)
 
+[node name="GoldConverter" parent="." instance=ExtResource("17_lmxhp")]
+position = Vector2(135, 182)
+scale = Vector2(3, 3)
+metadata/_edit_group_ = true
+
+[node name="Spawner" parent="GoldConverter" index="6" node_paths=PackedStringArray("target")]
+target = NodePath("../..")
+
 [node name="ItemConverter" parent="." instance=ExtResource("17_fi36f")]
-position = Vector2(134, 191)
+position = Vector2(365, 196)
 metadata/_edit_group_ = true
 
 [node name="Spawner" parent="ItemConverter" index="6" node_paths=PackedStringArray("target")]
@@ -201,4 +210,5 @@ target = NodePath("../..")
 
 [editable path="CopperConverter"]
 [editable path="SilverConverter"]
+[editable path="GoldConverter"]
 [editable path="ItemConverter"]

@@ -16,14 +16,16 @@ func _on_collector_goal():
 func _process(_delta):
 	if coda>=1 and conversion_timer.is_stopped():
 		sprite_front.play()
-		sprite_back.play()
+		if not sprite_back==null:
+			sprite_back.play()
 		conversion_timer.start()
 		sound_working.play()
 
 func _on_timer_timeout():
 	coda-=1
 	sprite_front.stop()
-	sprite_back.stop()
+	if not sprite_back==null:
+		sprite_back.stop()
 	sound_working.stop()
 	sound_complete.play()
 	spawner.spawn()
