@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="4_5oayc"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
-[ext_resource type="PackedScene" uid="uid://6pp1pebasum3" path="res://entity/gem/gemstone.tscn" id="7_13ofu"]
 [ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
+[ext_resource type="PackedScene" uid="uid://w2er6cmul5yx" path="res://entity/gem/gem.tscn" id="7_u1xgy"]
 [ext_resource type="PackedScene" uid="uid://but1bdslxp5jl" path="res://converters/silver_to_gold/silver_converter.tscn" id="8_0bbpi"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
@@ -42,7 +42,7 @@ upgrade_gold_texture = ExtResource("4_i557v")
 
 [node name="TimeSpawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
 position = Vector2(136, 0)
-scene = ExtResource("7_13ofu")
+scene = ExtResource("7_u1xgy")
 target = NodePath("..")
 buffer_cap = 1
 spawn_rect = Rect2(-20, 0, 40, 0)
