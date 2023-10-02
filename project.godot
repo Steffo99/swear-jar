@@ -15,7 +15,7 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0.0977035, 0.0977035, 0.10161, 1)
 boot_splash/image="res://icon.png"
-config/icon="res://icon.png"
+config/icon="res://media/jar_icon.png"
 
 [display]
 
