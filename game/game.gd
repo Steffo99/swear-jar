@@ -92,6 +92,8 @@ func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
 
 func _on_ghost_materialize():
 	var instantiated = ghost.materialize()
+	if not instantiated: 
+		return #TODO FIXME
 	var spawner = instantiated.find_child("Spawner")
 	if spawner != null:
 		spawner.target = self

@@ -34,6 +34,7 @@ var can_place: bool:
 	get: 
 		return can_place
 	set(value):
+		can_place = value
 		if value:
 			preview_sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
 		else:
@@ -70,8 +71,9 @@ func _input(event: InputEvent):
 				position += delta
 				last_input_event = event
 
+## Update the value of [can_place].
 # DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
-func _physics_process(_delta: float):
+func update_can_place():
 	var no_overlapping_bodies: bool = true
 	var overlapping_bodies = get_overlapping_bodies()
 	for body in overlapping_bodies:
@@ -87,6 +89,7 @@ func _physics_process(_delta: float):
 		if area is PlaceableArea:
 			is_in_placeable_area = true
 	
+	print("[Ghost] No overlap: ", no_overlapping_bodies, " | In area: ", is_in_placeable_area)
 	can_place = no_overlapping_bodies and is_in_placeable_area
 
 
@@ -99,7 +102,18 @@ func _physics_process(_delta: float):
 ## Emitted when the [materialize] function has finished executing.
 signal materialized(node: Node)
 
+
+func _physics_process(_delta: float):
+	update_can_place()
+
 func materialize():
+	if not can_place:
+		return null
+	var overlapping_bodies = get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body is PhysicsBody2D:
+			if body.collision_layer & collision_mask_delete_placement:
+				body.queue_free()
 	var instantiated = scene_to_instantiate.instantiate()
 	instantiated.global_position = global_position
 	instantiated.rotation = rotation
