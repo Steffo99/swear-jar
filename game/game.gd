@@ -55,7 +55,6 @@ func _on_purchase_success(what: PurchasableItem):
 	store_collector_panel.hide()
 
 func _on_store_collector_collected(_body: RigidBody2D):
-	print("collected")
 	update_counter_text()
 
 func update_counter_text():
@@ -76,4 +75,3 @@ func update_counter_icon():
 		store_collector_texturerect.texture = upgrade_gold_texture
 	else:
 		store_collector_texturerect.texture = null
-	

@@ -23,11 +23,8 @@ func _on_sleeping_state_changed():
 	was_sleeping = true
 
 func _on_body_entered(body):
-	
-	print("touch")
 	if not was_sleeping:
 		if touched==false and $Timer.is_stopped():
-			print(str(self)+" hits "+str(body))
 			#$sound_touch.play()
 			$Timer.start()
 		var other_node=body
