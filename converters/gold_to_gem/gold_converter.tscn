@@ -71,8 +71,10 @@ size = Vector2(26, 5)
 size = Vector2(26, 8.83334)
 
 [node name="GoldConverter" type="StaticBody2D" node_paths=PackedStringArray("sprite_front", "conversion_timer", "sound_working", "sound_complete", "spawner")]
+scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
+input_pickable = true
 script = ExtResource("1_fgju3")
 sprite_front = NodePath("SpriteFront")
 conversion_timer = NodePath("ConversionTimer")

@@ -50,6 +50,7 @@ size = Vector2(26, 10)
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
+input_pickable = true
 script = ExtResource("1_chhfg")
 sprite_front = NodePath("SpriteFront")
 conversion_timer = NodePath("ConversionTimer")
