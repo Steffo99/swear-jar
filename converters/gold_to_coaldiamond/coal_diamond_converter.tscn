@@ -70,12 +70,11 @@ size = Vector2(26, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
 size = Vector2(26, 10)
 
-[node name="CoalDiamondConverter" type="StaticBody2D" node_paths=PackedStringArray("spawner")]
+[node name="CoalDiamondConverter" type="StaticBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_mf1ls")
-spawner = NodePath("")
 
 [node name="SpriteBack" type="Sprite2D" parent="."]
 z_index = -2
