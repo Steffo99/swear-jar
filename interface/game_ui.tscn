@@ -42,7 +42,7 @@ offset_bottom = 54.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 text = "Shop"
-alignment = 2
+alignment = 0
 
 [connection signal="pressed" from="SpawnButton" to="." method="_on_spawn_button_pressed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
