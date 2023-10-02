@@ -147,6 +147,8 @@ func _on_buy_artifactomatic_purchase_success():
 	print("[ShopUI] Completing Arti-factory...")
 
 
+@onready var delete_button = $Rows/UpperButtons/DeleteButton
+
 var is_deleting = false
 
 signal delete_begin
@@ -155,7 +157,11 @@ signal delete_cancel
 func _on_delete_button_pressed():
 	if is_deleting:
 		is_deleting = false
+		delete_button.text = "Del"
+		delete_button.modulate = Color.WHITE
 		delete_cancel.emit()
 	else:
 		is_deleting = true
+		delete_button.text = "Undo"
+		delete_button.modulate = Color.RED
 		delete_begin.emit()
