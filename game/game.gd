@@ -95,3 +95,13 @@ func _on_ghost_materialize():
 	var spawner = instantiated.find_child("Spawner")
 	if spawner != null:
 		spawner.target = self
+
+func _on_shop_ui_delete_begin():
+	var converters = find_children("*", "Converter", true, false)
+	for converter in converters:
+		converter.pending_deletion()
+
+func _on_shop_ui_delete_end():
+	var converters = find_children("*", "Converter", true, false)
+	for converter in converters:
+		converter.ending_deletion()

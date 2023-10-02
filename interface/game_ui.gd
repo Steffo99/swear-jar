@@ -38,3 +38,14 @@ func _on_shop_ui_purchase_cancel(_what: PurchasableItem):
 func _on_shop_ui_purchase_success(_what: PurchasableItem):
 	spawn_button.disabled = false
 	spawn_button.text = "Put"
+
+
+func _on_shop_ui_delete_begin():
+	spawn_button.disabled = true
+	spawn_button.text = "Del"
+	spawn_button.modulate = Color.RED
+
+func _on_shop_ui_delete_cancel():
+	spawn_button.disabled = false
+	spawn_button.text = "Put"
+	spawn_button.modulate = Color.WHITE
