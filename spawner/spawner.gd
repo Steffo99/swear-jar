@@ -54,6 +54,10 @@ func _do_spawn():
 		return
 	if scene == null:
 		return
+	if scene._bundled["names"][0]=="Coal":
+		var scene = PackedScene.new()
+		scene.pack(get_node("Diamond"))
+		print("ehi")
 	var instantiated = scene.instantiate()
 	instantiated.global_position = global_position + _select_spawn_position()
 	instantiated.rotation_degrees = _select_spawn_rotation()
