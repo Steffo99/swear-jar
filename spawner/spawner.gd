@@ -27,6 +27,14 @@ var buffer: int = 0
 ## Maximum amount of bodies overlapping the spawner's area before the spawner stops spawning.
 @export_range(0, 16, 1, "or_greater") var overlapping_body_count_limit: int
 
+## Sound to play when spawning an item.
+##
+## Doesn't spawn anything if not set.
+@export var sound_complete: AudioStreamPlayer
+
+@export_range(0.01, 8.0, 0.01, "or_greater") var sound_complete_pitch_min: float = 0.98
+@export_range(0.01, 8.0, 0.01, "or_greater") var sound_complete_pitch_max: float = 1.02
+
 
 signal spawned(what: Node2D)
 
@@ -62,6 +70,9 @@ func _do_spawn():
 	instantiated.global_position = global_position + _select_spawn_position()
 	instantiated.rotation_degrees = _select_spawn_rotation()
 	target.add_child(instantiated)
+	if sound_complete:
+		sound_complete.pitch_scale = Randomizer.rng.randf_range(sound_complete_pitch_min, sound_complete_pitch_max)
+		sound_complete.play()
 	spawned.emit()
 	buffer -= 1
 
