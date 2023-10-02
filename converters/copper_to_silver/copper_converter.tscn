@@ -79,7 +79,6 @@ texture = ExtResource("3_p24go")
 z_index = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4m3dg")
-frame_progress = 0.889703
 
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 2
