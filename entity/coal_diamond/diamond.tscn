@@ -35,5 +35,3 @@ value = 10000
 script = ExtResource("5_g8xmh")
 min_value = 9000
 max_value = 16000
-
-[connection signal="collected" from="Collectible" to="Collectible" method="_on_done" flags=18]
