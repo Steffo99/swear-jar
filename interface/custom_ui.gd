@@ -7,6 +7,7 @@ class_name CustomUI
 
 @onready var game_safe_ui: MarginContainer = $GameSafeUI
 @onready var shop_safe_ui: MarginContainer = $ShopSafeUI
+@onready var score_safe_ui: MarginContainer = $ScoreSafeUI
 @onready var game_camera: GameCamera = $GameViewport/Viewport/GameCamera
 
 
@@ -27,4 +28,5 @@ func _on_viewport_size_changed():
 	get_window().set_content_scale_factor(scaling_factor)
 	game_safe_ui.set_safe_margins(scaling_factor)
 	shop_safe_ui.set_safe_margins(scaling_factor)
+	score_safe_ui.set_safe_margins(scaling_factor)
 	game_camera.set_camera_position(scaling_factor)

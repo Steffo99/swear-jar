@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1gum13jilhgy"]
+
+[ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_lcp0l"]
+[ext_resource type="PackedScene" uid="uid://bey5lilvteg32" path="res://interface/score_button.tscn" id="2_cggjg"]
+[ext_resource type="Script" path="res://interface/score_ui.gd" id="2_yg102"]
+[ext_resource type="PackedScene" uid="uid://wodgj6rp2ewm" path="res://interface/purchasable_item_padding.tscn" id="3_y87mu"]
+
+[node name="ScoreUI" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lcp0l")
+script = ExtResource("2_yg102")
+
+[node name="Rows" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperButtons" type="Control" parent="Rows"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="ScoreButton" parent="Rows/UpperButtons" instance=ExtResource("2_cggjg")]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+offset_right = 88.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Rows"]
+layout_mode = 2
+
+[node name="PaddingLeft" type="Control" parent="Rows/HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Container" type="VBoxContainer" parent="Rows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PurchasableItemPadding5" parent="Rows/HBoxContainer/Container" instance=ExtResource("3_y87mu")]
+layout_mode = 2
+
+[node name="SubmitScoreLabel" type="Label" parent="Rows/HBoxContainer/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Submit your current score!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="PurchasableItemPadding6" parent="Rows/HBoxContainer/Container" instance=ExtResource("3_y87mu")]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="Rows/HBoxContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 8
+text = "Add your score to the leaderboards to let both us and other people know what you've managed to achieve in the game!
+
+Find a link to the leaderboards in the game page."
+autowrap_mode = 2
+
+[node name="PurchasableItemPadding7" parent="Rows/HBoxContainer/Container" instance=ExtResource("3_y87mu")]
+layout_mode = 2
+
+[node name="NameTextEdit" type="LineEdit" parent="Rows/HBoxContainer/Container"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+placeholder_text = "Your name"
+alignment = 1
+
+[node name="PurchasableItemPadding8" parent="Rows/HBoxContainer/Container" instance=ExtResource("3_y87mu")]
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="Rows/HBoxContainer/Container"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Submit"
+
+[node name="PurchasableItemPadding9" parent="Rows/HBoxContainer/Container" instance=ExtResource("3_y87mu")]
+layout_mode = 2
+
+[node name="DescriptionLabel2" type="Label" parent="Rows/HBoxContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 8
+text = "Got a better score? Submit it again with the same name!"
+autowrap_mode = 2
+
+[node name="PaddingRight" type="Control" parent="Rows/HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="SubmissionRequest" type="HTTPRequest" parent="."]
+timeout = 8.0
+
+[connection signal="pressed" from="Rows/UpperButtons/ScoreButton" to="." method="_on_score_button_pressed"]
+[connection signal="pressed" from="Rows/HBoxContainer/Container/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="request_completed" from="SubmissionRequest" to="." method="_on_submission_request_request_completed"]

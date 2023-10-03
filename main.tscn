@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqm0h5h0baqcg"]
+[gd_scene load_steps=11 format=3 uid="uid://dqm0h5h0baqcg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_fqt34"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="1_je7w1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5unrhqpoyim" path="res://interface/game_ui.tscn" id="4_siim3"]
 [ext_resource type="PackedScene" uid="uid://bpvx3nkkbluip" path="res://safe_ui.tscn" id="5_2uxda"]
 [ext_resource type="Script" path="res://game_camera.gd" id="5_xxjtg"]
+[ext_resource type="PackedScene" uid="uid://b1gum13jilhgy" path="res://interface/score_ui.tscn" id="9_ghurm"]
 
 [sub_resource type="GDScript" id="GDScript_kyj65"]
 script/source = "extends SubViewport
@@ -76,8 +77,23 @@ apply_margin_bottom = true
 [node name="ShopUI" parent="CustomUI/ShopSafeUI" instance=ExtResource("2_qj86l")]
 layout_mode = 2
 
+[node name="ScoreSafeUI" parent="CustomUI" instance=ExtResource("5_2uxda")]
+process_mode = 4
+visible = false
+layout_mode = 1
+apply_margin_left = true
+apply_margin_right = true
+apply_margin_top = true
+apply_margin_bottom = true
+
+[node name="ScoreUI" parent="CustomUI/ScoreSafeUI" instance=ExtResource("9_ghurm")]
+layout_mode = 2
+board = "ld54"
+secret = "TXES816qEXynzWi5"
+
 [connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/GameSafeUI/GameUI" method="_on_game_score_changed"]
 [connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/ShopSafeUI/ShopUI" method="_on_game_score_changed"]
+[connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/ScoreSafeUI/ScoreUI" method="_on_game_score_changed"]
 [connection signal="score_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="." method="_on_game_ui_score_button_pressed"]
 [connection signal="shop_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="." method="_on_game_ui_shop_button_pressed"]
 [connection signal="spawn_button_pressed" from="CustomUI/GameSafeUI/GameUI" to="CustomUI/GameViewport/Viewport/Game" method="trigger_spawn"]
@@ -101,3 +117,5 @@ layout_mode = 2
 [connection signal="score_button_pressed" from="CustomUI/ShopSafeUI/ShopUI" to="." method="_on_shop_ui_score_button_pressed"]
 [connection signal="upgraded_auto_spawn" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_upgraded_auto_spawn"]
 [connection signal="upgraded_manual_spawn" from="CustomUI/ShopSafeUI/ShopUI" to="CustomUI/GameViewport/Viewport/Game" method="_on_upgraded_manual_spawn"]
+[connection signal="score_button_pressed" from="CustomUI/ScoreSafeUI/ScoreUI" to="." method="_on_score_ui_score_button_pressed"]
+[connection signal="score_submission_success" from="CustomUI/ScoreSafeUI/ScoreUI" to="." method="_on_score_ui_score_submission_success"]

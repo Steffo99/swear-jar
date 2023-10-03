@@ -7,6 +7,8 @@ class_name Main
 @onready var game_ui: GameUI = $CustomUI/GameSafeUI/GameUI
 @onready var shop_safe_ui: MarginContainer = $CustomUI/ShopSafeUI
 @onready var shop_ui: ShopUI = $CustomUI/ShopSafeUI/ShopUI
+@onready var score_safe_ui: MarginContainer = $CustomUI/ScoreSafeUI
+@onready var score_ui: ScoreUI = $CustomUI/ScoreSafeUI/ScoreUI
 
 
 enum UIState {
@@ -24,14 +26,23 @@ enum UIState {
 				tree.paused = false
 				game_safe_ui.show()
 				shop_safe_ui.hide()
+				score_safe_ui.hide()
 				shop_safe_ui.process_mode = Node.PROCESS_MODE_DISABLED
+				score_safe_ui.process_mode = Node.PROCESS_MODE_DISABLED
 			UIState.SHOP:
 				tree.paused = true
 				game_safe_ui.hide()
 				shop_safe_ui.show()
+				score_safe_ui.hide()
 				shop_safe_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+				score_safe_ui.process_mode = Node.PROCESS_MODE_DISABLED
 			UIState.SCORE:
-				pass
+				tree.paused = true
+				game_safe_ui.hide()
+				shop_safe_ui.hide()
+				score_safe_ui.show()
+				shop_safe_ui.process_mode = Node.PROCESS_MODE_DISABLED
+				score_safe_ui.process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _on_game_ui_score_button_pressed():
@@ -56,4 +67,10 @@ func _on_shop_ui_delete_begin():
 	ui_state = UIState.GAME
 
 func _on_shop_ui_delete_cancel():
+	ui_state = UIState.GAME
+
+func _on_score_ui_score_button_pressed():
+	ui_state = UIState.GAME
+
+func _on_score_ui_score_submission_success():
 	ui_state = UIState.GAME
