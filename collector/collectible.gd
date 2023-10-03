@@ -15,8 +15,10 @@ signal collected
 ##
 ## You'll probably want to connect this to an AudioSource2D, which will disable the node and play a sound, and when the sound is over a new signal will queue_free it.
 func collect():
+	print("[Collectible] Collected ", self, "!")
 	collected.emit()
 
 
 func _on_done():
+	print("[Collectible] Deleting ", self, "...")
 	get_parent().queue_free()

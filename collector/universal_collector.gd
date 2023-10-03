@@ -20,6 +20,7 @@ signal goal
 
 func _on_body_entered(body: Node2D):
 	if body is PhysicsBody2D:
+		print("[UniversalCollector] Body entered: ", body)
 		var collectible: Collectible = body.find_child("Collectible")
 		if collectible:
 			collected_count += 1
