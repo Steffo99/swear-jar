@@ -49,7 +49,7 @@ func _on_gold_collector_collected(body: RigidBody2D):
 
 func try_produce():
 	if stored_gold >= required_gold:
-		var hue = gem_hue_ready.pop_back()
+		var hue = gem_hue_ready.pop_front()
 		if hue:
 			stored_gold -= required_gold
 			gem_hue_stored.append(hue)
