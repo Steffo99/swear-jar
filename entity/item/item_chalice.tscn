@@ -38,7 +38,7 @@ shader = ExtResource("5_bkxhb")
 type = &"Chalice"
 
 [node name="Valuable" parent="." instance=ExtResource("7_0qpb5")]
-value = 7500
+value = 5000
 
 [node name="SoundWorking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_v6jws")
