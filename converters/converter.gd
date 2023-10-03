@@ -46,11 +46,11 @@ func _on_timer_timeout():
 var is_pending_deletion: bool = false
 
 func pending_deletion():
-	sprite_front.modulate = Color.RED
+	modulate = Color.RED
 	is_pending_deletion = true
 
 func ending_deletion():
-	sprite_front.modulate = Color.WHITE
+	modulate = Color.WHITE
 	is_pending_deletion = false
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
