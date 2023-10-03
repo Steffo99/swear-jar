@@ -16,6 +16,7 @@ mass = 2.0
 inertia = 600.0
 physics_material_override = ExtResource("1_nfq5t")
 continuous_cd = 1
+can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
 

@@ -12,6 +12,7 @@ mass = 0.75
 inertia = 1200.0
 physics_material_override = ExtResource("1_ftt7x")
 continuous_cd = 1
+can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
 
