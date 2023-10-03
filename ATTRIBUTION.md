@@ -53,3 +53,7 @@ Well, that pretty much sums it up... so without further ado, install and enjoy t
 
 [ codeman38 | cody@zone38.net | http://www.zone38.net/ ]
 ```
+
+## Sounds
+
+*\[ Attribution strings for sounds pending insertion by @Kappadacqua \]*
