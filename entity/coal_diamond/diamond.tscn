@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr5tiep20hk0s"]
+[gd_scene load_steps=5 format=3 uid="uid://cr5tiep20hk0s"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_mma75"]
 [ext_resource type="Texture2D" uid="uid://bquk2q5g6bst5" path="res://entity/coal_diamond/diamond.png" id="2_abwth"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="3_n4fa5"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="4_yfos5"]
-[ext_resource type="Script" path="res://entity/gem/RandomValue.gd" id="5_g8xmh"]
 
 [node name="Diamond" type="RigidBody2D"]
 collision_layer = 4
@@ -29,8 +28,3 @@ type = &"Diamond"
 
 [node name="Valuable" parent="." instance=ExtResource("4_yfos5")]
 value = 10000
-
-[node name="RandomValue" type="Node" parent="Valuable"]
-script = ExtResource("5_g8xmh")
-min_value = 9000
-max_value = 16000
