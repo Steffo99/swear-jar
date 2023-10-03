@@ -20,9 +20,9 @@ func _on_viewport_size_changed():
 	print("[View] Window size is: ", window_size)
 	var scaling_factor
 	if window_size.x < window_size.y:
-		scaling_factor = window_size.x / 270
+		scaling_factor = window_size.x / 270.0
 	else:
-		scaling_factor = window_size.y / 480
+		scaling_factor = window_size.y / 480.0
 	print("[View] Scaling factor is: ", scaling_factor)
 	get_window().set_content_scale_factor(scaling_factor)
 	game_safe_ui.set_safe_margins(scaling_factor)
