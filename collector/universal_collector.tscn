@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://collector/universal_collector.gd" id="1_xn6rb"]
 
 [node name="UniversalCollector" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_xn6rb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
