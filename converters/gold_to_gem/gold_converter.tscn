@@ -153,4 +153,5 @@ stream = ExtResource("11_lofho")
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="collected" from="Collector" to="." method="_on_collector_collected" flags=18]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal" flags=18]
+[connection signal="spawned" from="Spawner" to="." method="_on_gold_converter_spawner_spawned"]
 [connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout" flags=18]

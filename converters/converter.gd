@@ -57,3 +57,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if is_pending_deletion:
 		if event is InputEventMouseButton or event is InputEventScreenTouch:
 			queue_free()
+
+
+func _on_gold_converter_spawner_spawned(what: RigidBody2D):
+	# Randomize gem colors.
+	var colored: Colored = what.get_node("CollisionShape2D/Sprite/Colored")
+	colored.randomize_hue()

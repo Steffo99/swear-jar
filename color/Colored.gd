@@ -3,7 +3,9 @@ class_name Colored
 
 @export var shader: Shader
 
-@onready var hue: float:
+@onready var parent: Sprite2D = get_parent()
+
+var hue: float:
 	get:
 		return hue
 	set(value):
@@ -11,13 +13,12 @@ class_name Colored
 		if parent.material:
 			parent.material.set_shader_parameter("hue", value)
 
-@onready var parent: Sprite2D = get_parent()
-
 
 func _ready():
 	var material = ShaderMaterial.new()
-	hue = Randomizer.rng.randf()
 	material.shader = shader
 	parent.material = material
 
-	
+
+func randomize_hue():
+	hue = Randomizer.rng.randf()
