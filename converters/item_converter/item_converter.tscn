@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ddrhfhebwtq5"]
+[gd_scene load_steps=37 format=3 uid="uid://ddrhfhebwtq5"]
 
 [ext_resource type="Script" path="res://converters/item_converter/item_converter.gd" id="1_o3eos"]
 [ext_resource type="Texture2D" uid="uid://devcho3gaigt0" path="res://converters/item_converter/item_converter_back_1.png" id="2_136t7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bw0jgw0jen4lg" path="res://converters/item_converter/item_converter_front_4.png" id="10_fjv52"]
 [ext_resource type="Texture2D" uid="uid://4tg81ksibacf" path="res://converters/item_converter/item_converter_front_5.png" id="11_cg5dk"]
 [ext_resource type="PackedScene" uid="uid://d32fgw4klo4x3" path="res://entity/item/item_crown.tscn" id="14_mioqu"]
+[ext_resource type="PackedScene" uid="uid://y2p6j177k3nr" path="res://entity/item/item_ring.tscn" id="14_yt3w3"]
+[ext_resource type="PackedScene" uid="uid://451ddbtq4163" path="res://entity/item/item_chalice.tscn" id="15_akn63"]
 [ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="15_nahnf"]
 [ext_resource type="AudioStream" uid="uid://dv1e0wiiquxp0" path="res://audio/conversione/lava.wav" id="16_ptmks"]
 [ext_resource type="AudioStream" uid="uid://c0uhi1hrejyxg" path="res://audio/conversione/new_item.wav" id="17_4wm4w"]
@@ -175,7 +177,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="RingSpawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("4_ihtl7")]
 position = Vector2(0, 8)
-scene = ExtResource("14_mioqu")
+scene = ExtResource("14_yt3w3")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
@@ -191,7 +193,7 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="ChaliceSpawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("4_ihtl7")]
 position = Vector2(0, 8)
-scene = ExtResource("14_mioqu")
+scene = ExtResource("15_akn63")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
