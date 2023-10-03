@@ -20,7 +20,6 @@ mass = 1.5
 inertia = 800.0
 physics_material_override = ExtResource("1_vmemd")
 continuous_cd = 1
-can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
 
