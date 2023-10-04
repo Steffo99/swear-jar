@@ -130,7 +130,7 @@ This work is licensed under the Attribution 3.0 License.
 
 suck2.wav
 
-https://freesound.org/people/PrimeJunt/sounds/135637/
+(https://freesound.org/people/PrimeJunt/sounds/135637/)
 
 This work is licensed under the Attribution 4.0 License.
 
