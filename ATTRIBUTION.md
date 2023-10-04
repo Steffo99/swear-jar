@@ -56,4 +56,70 @@ Well, that pretty much sums it up... so without further ado, install and enjoy t
 
 ## Sounds
 
-*\[ Attribution strings for sounds pending insertion by @Kappadacqua \]*
+```
+536108__eminyildirim__ui-click.wav
+
+?
+
+?
+---
+coal_funny.wav
+
+https://freesound.org/people/DSISStudios/sounds/241000/
+
+Creative Commons 0 License
+---
+coin_to_coin.wav
+
+https://linkvertise.com/63999/20968/1
+
+?
+---
+coin_to_gem.wav
+
+https://freesound.org/people/tgerginov/sounds/671175/
+
+This work is licensed under the Creative Commons 0 License
+---
+drop_in_lava.wav
+
+https://freesound.org/people/danhelbling/sounds/272392/
+
+this work is licensed under the Creative Commons 0 License.
+---
+lava.wav
+
+https://freesound.org/people/InspectorJ/sounds/412843/
+
+This work is licensed under the Attribution 4.0 License.
+---
+mechanic_sound.wav
+
+https://freesound.org/people/tutenchwimse/sounds/410616/
+
+This work is licensed under the Creative Commons 0 License.
+---
+new_item.wav
+
+https://freesound.org/people/SergeQuadrado/sounds/567204/
+
+This work is licensed under the Attribution NonCommercial 3.0 License.
+---
+pop.wav
+
+https://freesound.org/people/MATRIXXX_/sounds/506546/
+
+This work is licensed under the Creative Commons 0 License.
+---
+risucchio.wav
+
+https://freesound.org/people/blosche/sounds/387435/
+
+This work is licensed under the Attribution 3.0 License.
+---
+suck2.wav
+
+https://freesound.org/people/PrimeJunt/sounds/135637/
+
+This work is licensed under the Attribution 4.0 License. 
+```
