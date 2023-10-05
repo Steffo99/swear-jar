@@ -146,6 +146,8 @@ func _input(event: InputEvent):
 func _physics_process(_delta: float):
 	# Handle quantized rotation
 	rotation_degrees += get_rotation_quantized_degrees()
+	# Update collision
+	update_can_place()
 
 
 ## Update the value of [can_place].
