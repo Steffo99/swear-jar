@@ -40,8 +40,9 @@ var can_place: bool:
 		else:
 			preview_sprite.modulate = Color(1.0, 0.0, 0.0, 0.5)
 
-## The last input event of the input that's dragging the ghost around, or null if the ghost isn't being dragged.
-var last_input_event: InputEvent
+
+## Whether the ghost is currently being dragged or not.
+var is_being_dragged: bool
 
 
 func _ready():
@@ -49,27 +50,103 @@ func _ready():
 	preview_sprite.texture = preview_texture
 
 
+## The degrees to rotate by when rotation is quantized.
+@export_range(1, 180, 1) var rotation_quantized_degrees: float = 45
+
+## The degrees to rotate by when rotation is quantized and precise rotation is being requested.
+@export_range(1, 180, 1) var rotation_quantized_precise_degrees: float = 5
+
+
+## Get the degrees a piece should be rotated by when rotation is quantized.
+func get_rotation_quantized_degrees() -> float:
+	var degrees = rotation_quantized_precise_degrees if Input.is_action_pressed("ghost_precise") else rotation_quantized_degrees
+	var intensity = 1.0 if Input.is_action_just_pressed("ghost_clockwise") else 0.0 - 1.0 if Input.is_action_just_pressed("ghost_counterclockwise") else 0.0
+	return degrees * intensity
+
+## The last [InputEventMouse] received.
+var last_mouse_event: InputEventMouse = null
+
+## The last [InputEventScreenTouch] or [InputEventScreenDrag] received for each possible touch index.
+var last_touch_events: Array[InputEvent] = [
+	null, null, null, null, null, 
+	null, null, null, null, null,
+]
+
+func count_active_touch_events() -> int:
+	var total = 0
+	for event in last_touch_events:
+		if event != null:
+			total += 1
+	return total
+
 func _input(event: InputEvent):
-	# Handle mouse click
-	if event is InputEventMouseButton:
-		last_input_event = event if event.pressed else null
-	# Handle touch begin
-	elif event is InputEventScreenTouch:
-		last_input_event = event if event.pressed else null	
+	# Count active events
+	var count = count_active_touch_events()
+	#print("[Ghost] Counting ", count, " active events!")
 	
-	# If is dragging
-	elif last_input_event:
-		# Handle mouse drag
-		if last_input_event is InputEventMouse and event is InputEventMouse:
-			var delta = event.position - last_input_event.position
-			position += delta
-			last_input_event = event
-		# Handle touch drag
-		elif (last_input_event is InputEventScreenTouch or last_input_event is InputEventScreenDrag) and event is InputEventScreenDrag:
-			if event.index == last_input_event.index:
-				var delta = event.position - last_input_event.position
-				position += delta
-				last_input_event = event
+	# Mouse drag
+	if count == 0:
+		# Mouse drag
+		if event is InputEventMouseMotion and last_mouse_event:
+			position += event.relative
+	# Touch drag
+	elif count == 1:
+		# Touch drag
+		if event is InputEventScreenDrag:
+			position += event.relative
+	# Handle rotation
+	elif count == 2:
+		# Find the previous event
+		var previous
+		if event is InputEventScreenTouch or event is InputEventScreenDrag:
+			previous = last_touch_events[event.index]
+		# At this point previous shouldn't be null
+		# If it is, just try again at the next frame
+		if previous == null:
+			print("[Ghost] Rotation occurred, but previous was null, so it was cancelled.")
+			return
+		# Find the other event
+		var other
+		for last_touch_index in len(last_touch_events):
+			if event is InputEventScreenTouch or event is InputEventScreenDrag:
+				if event.index == last_touch_index:
+					continue
+			if last_touch_events[last_touch_index] != null:
+				other = last_touch_events[last_touch_index]
+		# At this point other shouldn't be null
+		# If it is, just try again at the next frame
+		if other == null:
+			print("[Ghost] Rotation occurred, but other was null, so it was cancelled.")
+			return
+		# Find the two vectors between the touches, one using the previous position, and one using the current one
+		var previous_vec: Vector2 = previous.position - other.position
+		var current_vec: Vector2 = event.position - other.position
+		print("[Ghost] previous_vec: ", previous_vec, " | current_vec: ", current_vec)
+		# Find the angle between the two vectors
+		var rotation_radians = previous_vec.angle_to(current_vec)
+		print("[Ghost] Rotation was successful, rotating by: ", rotation_radians)
+		# Apply the rotation
+		rotation += rotation_radians	
+
+	# Store last events
+	if event is InputEventMouseButton:
+		last_mouse_event = event if event.pressed else null
+		#print("[Ghost] last_mouse_event updated in response to a InputEventMouseButton: ", last_mouse_event)
+	elif event is InputEventMouseMotion and last_mouse_event != null:
+		last_mouse_event = event
+		#print("[Ghost] last_mouse_event updated in response to a InputEventMouseMotion: ", last_mouse_event)
+	elif event is InputEventScreenTouch:
+		last_touch_events[event.index] = event if event.pressed else null
+		#print("[Ghost] last_touch_events[", event.index , "] updated in response to a InputEventScreenTouch: ", last_mouse_event)
+	elif event is InputEventScreenDrag:
+		last_touch_events[event.index] = event
+		#print("[Ghost] last_touch_events[", event.index , "] updated in response to a InputEventScreenDrag: ", last_mouse_event)
+
+
+func _physics_process(_delta: float):
+	# Handle quantized rotation
+	rotation_degrees += get_rotation_quantized_degrees()
+
 
 ## Update the value of [can_place].
 # DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
@@ -100,10 +177,6 @@ func update_can_place():
 
 ## Emitted when the [materialize] function has finished executing.
 signal materialized(node: Node)
-
-
-func _physics_process(_delta: float):
-	update_can_place()
 
 func materialize():
 	if not can_place:
