@@ -88,8 +88,8 @@ apply_margin_bottom = true
 
 [node name="ScoreUI" parent="CustomUI/ScoreSafeUI" instance=ExtResource("9_ghurm")]
 layout_mode = 2
-board = "ld54"
-secret = "TXES816qEXynzWi5"
+board = "ld54pj3"
+secret = "fTpQAFA3mXx7VWfn"
 
 [connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/GameSafeUI/GameUI" method="_on_game_score_changed"]
 [connection signal="score_changed" from="CustomUI/GameViewport/Viewport/Game" to="CustomUI/ShopSafeUI/ShopUI" method="_on_game_score_changed"]
