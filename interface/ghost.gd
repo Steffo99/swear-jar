@@ -103,7 +103,7 @@ func _input(event: InputEvent):
 		# At this point previous shouldn't be null
 		# If it is, just try again at the next frame
 		if previous == null:
-			print("[Ghost] Rotation occurred, but previous was null, so it was cancelled.")
+			#print("[Ghost] Rotation occurred, but previous was null, so it was cancelled.")
 			return
 		# Find the other event
 		var other
@@ -116,15 +116,15 @@ func _input(event: InputEvent):
 		# At this point other shouldn't be null
 		# If it is, just try again at the next frame
 		if other == null:
-			print("[Ghost] Rotation occurred, but other was null, so it was cancelled.")
+			#print("[Ghost] Rotation occurred, but other was null, so it was cancelled.")
 			return
 		# Find the two vectors between the touches, one using the previous position, and one using the current one
 		var previous_vec: Vector2 = previous.position - other.position
 		var current_vec: Vector2 = event.position - other.position
-		print("[Ghost] previous_vec: ", previous_vec, " | current_vec: ", current_vec)
+		#print("[Ghost] previous_vec: ", previous_vec, " | current_vec: ", current_vec)
 		# Find the angle between the two vectors
 		var rotation_radians = previous_vec.angle_to(current_vec)
-		print("[Ghost] Rotation was successful, rotating by: ", rotation_radians)
+		#print("[Ghost] Rotation was successful, rotating by: ", rotation_radians)
 		# Apply the rotation
 		rotation += rotation_radians	
 
