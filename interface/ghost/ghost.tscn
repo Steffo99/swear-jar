@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://qtk4tm6l367w"]
 
-[ext_resource type="Script" path="res://interface/ghost.gd" id="1_gvls7"]
-[ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="3_lskcf"]
+[ext_resource type="Script" path="res://interface/ghost/ghost.gd" id="1_1bq64"]
+[ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="2_bo8dp"]
 
 [node name="Ghost" type="Area2D"]
 collision_layer = 0
 collision_mask = 4294967295
 input_pickable = false
-script = ExtResource("1_gvls7")
+script = ExtResource("1_1bq64")
 collision_mask_prevent_placement = 16
 collision_mask_delete_placement = 4
 
-[node name="PlacementShape" parent="." instance=ExtResource("3_lskcf")]
+[node name="PlacementShape" parent="." instance=ExtResource("2_bo8dp")]
 scale = Vector2(2.5, 2.5)
 
 [node name="PreviewSprite" type="Sprite2D" parent="PlacementShape"]
