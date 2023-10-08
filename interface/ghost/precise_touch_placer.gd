@@ -1,5 +1,5 @@
 extends Node
-class_name PrecisePlacement
+class_name PreciseTouchPlacer
 
 
 ## The degrees to rotate by when rotation is quantized.

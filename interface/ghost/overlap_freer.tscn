@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu3alsb2ufaxu"]
+
+[ext_resource type="Script" path="res://interface/ghost/overlap_freer.gd" id="1_vr3yj"]
+
+[node name="OverlapFreer" type="Node"]
+script = ExtResource("1_vr3yj")

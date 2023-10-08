@@ -1,7 +1,26 @@
 extends Area2D
 class_name Ghost
-
 ## Ghost previewing the instantiation of a scene.
+
+
+## Color to modulate this with if the body currently isn't overlapping anything.
+@export var valid_color: Color = Color.WHITE
+
+## Color to modulate this with if the body currently is overlapping something.
+@export var invalid_color: Color = Color.RED
+
+
+## The [Instantiator] to use to spawn the ghosted item.
+@onready var instantiator: Instantiator = $Instantiator
+
+## The [OverlapChecker] to use to see if a solid block is overlapping the ghost.
+@onready var overlap_checker: OverlapChecker = $OverlapChecker
+
+## The [PlaceableAreaChecker] to use to see if the ghost is currently inside the placeable area.
+@onready var placeable_area_checker: PlaceableAreaChecker = $PlaceableAreaChecker
+
+## The [OverlapFreer] to use to delete the [PhysicsBody2D] behind the ghost before instantiation.
+@onready var overlap_freer: OverlapFreer = $OverlapFreer
 
 ## The [CollisionShape2D] to use to check for placement checks.
 ##
@@ -27,19 +46,6 @@ class_name Ghost
 		if preview_sprite:
 			preview_sprite.texture = value
 
-## Whether the ghost can be placed at the current location of the ghost.
-##
-## Computed by checking if [placement_shape] overlaps any entity and is inside the [PlacementArea] of the [Bottle].
-var can_place: bool:
-	get: 
-		return can_place
-	set(value):
-		can_place = value
-		if value:
-			preview_sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
-		else:
-			preview_sprite.modulate = Color(1.0, 0.0, 0.0, 0.5)
-
 
 func _ready():
 	collision_mask = collision_mask_prevent_placement | collision_mask_delete_placement
@@ -51,37 +57,22 @@ func _physics_process(_delta: float):
 	update_can_place()
 
 
+var can_place: bool:
+	get:
+		return can_place
+	set(value):
+		can_place = value
+		modulate = valid_color if value else invalid_color
+
+
 ## Update the value of [can_place].
 # DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
-func update_can_place():
-	var no_overlapping_bodies: bool = true
-	var overlapping_bodies = get_overlapping_bodies()
-	for body in overlapping_bodies:
-		if body is TileMap:
-			no_overlapping_bodies = false
-		elif body is PhysicsBody2D:
-			var body_prevents_placement = bool(body.collision_layer & collision_mask_prevent_placement)
-			no_overlapping_bodies = no_overlapping_bodies and not body_prevents_placement
+func update_can_place() -> void:
+	can_place = overlap_checker.is_overlapping_with == null and placeable_area_checker.is_overlapping_with != null
 
-	var is_in_placeable_area: bool = false
-	var overlapping_areas = get_overlapping_areas()
-	for area in overlapping_areas:
-		if area is PlaceableArea:
-			is_in_placeable_area = true
-	
-	can_place = no_overlapping_bodies and is_in_placeable_area
-
-
-## The [PackedScene] that this node should instantiate.
-@export var scene_to_instantiate: PackedScene
-
-## The [Node] instatiated scenes should be added as children to.
-@export var target: Node
-
-## Emitted when the [materialize] function has finished executing.
-signal materialized(node: Node)
 
 func materialize():
+	# Compatibility stub for Instantiator
 	if not can_place:
 		return null
 	var overlapping_bodies = get_overlapping_bodies()
@@ -89,9 +80,6 @@ func materialize():
 		if body is PhysicsBody2D:
 			if body.collision_layer & collision_mask_delete_placement:
 				body.queue_free()
-	var instantiated = scene_to_instantiate.instantiate()
-	instantiated.global_position = global_position
-	instantiated.rotation = rotation
-	target.add_child(instantiated)
-	materialized.emit(instantiated)
-	return instantiated
+	var inst = instantiator.instantiate()
+	# TODO: Remove this
+	return inst

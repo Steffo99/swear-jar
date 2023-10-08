@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgpjm06hleokk"]
+
+[ext_resource type="Script" path="res://interface/ghost/precise_touch_placer.gd" id="1_e7b5h"]
+
+[node name="PreciseTouchPlacer" type="Node"]
+script = ExtResource("1_e7b5h")

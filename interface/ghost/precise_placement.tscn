@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgpjm06hleokk"]
-
-[ext_resource type="Script" path="res://interface/ghost/precise_placement.gd" id="1_e7b5h"]
-
-[node name="PrecisePlacement" type="Node"]
-script = ExtResource("1_e7b5h")

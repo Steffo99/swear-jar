@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blk5uc5ta7nwq"]
+
+[ext_resource type="Script" path="res://interface/placeable_area_checker.gd" id="1_yyb05"]
+
+[node name="PlaceableAreaChecker" type="Node"]
+script = ExtResource("1_yyb05")

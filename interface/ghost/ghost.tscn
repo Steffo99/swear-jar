@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://qtk4tm6l367w"]
+[gd_scene load_steps=8 format=3 uid="uid://qtk4tm6l367w"]
 
 [ext_resource type="Script" path="res://interface/ghost/ghost.gd" id="1_1bq64"]
 [ext_resource type="PackedScene" uid="uid://c3p0jdf7416ac" path="res://converters/full_converter_shape.tscn" id="2_bo8dp"]
-[ext_resource type="PackedScene" uid="uid://cgpjm06hleokk" path="res://interface/ghost/precise_placement.tscn" id="3_70ahv"]
+[ext_resource type="PackedScene" uid="uid://cgpjm06hleokk" path="res://interface/ghost/precise_touch_placer.tscn" id="3_70ahv"]
+[ext_resource type="PackedScene" uid="uid://dhrtfpyfsdf3f" path="res://interface/ghost/instantiator.tscn" id="4_f7fmh"]
+[ext_resource type="PackedScene" uid="uid://cm3gvvcsh8i7a" path="res://interface/overlap_checker.tscn" id="5_twds7"]
+[ext_resource type="PackedScene" uid="uid://bu3alsb2ufaxu" path="res://interface/ghost/overlap_freer.tscn" id="6_y1rxa"]
+[ext_resource type="PackedScene" uid="uid://blk5uc5ta7nwq" path="res://interface/placeable_area_checker.tscn" id="7_wemqm"]
 
 [node name="Ghost" type="Area2D"]
 collision_layer = 0
@@ -19,4 +23,12 @@ scale = Vector2(2.5, 2.5)
 modulate = Color(1, 1, 1, 0.5)
 z_index = 10
 
-[node name="PrecisePlacement" parent="." instance=ExtResource("3_70ahv")]
+[node name="PreciseTouchPlacer" parent="." instance=ExtResource("3_70ahv")]
+
+[node name="Instantiator" parent="." instance=ExtResource("4_f7fmh")]
+
+[node name="OverlapChecker" parent="." instance=ExtResource("5_twds7")]
+
+[node name="OverlapFreer" parent="." instance=ExtResource("6_y1rxa")]
+
+[node name="PlaceableAreaChecker" parent="." instance=ExtResource("7_wemqm")]
