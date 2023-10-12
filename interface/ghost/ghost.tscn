@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhrtfpyfsdf3f" path="res://interface/ghost/instantiator.tscn" id="4_f7fmh"]
 [ext_resource type="PackedScene" uid="uid://cm3gvvcsh8i7a" path="res://interface/ghost/overlap_checker.tscn" id="5_twds7"]
 [ext_resource type="PackedScene" uid="uid://bu3alsb2ufaxu" path="res://interface/ghost/overlap_freer.tscn" id="6_y1rxa"]
-[ext_resource type="PackedScene" uid="uid://blk5uc5ta7nwq" path="res://interface/placeable_area_checker.tscn" id="7_wemqm"]
+[ext_resource type="PackedScene" uid="uid://blk5uc5ta7nwq" path="res://interface/ghost/placeable_area_checker.tscn" id="7_wemqm"]
 
 [node name="Ghost" type="Area2D"]
 collision_layer = 0
