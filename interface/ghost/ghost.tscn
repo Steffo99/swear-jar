@@ -32,3 +32,8 @@ z_index = 10
 [node name="OverlapFreer" parent="." instance=ExtResource("6_y1rxa")]
 
 [node name="PlaceableAreaChecker" parent="." instance=ExtResource("7_wemqm")]
+
+[connection signal="area_entered" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
+[connection signal="area_exited" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
+[connection signal="body_entered" from="." to="OverlapChecker" method="update_is_overlapping_with"]
+[connection signal="body_exited" from="." to="OverlapChecker" method="update_is_overlapping_with"]

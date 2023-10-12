@@ -31,7 +31,7 @@ func get_first_overlapping_body() -> Node2D:
 	return null
 
 ## Update the [is_overlapping_with] variable.
-func _update_is_overlapping_with() -> void:
+func update_is_overlapping_with() -> void:
 	var current_overlap = get_first_overlapping_body()
 	if current_overlap != is_overlapping_with:
 		overlap_changing.emit(current_overlap)
@@ -39,7 +39,3 @@ func _update_is_overlapping_with() -> void:
 
 ## Emitted when the value of [is_overlapping_with] changes because of [_update_is_overlapping_with].
 signal overlap_changing(to: Node2D)
-
-## Calculate overlap on every physics frame.
-func _physics_process(_delta):
-	_update_is_overlapping_with()
