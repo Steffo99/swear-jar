@@ -30,45 +30,23 @@ class_name Ghost
 ## The [Sprite2D] node previewing the scene.
 @onready var preview_sprite: Sprite2D = $PlacementShape/PreviewSprite
 
-## The collision mask of objects that should prevent this object's placement.
-@export_flags_2d_physics var collision_mask_prevent_placement: int
 
-## The collision mask of objects that should be deleted on this object's placement.
-@export_flags_2d_physics var collision_mask_delete_placement: int
-
-## The texture that the preview sprite should display. 
-@export var preview_texture: Texture2D:
-	get:
-		return preview_texture
-	set(value):
-		preview_texture = value
-		# Quick priority fix
-		if preview_sprite:
-			preview_sprite.texture = value
+var can_place: bool = false
 
 
 func _ready():
-	collision_mask = collision_mask_prevent_placement | collision_mask_delete_placement
-	preview_sprite.texture = preview_texture
-
-
-func _physics_process(_delta: float):
-	# Update collision
-	update_can_place()
-
-
-var can_place: bool:
-	get:
-		return can_place
-	set(value):
-		can_place = value
-		modulate = valid_color if value else invalid_color
+	# Initialize the Area's collision mask
+	collision_mask = overlap_checker.collision_mask | placeable_area_checker.collision_mask | overlap_freer.collision_mask
 
 
 ## Update the value of [can_place].
-# DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
-func update_can_place() -> void:
+func update_state():
+	# DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
 	can_place = overlap_checker.is_overlapping_with == null and placeable_area_checker.is_overlapping_with != null
+
+
+func set_to_shop_item(si: ShopItem):
+	pass
 
 
 func materialize():

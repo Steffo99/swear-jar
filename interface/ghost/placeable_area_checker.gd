@@ -2,6 +2,12 @@ extends Node
 class_name PlaceableAreaChecker
 
 
+## Layers to consider when checking overlap with [PhysicBody2D].
+##
+## Ignored during the actual collision check, just used to expand it in the Ghost's initialization phase.
+@export_flags_2d_physics var overlap_mask: int
+
+
 ## The [Area2D] this script should act on.
 @onready var target: Area2D = get_parent()
 

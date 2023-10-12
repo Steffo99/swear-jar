@@ -13,6 +13,8 @@ collision_layer = 0
 collision_mask = 4294967295
 input_pickable = false
 script = ExtResource("1_1bq64")
+valid_color = null
+invalid_color = null
 collision_mask_prevent_placement = 16
 collision_mask_delete_placement = 4
 
@@ -37,3 +39,4 @@ z_index = 10
 [connection signal="area_exited" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
 [connection signal="body_entered" from="." to="OverlapChecker" method="update_is_overlapping_with"]
 [connection signal="body_exited" from="." to="OverlapChecker" method="update_is_overlapping_with"]
+[connection signal="overlap_changing" from="OverlapChecker" to="." method="update_state"]
