@@ -2,9 +2,9 @@ extends Node2D
 class_name Game
 
 
-@onready var button_spawner: Spawner = $ButtonSpawner
-@onready var time_spawner: Spawner = $TimeSpawner
-@onready var time_spawner_timer: Timer = $TimeSpawner/Timer
+@onready var button_spawner: Spawner = $Spawners/ButtonSpawner
+@onready var time_spawner: Spawner = $Spawners/TimeSpawner
+@onready var time_spawner_timer: Timer = $Spawners/TimeSpawner/Timer
 @onready var store_collector: Collector = $StoreCollector
 @onready var store_collector_panel: Panel = $StoreCollector/Panel
 @onready var store_collector_texturerect: TextureRect = $StoreCollector/Panel/TextureRect
