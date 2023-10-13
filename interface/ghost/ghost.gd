@@ -57,8 +57,6 @@ func _ready():
 
 ## Update the value of [can_place].
 func update_state():
-	overlap_checker.update_is_overlapping_with()
-	placeable_area_checker.update_is_overlapping_with()
 	# DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
 	can_place = overlap_checker.is_overlapping_with == null and placeable_area_checker.is_overlapping_with != null
 
@@ -103,8 +101,31 @@ func materialize() -> Node:
 
 
 func _on_moved(_from, _to):
+	overlap_checker.update_is_overlapping_with()
+	overlap_freer.update_is_overlapping_with()
+	placeable_area_checker.update_is_overlapping_with()
 	update_state()
 
-
 func _on_rotated_radians(_from, _to):
+	overlap_checker.update_is_overlapping_with()
+	overlap_freer.update_is_overlapping_with()
+	placeable_area_checker.update_is_overlapping_with()
+	update_state()
+
+func _on_area_entered(_area):
+	placeable_area_checker.update_is_overlapping_with()
+	update_state()
+
+func _on_area_exited(_area):
+	placeable_area_checker.update_is_overlapping_with()
+	update_state()
+
+func _on_body_entered(_body):
+	overlap_checker.update_is_overlapping_with()
+	overlap_freer.update_is_overlapping_with()
+	update_state()
+
+func _on_body_exited(_body):
+	overlap_checker.update_is_overlapping_with()
+	overlap_freer.update_is_overlapping_with()
 	update_state()

@@ -34,9 +34,9 @@ overlap_mask = 16
 [node name="OverlapFreer" parent="." instance=ExtResource("6_y1rxa")]
 overlap_mask = 4
 
-[connection signal="area_entered" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
-[connection signal="area_exited" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
-[connection signal="body_entered" from="." to="OverlapChecker" method="update_is_overlapping_with"]
-[connection signal="body_exited" from="." to="OverlapChecker" method="update_is_overlapping_with"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="moved" from="PreciseTouchPlacer" to="." method="_on_moved"]
 [connection signal="rotated_radians" from="PreciseTouchPlacer" to="." method="_on_rotated_radians"]
