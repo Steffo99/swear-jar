@@ -72,7 +72,7 @@ apply_margin_top = true
 layout_mode = 2
 
 [node name="ShopSafeUI" parent="CustomUI" instance=ExtResource("5_2uxda")]
-process_mode = 4
+process_mode = 3
 visible = false
 layout_mode = 1
 apply_margin_left = true
@@ -84,7 +84,6 @@ apply_margin_bottom = true
 layout_mode = 2
 
 [node name="ScoreSafeUI" parent="CustomUI" instance=ExtResource("5_2uxda")]
-process_mode = 4
 visible = false
 layout_mode = 1
 apply_margin_left = true

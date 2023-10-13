@@ -21,39 +21,41 @@ signal purchase_cancel(what: PurchasableItem)
 signal purchase_success(what: PurchasableItem)
 
 ## Array of all PurchasableItems that this ShopUI should control.
-@onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem")
+var purchasable_items: Array[Node] = []
 
 signal ghost_requested(what: PurchasableItem)
 
 
-func _ready():
-	for item in purchasable_items:
-		item.purchase_begin.connect(_on_any_purchase_begin)
-		item.purchase_cancel.connect(_on_any_purchase_cancel)
-		item.purchase_success.connect(_on_any_purchase_success)
+@onready var parent: Node = get_parent()
 
-func _on_any_purchase_begin(what: Node):
-	if not what is PurchasableItem:
-		push_error("Purchase began outside a PurchasableItem")
-		return
+
+func _ready():
+	purchasable_items = find_children("*", "PurchasableItem", true, false)
+	for item in purchasable_items:
+		item.purchase_begin.connect(_on_any_purchase_begin.bind(item))
+		item.purchase_cancel.connect(_on_any_purchase_cancel.bind(item))
+		item.purchase_success.connect(_on_any_purchase_success.bind(item))
+	if parent is SafeUI:
+		parent.process_mode = PROCESS_MODE_DISABLED
+	else:
+		process_mode = PROCESS_MODE_DISABLED
+
+func _on_any_purchase_begin(what: PurchasableItem):
+	print("[ShopUI] Beginning purchase of: ", what)
 	delete_button.disabled = true
 	if what.item_scene:
 		ghost_requested.emit(what)
 	purchase_begin.emit(what)
 	set_all_can_buy(false, what)
 
-func _on_any_purchase_cancel(what: Node):
-	if not what is PurchasableItem:
-		push_error("Purchase cancelled outside a PurchasableItem")
-		return
+func _on_any_purchase_cancel(what: PurchasableItem):
+	print("[ShopUI] Cancelling purchase of: ", what)
 	delete_button.disabled = false
 	purchase_cancel.emit(what)
 	set_all_can_buy(true, what)
 
-func _on_any_purchase_success(what: Node):
-	if not what is PurchasableItem:
-		push_error("Purchase succeeded outside a PurchasableItem")
-		return
+func _on_any_purchase_success(what: PurchasableItem):
+	print("[ShopUI] Succeeded purchase of: ", what)
 	if what.item_scene:
 		ghost_materialize.emit()
 	delete_button.disabled = false

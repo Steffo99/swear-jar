@@ -34,6 +34,7 @@ func get_first_overlapping_body() -> Node2D:
 func update_is_overlapping_with() -> void:
 	var current_overlap = get_first_overlapping_body()
 	if current_overlap != is_overlapping_with:
+		print("[OverlapChecker] Now overlapping with: ", current_overlap)
 		overlap_changing.emit(current_overlap)
 	is_overlapping_with = current_overlap
 

@@ -57,17 +57,23 @@ func _ready():
 
 ## Update the value of [can_place].
 func update_state():
+	overlap_checker.update_is_overlapping_with()
+	placeable_area_checker.update_is_overlapping_with()
 	# DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
 	can_place = overlap_checker.is_overlapping_with == null and placeable_area_checker.is_overlapping_with != null
 
 ## For retro-compatibility, configure this for the placement of a [PurchasableItem].
 func COMPAT_set_to_purchasable_item(pi: PurchasableItem):
+	push_warning("COMPAT_set_to_purchasable_item is deprecated.")
 	instantiator.scene_to_instantiate = pi.item_scene
-	placement_shape.shape = pi.get_node("ConverterPlacementBody").get_node("FullConverterShape").shape
-	placement_shape.scale = pi.item_scene.scale
+	var item_scene = pi.item_scene.instantiate()
+	placement_shape.shape = item_scene.get_node("ConverterPlacementBody/FullConverterShape").shape
+	placement_shape.scale = item_scene.scale
+	item_scene.queue_free()
 	preview_sprite.texture = pi.item_icon
 	position = starting_position
 	rotation = starting_rotation_radians
+	update_state()
 
 
 ## Configure this for the placement of a [ShopItem].
@@ -78,6 +84,7 @@ func set_to_shop_item(si: ShopItem):
 	preview_sprite.texture = si.placement_texture
 	position = starting_position
 	rotation = starting_rotation_radians
+	update_state()
 
 ## Emitted when [materialize] is called.
 signal materialized(what: Node)
@@ -88,7 +95,16 @@ signal materialized(what: Node)
 func materialize() -> Node:
 	if not can_place:
 		return null
+	overlap_freer.update_is_overlapping_with()
 	overlap_freer.area_queue_free()
 	var inst = instantiator.instantiate()
 	materialized.emit(inst)
 	return inst
+
+
+func _on_moved(_from, _to):
+	update_state()
+
+
+func _on_rotated_radians(_from, _to):
+	update_state()

@@ -29,5 +29,6 @@ signal overlap_changing(to: PlaceableArea)
 func update_is_overlapping_with() -> void:
 	var current_overlap = get_first_overlapping_placeable_area()
 	if current_overlap != is_overlapping_with:
+		print("[PlaceableAreaChecker] Now overlapping with: ", current_overlap)
 		overlap_changing.emit(current_overlap)
 	is_overlapping_with = current_overlap

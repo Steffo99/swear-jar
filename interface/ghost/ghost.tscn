@@ -26,13 +26,17 @@ z_index = 10
 [node name="Instantiator" parent="." instance=ExtResource("4_f7fmh")]
 
 [node name="OverlapChecker" parent="." instance=ExtResource("5_twds7")]
-
-[node name="OverlapFreer" parent="." instance=ExtResource("6_y1rxa")]
+overlap_mask = 8
 
 [node name="PlaceableAreaChecker" parent="." instance=ExtResource("7_wemqm")]
+overlap_mask = 16
+
+[node name="OverlapFreer" parent="." instance=ExtResource("6_y1rxa")]
+overlap_mask = 4
 
 [connection signal="area_entered" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
 [connection signal="area_exited" from="." to="PlaceableAreaChecker" method="update_is_overlapping_with"]
 [connection signal="body_entered" from="." to="OverlapChecker" method="update_is_overlapping_with"]
 [connection signal="body_exited" from="." to="OverlapChecker" method="update_is_overlapping_with"]
-[connection signal="overlap_changing" from="OverlapChecker" to="." method="update_state"]
+[connection signal="moved" from="PreciseTouchPlacer" to="." method="_on_moved"]
+[connection signal="rotated_radians" from="PreciseTouchPlacer" to="." method="_on_rotated_radians"]

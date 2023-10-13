@@ -26,6 +26,10 @@ var last_touch_events: Array[InputEvent] = [
 ]
 
 
+signal moved(from: Vector2, to: Vector2)
+signal rotated_radians(from: float, to: float)
+
+
 ## Count the number of non-[null] [last_touch_events].
 func count_active_touch_events() -> int:
 	var total = 0
@@ -43,12 +47,18 @@ func _input(event: InputEvent):
 	if count == 0:
 		# Mouse drag
 		if event is InputEventMouseMotion and last_mouse_event:
+			var from = target.position
 			target.position += event.relative
+			var to = target.position
+			moved.emit(from, to)
 	# Touch drag
 	elif count == 1:
 		# Touch drag
 		if event is InputEventScreenDrag:
+			var from = target.position
 			target.position += event.relative
+			var to = target.position
+			moved.emit(from, to)
 	# Handle rotation
 	elif count == 2:
 		# Find the previous event
@@ -77,7 +87,10 @@ func _input(event: InputEvent):
 		# Find the angle between the two vectors
 		var rotation_radians = previous_vec.angle_to(current_vec)
 		# Apply the rotation
-		target.rotation += rotation_radians	
+		var from = target.rotation
+		target.rotation += rotation_radians
+		var to = target.rotation
+		rotated_radians.emit(from, to)	
 
 	# Store last events
 	if event is InputEventMouseButton:

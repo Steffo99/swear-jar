@@ -10,6 +10,16 @@ class_name ScoreUI
 @onready var request: HTTPRequest = $SubmissionRequest
 
 
+@onready var parent: Node = get_parent()
+
+
+func _ready():
+	if parent is SafeUI:
+		parent.process_mode = PROCESS_MODE_DISABLED
+	else:
+		process_mode = PROCESS_MODE_DISABLED
+
+
 func _on_game_score_changed(total: int):
 	score_button.set_score(total)
 

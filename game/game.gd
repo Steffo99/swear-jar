@@ -89,6 +89,7 @@ func update_counter_icon():
 		store_collector_texturerect.texture = null
 
 func _on_ghost_requested(item: PurchasableItem):
+	print("[Game] Requested ghost for: ", item)
 	ghost.COMPAT_set_to_purchasable_item(item)
 	ghost.process_mode = Node.PROCESS_MODE_INHERIT
 	ghost.show()
