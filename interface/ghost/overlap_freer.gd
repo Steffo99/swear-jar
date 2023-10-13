@@ -28,10 +28,14 @@ func get_all_overlapping_bodies() -> Array[Node2D]:
 	return bodies
 
 ## Emitted when a body is about to be [queue_free]d.
-signal body_queueing_free(body: Node2D)
+signal queueing_free(body: Node2D)
+
+## Queue free the passed nodes.
+func mass_queue_free(nodes: Array[Node2D]):
+	for node in nodes:
+		queueing_free.emit(node)
+		node.queue_free()
 
 ## Queue free all overlapping bodies.
 func area_queue_free() -> void:
-	for body in get_all_overlapping_bodies():
-		body_queueing_free.emit(body)
-		body.queue_free()
+	mass_queue_free(get_all_overlapping_bodies())

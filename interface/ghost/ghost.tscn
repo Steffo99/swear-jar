@@ -13,13 +13,9 @@ collision_layer = 0
 collision_mask = 4294967295
 input_pickable = false
 script = ExtResource("1_1bq64")
-valid_color = null
-invalid_color = null
-collision_mask_prevent_placement = 16
-collision_mask_delete_placement = 4
 
 [node name="PlacementShape" parent="." instance=ExtResource("2_bo8dp")]
-scale = Vector2(2.5, 2.5)
+shape = null
 
 [node name="PreviewSprite" type="Sprite2D" parent="PlacementShape"]
 modulate = Color(1, 1, 1, 0.5)

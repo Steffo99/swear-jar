@@ -88,9 +88,8 @@ func update_counter_icon():
 	else:
 		store_collector_texturerect.texture = null
 
-func _on_ghost_requested(scene: PackedScene, texture: Texture2D):
-	ghost.scene_to_instantiate = scene
-	ghost.preview_texture = texture
+func _on_ghost_requested(item: PurchasableItem):
+	ghost.COMPAT_set_to_purchasable_item(item)
 	ghost.process_mode = Node.PROCESS_MODE_INHERIT
 	ghost.show()
 

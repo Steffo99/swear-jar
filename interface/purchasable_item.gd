@@ -90,25 +90,25 @@ var has_bought: bool:
 
 
 ## Emitted when a purchase has started.
-signal purchase_begin
+signal purchase_begin(what: PurchasableItem)
 
 ## Emitted when a purchase is cancelled.
-signal purchase_cancel
+signal purchase_cancel(what: PurchasableItem)
 
 ## Emitted when a purchase is completed.
 ##
 ## Emitted by complete_purchase().
-signal purchase_success
+signal purchase_success(what: PurchasableItem)
 
 
 func _on_buy_button_pressed():
 	if is_buying:
 		is_buying = false
-		purchase_cancel.emit()
+		purchase_cancel.emit(self)
 	else:
 		is_buying = true
-		purchase_begin.emit()
+		purchase_begin.emit(self)
 
 func complete_purchase():
 	is_buying = false
-	purchase_success.emit()
+	purchase_success.emit(self)

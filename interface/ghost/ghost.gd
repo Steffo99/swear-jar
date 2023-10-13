@@ -30,34 +30,65 @@ class_name Ghost
 ## The [Sprite2D] node previewing the scene.
 @onready var preview_sprite: Sprite2D = $PlacementShape/PreviewSprite
 
+## The position the ghost should have when a new body starts being placed.
+@onready var starting_position: Vector2 = position
 
-var can_place: bool = false
+## The rotation the ghost should have when a new body starts being placed.
+@onready var starting_rotation_radians: float = rotation
+
+
+## Whether this object can currently be placed.
+var can_place: bool = false:
+	get:
+		return can_place
+	set(value):
+		if value != can_place:
+			can_place_changed.emit(value)
+		can_place = value
+		modulate = valid_color if value else invalid_color
+
+## Emitted when [can_place] changes value.
+signal can_place_changed(to: bool)
 
 
 func _ready():
 	# Initialize the Area's collision mask
-	collision_mask = overlap_checker.collision_mask | placeable_area_checker.collision_mask | overlap_freer.collision_mask
-
+	collision_mask = overlap_checker.overlap_mask | placeable_area_checker.overlap_mask | overlap_freer.overlap_mask
 
 ## Update the value of [can_place].
 func update_state():
 	# DIRTY HACK: Relies on the placeable area being perfectly surrounded by solid bodies.
 	can_place = overlap_checker.is_overlapping_with == null and placeable_area_checker.is_overlapping_with != null
 
+## For retro-compatibility, configure this for the placement of a [PurchasableItem].
+func COMPAT_set_to_purchasable_item(pi: PurchasableItem):
+	instantiator.scene_to_instantiate = pi.item_scene
+	placement_shape.shape = pi.get_node("ConverterPlacementBody").get_node("FullConverterShape").shape
+	placement_shape.scale = pi.item_scene.scale
+	preview_sprite.texture = pi.item_icon
+	position = starting_position
+	rotation = starting_rotation_radians
 
+
+## Configure this for the placement of a [ShopItem].
 func set_to_shop_item(si: ShopItem):
-	pass
+	instantiator.scene_to_instantiate = si.placement_scene
+	placement_shape.shape = si.placement_shape  # TODO: Hmmm. Not the best interface.
+	placement_shape.scale = si.placement_scene.scale
+	preview_sprite.texture = si.placement_texture
+	position = starting_position
+	rotation = starting_rotation_radians
 
+## Emitted when [materialize] is called.
+signal materialized(what: Node)
 
-func materialize():
-	# Compatibility stub for Instantiator
+## Try to materialize the scene, returning it if the instantiation was successful, or null if it wasn't. 
+##
+## Remember to try the placement again if this returns null!
+func materialize() -> Node:
 	if not can_place:
 		return null
-	var overlapping_bodies = get_overlapping_bodies()
-	for body in overlapping_bodies:
-		if body is PhysicsBody2D:
-			if body.collision_layer & collision_mask_delete_placement:
-				body.queue_free()
+	overlap_freer.area_queue_free()
 	var inst = instantiator.instantiate()
-	# TODO: Remove this
+	materialized.emit(inst)
 	return inst

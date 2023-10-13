@@ -23,14 +23,14 @@ signal purchase_success(what: PurchasableItem)
 ## Array of all PurchasableItems that this ShopUI should control.
 @onready var purchasable_items: Array[Node] = find_children("*", "PurchasableItem")
 
-signal ghost_requested(scene: PackedScene, texture: Texture2D)
+signal ghost_requested(what: PurchasableItem)
 
 
 func _ready():
 	for item in purchasable_items:
-		item.purchase_begin.connect(_on_any_purchase_begin.bind(item))
-		item.purchase_cancel.connect(_on_any_purchase_cancel.bind(item))
-		item.purchase_success.connect(_on_any_purchase_success.bind(item))
+		item.purchase_begin.connect(_on_any_purchase_begin)
+		item.purchase_cancel.connect(_on_any_purchase_cancel)
+		item.purchase_success.connect(_on_any_purchase_success)
 
 func _on_any_purchase_begin(what: Node):
 	if not what is PurchasableItem:
@@ -38,7 +38,7 @@ func _on_any_purchase_begin(what: Node):
 		return
 	delete_button.disabled = true
 	if what.item_scene:
-		ghost_requested.emit(what.item_scene, what.item_icon)
+		ghost_requested.emit(what)
 	purchase_begin.emit(what)
 	set_all_can_buy(false, what)
 
