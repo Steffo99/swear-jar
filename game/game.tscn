@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=21 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -7,16 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="3_qwsty"]
 [ext_resource type="Texture2D" uid="uid://taojrwr7xrp4" path="res://interface/upgrade_gold.png" id="4_i557v"]
 [ext_resource type="Texture2D" uid="uid://yx3gme4q4ote" path="res://interface/upgrade_gem.png" id="5_y725k"]
-[ext_resource type="Texture2D" uid="uid://pj3ip6vlatms" path="res://converters/copper_to_silver/copper_converter.png" id="6_0jj8g"]
 [ext_resource type="PackedScene" uid="uid://beg758fa6o0cs" path="res://value/evaluator.tscn" id="6_my6nv"]
-[ext_resource type="PackedScene" uid="uid://ratkps4plkhl" path="res://converters/copper_to_silver/copper_converter.tscn" id="7_ipeok"]
 [ext_resource type="PackedScene" uid="uid://4d0al27t7axe" path="res://bottle/placeable_area.tscn" id="7_muqgj"]
 [ext_resource type="PackedScene" uid="uid://c2rlx7egl7xiv" path="res://collector/universal_collector.tscn" id="9_7op48"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="9_evdhb"]
 [ext_resource type="Theme" uid="uid://ba5utvfhnxa5i" path="res://interface/interface_theme.tres" id="10_sayqn"]
 [ext_resource type="Texture2D" uid="uid://c8pvjgtr2ufjl" path="res://interface/upgrade_copper.png" id="11_lt33g"]
 [ext_resource type="PackedScene" uid="uid://c3kitncwpi42j" path="res://entity/coin_copper/coin_copper.tscn" id="13_4j8om"]
-[ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost.tscn" id="16_8vhx6"]
+[ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost/ghost.tscn" id="16_8vhx6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -43,13 +41,11 @@ upgrade_gem_texture = ExtResource("5_y725k")
 
 [node name="GravityFromGyro" parent="." instance=ExtResource("2_h2pfr")]
 
-[node name="Ghost" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_8vhx6")]
+[node name="Ghost" parent="." node_paths=PackedStringArray("container") instance=ExtResource("16_8vhx6")]
 process_mode = 4
 visible = false
 position = Vector2(253, 109)
-preview_texture = ExtResource("6_0jj8g")
-scene_to_instantiate = ExtResource("7_ipeok")
-target = NodePath("..")
+container = NodePath("..")
 
 [node name="Bottle" parent="." instance=ExtResource("1_y7o2l")]
 metadata/_edit_lock_ = true

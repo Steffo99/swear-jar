@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3p0jdf7416ac"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_np8fu"]
-size = Vector2(32, 35)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cfy64"]
+points = PackedVector2Array(-15, 9, -6, 15, 5, 15, 15, 9, 15, -16, -15, -16)
 
 [node name="FullConverterShape" type="CollisionShape2D"]
-shape = SubResource("RectangleShape2D_np8fu")
-debug_color = Color(0, 1, 1, 0)
+shape = SubResource("ConvexPolygonShape2D_cfy64")

@@ -17,6 +17,11 @@ boot_splash/bg_color=Color(0.0977035, 0.0977035, 0.10161, 1)
 boot_splash/image="res://icon.png"
 config/icon="res://media/jar_icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/print_gpu_profile=true
+
 [display]
 
 window/size/viewport_width=270
