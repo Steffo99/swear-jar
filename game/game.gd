@@ -117,3 +117,7 @@ func _on_shop_ui_delete_cancel():
 	var item_converters = find_children("*", "ItemConverter", true, false)
 	for converter in item_converters:
 		converter.ending_deletion()
+
+
+func _on_action_timer_timeout():
+	pass # Replace with function body.

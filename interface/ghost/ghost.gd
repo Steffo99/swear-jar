@@ -13,13 +13,6 @@ class_name Ghost
 ## The [Instantiator] to use to spawn the ghosted item.
 @onready var instantiator: Instantiator = $Instantiator
 
-## The node which materialized entities should be attached to.
-@export var container: Node = null:
-	get:
-		return instantiator.container
-	set(value):
-		instantiator.container = value
-
 ## The [OverlapChecker] to use to see if a solid block is overlapping the ghost.
 @onready var overlap_checker: OverlapChecker = $OverlapChecker
 
