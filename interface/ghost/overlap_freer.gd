@@ -15,7 +15,7 @@ class_name OverlapFreer
 @export var valid_color: Color = Color.WHITE
 
 ## Color to modulate objects that would be deleted if [area_queue_free] was called right now.
-@export var invalid_color: Color = Color.RED
+@export var invalid_color: Color = Color.MAROON
 
 
 var is_overlapping_with: Array[Node2D] = []:
