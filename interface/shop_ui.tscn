@@ -139,7 +139,6 @@ item_cost_text = "40 silver"
 item_scene = ExtResource("12_ml4jm")
 item_cost_type = &"Silver"
 item_cost_goal = 40
-has_unlocked = false
 
 [node name="PurchasableItemPadding2" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2

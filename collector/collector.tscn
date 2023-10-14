@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5w3b55aiui6c"]
+[gd_scene load_steps=2 format=3 uid="uid://c5w3b55aiui6c"]
 
 [ext_resource type="Script" path="res://collector/collector.gd" id="1_1xtt5"]
-[ext_resource type="AudioStream" uid="uid://bpxjhl0aq3yrv" path="res://audio/conversione/suck2.wav" id="2_n0plc"]
 
-[node name="Collector" type="Area2D" node_paths=PackedStringArray("sound_absorb")]
+[node name="Collector" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_1xtt5")
-sound_absorb = NodePath("sound_absorb")
-
-[node name="sound_absorb" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_n0plc")
-volume_db = -8.0
-pitch_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

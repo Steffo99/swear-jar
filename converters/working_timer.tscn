@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ev0md0jrpfj"]
+
+[ext_resource type="Script" path="res://converters/working_timer.gd" id="1_7a4bc"]
+
+[node name="WorkingTimer" type="Timer"]
+wait_time = 0.5
+one_shot = true
+script = ExtResource("1_7a4bc")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

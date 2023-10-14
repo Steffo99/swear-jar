@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3p0jdf7416ac"]
+[gd_scene load_steps=2 format=3 uid="uid://o8kq85q3qtl4"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cfy64"]
 points = PackedVector2Array(-15, 9, -6, 15, 5, 15, 15, 9, 15, -16, -15, -16)
 
-[node name="FullConverterShape" type="CollisionShape2D"]
+[node name="ShieldConverterObstructionShape" type="CollisionShape2D"]
+z_index = 2
 shape = SubResource("ConvexPolygonShape2D_cfy64")
+debug_color = Color(0, 0, 0, 0.141176)

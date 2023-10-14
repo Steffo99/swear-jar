@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="15_nahnf"]
 [ext_resource type="AudioStream" uid="uid://dv1e0wiiquxp0" path="res://audio/conversione/lava.wav" id="16_ptmks"]
 [ext_resource type="AudioStream" uid="uid://c0uhi1hrejyxg" path="res://audio/conversione/new_item.wav" id="17_4wm4w"]
-[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="17_udaa3"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="17_udaa3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqtie"]
 atlas = ExtResource("2_136t7")

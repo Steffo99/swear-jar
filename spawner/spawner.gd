@@ -30,7 +30,7 @@ var buffer: int = 0
 ## Sound to play when spawning an item.
 ##
 ## Doesn't spawn anything if not set.
-@export var sound_complete: AudioStreamPlayer
+@export var sound_complete: AudioStreamPlayer2D
 
 @export_range(0.01, 8.0, 0.01, "or_greater") var sound_complete_pitch_min: float = 1.00
 @export_range(0.01, 8.0, 0.01, "or_greater") var sound_complete_pitch_max: float = 1.00
@@ -68,7 +68,7 @@ func _do_spawn():
 #		print("ehi")
 	var instantiated = scene.instantiate()
 	instantiated.global_position = global_position + _select_spawn_position()
-	instantiated.rotation_degrees = _select_spawn_rotation()
+	instantiated.rotation_degrees = global_rotation_degrees + _select_spawn_rotation()
 	target.add_child(instantiated)
 	if sound_complete:
 		sound_complete.pitch_scale = Randomizer.rng.randf_range(sound_complete_pitch_min, sound_complete_pitch_max)

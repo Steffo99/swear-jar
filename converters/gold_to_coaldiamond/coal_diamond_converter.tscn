@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://db1i6rqitk0e" path="res://audio/conversione/coal_funny.wav" id="11_601lg"]
 [ext_resource type="PackedScene" uid="uid://cr5tiep20hk0s" path="res://entity/coal_diamond/diamond.tscn" id="11_ekhmr"]
 [ext_resource type="AudioStream" uid="uid://cc4mqxq6mxmdg" path="res://audio/conversione/coin_to_gem.wav" id="12_pddsd"]
-[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_xld3l"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="12_xld3l"]
 [ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="13_jvouj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00uxa"]

@@ -23,8 +23,8 @@ var is_overlapping_with: Array[Node2D] = []:
 		return is_overlapping_with
 	set(value):
 		for body in is_overlapping_with:
-			# Make sure to re-modulate coins which have been collected
-			if body.is_instance_valid():
+			# Make sure to not re-modulate coins which have been collected 
+			if is_instance_valid(body):
 				body.modulate = valid_color
 		for body in value:
 			body.modulate = invalid_color

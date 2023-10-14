@@ -18,6 +18,7 @@ func _ready():
 	var material = ShaderMaterial.new()
 	material.shader = shader
 	parent.material = material
+	randomize_hue()
 
 
 func randomize_hue():

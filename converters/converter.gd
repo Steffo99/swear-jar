@@ -1,11 +1,9 @@
 extends StaticBody2D
 class_name Converter
 
-@export var sprite_front: AnimatedSprite2D
-@export var sprite_back: AnimatedSprite2D
-@export var conversion_timer: Timer
-@export var sound_working: AudioStreamPlayer
-@export var sound_complete: AudioStreamPlayer
+@onready var sprite_front: AnimatedSprite2D = find_children("SpriteFront", "AnimatedSprite2D", false, true).pop_front()
+@onready var sprite_back: AnimatedSprite2D = find_children("SpriteBack", "AnimatedSprite2D", false, true).pop_front()
+@onready var working_timer: Timer = $WorkingTimer
 @export var spawner: Spawner
 @export var spawner_alt: Spawner
 @export_range(0.0, 1.0, 0.01) var spawner_alt_chance: float
@@ -17,20 +15,18 @@ func _on_collector_goal():
 	to_produce += 1
 
 func _physics_process(_delta):
-	if to_produce >= 1 and conversion_timer.is_stopped():
+	if to_produce >= 1 and working_timer.is_stopped():
 		to_produce -= 1
 		produce()
 
 func produce():
-	conversion_timer.start()
+	working_timer.start()
 	if sprite_front:
 		sprite_front.play()
 	if sprite_back:
 		sprite_back.play()
-	if sound_working:
-		sound_working.play()
 
-func _on_timer_timeout():
+func _on_working_timer_timeout():
 	if spawner_alt and Randomizer.rng.randf() < spawner_alt_chance:
 		spawner_alt.spawn()
 	else:
@@ -39,8 +35,6 @@ func _on_timer_timeout():
 		sprite_front.stop()
 	if sprite_back:
 		sprite_back.stop()
-	if sound_working:
-		sound_working.stop()
 
 
 var is_pending_deletion: bool = false

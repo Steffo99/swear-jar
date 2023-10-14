@@ -10,7 +10,10 @@ var collected_count: int = 0
 ##
 ## The strings will match only if exactly the same.
 @export var collecting_types: Array[StringName]
-@export var sound_absorb: AudioStreamPlayer
+
+## The sound played when an item is collected.
+@export var sound_absorb: AudioStreamPlayer2D
+
 ## The goal amount of entities to collect.
 ##
 ## When [collected_count] reaches it, it will be reset to zero, and the "goal" signal will be emitted.

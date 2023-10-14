@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bevj27e1ha8m3"]
+
+[ext_resource type="PackedScene" uid="uid://o8kq85q3qtl4" path="res://converters/shield_converter_obstruction_shape.tscn" id="1_mcdb6"]
+
+[node name="PlacementObstruction" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="ShieldConverterObstructionShape" parent="." instance=ExtResource("1_mcdb6")]

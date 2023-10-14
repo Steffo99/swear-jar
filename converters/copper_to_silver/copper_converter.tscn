@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="9_2wvgu"]
 [ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_6hhch"]
 [ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_r8505"]
-[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/converter_placement_body.tscn" id="12_5qhgs"]
+[ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="12_5qhgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
 atlas = ExtResource("4_exnn7")
@@ -88,6 +88,7 @@ sprite_frames = SubResource("SpriteFrames_4m3dg")
 z_index = 2
 position = Vector2(-14.5, -3)
 shape = SubResource("CapsuleShape2D_aslkt")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="RightWall" type="CollisionShape2D" parent="."]
 z_index = 2
