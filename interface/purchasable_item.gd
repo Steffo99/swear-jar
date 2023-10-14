@@ -72,6 +72,7 @@ var is_buying: bool = false:
 	set(value):
 		is_buying = value
 		$Contents/Action/BuyButton.text = "Undo" if value else "Buy"
+		$Contents/Action/BuyButton.modulate = Color.RED if value else Color.WHITE
 
 ## Whether this item can be bought one or infinite times.
 @export var one_shot: bool
