@@ -117,4 +117,4 @@ common/max_physics_steps_per_frame=30
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.133333, 0.12549, 0.203922, 1)
+environment/defaults/default_clear_color=Color(0.0901961, 0.0901961, 0.0901961, 1)
