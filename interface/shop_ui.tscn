@@ -152,7 +152,6 @@ item_cost_text = "20 gold"
 item_scene = ExtResource("13_m0kio")
 item_cost_type = &"Gold"
 item_cost_goal = 20
-has_unlocked = false
 
 [node name="PurchasableItemPadding4" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -166,7 +165,6 @@ item_cost_text = "20 gold"
 item_scene = ExtResource("16_7ok54")
 item_cost_type = &"Gold"
 item_cost_goal = 20
-has_unlocked = false
 
 [node name="PurchasableItemPadding6" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2
@@ -180,7 +178,6 @@ item_cost_text = "30 gems"
 item_scene = ExtResource("14_tgckt")
 item_cost_type = &"Gem"
 item_cost_goal = 30
-has_unlocked = false
 
 [node name="PurchasableItemPadding7" parent="Rows/PaddedScrollable/Scrollable/ScrollableItems/ConvertCategory" instance=ExtResource("3_4feaj")]
 layout_mode = 2

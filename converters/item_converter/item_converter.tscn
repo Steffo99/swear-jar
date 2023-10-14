@@ -138,6 +138,8 @@ z_index = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qqah4")
 
+[node name="PlacementObstruction" parent="." instance=ExtResource("17_udaa3")]
+
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 2
 position = Vector2(-14.5, -3)
@@ -241,8 +243,6 @@ stream = ExtResource("17_4wm4w")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_psnir")
 frame_progress = 0.228399
-
-[node name="ConverterPlacementBody" parent="." instance=ExtResource("17_udaa3")]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="collected" from="GoldCollector" to="." method="_on_gold_collector_collected"]

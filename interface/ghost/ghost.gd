@@ -65,7 +65,7 @@ func COMPAT_set_to_purchasable_item(pi: PurchasableItem):
 	push_warning("COMPAT_set_to_purchasable_item is deprecated.")
 	instantiator.scene_to_instantiate = pi.item_scene
 	var item_scene = pi.item_scene.instantiate()
-	placement_shape.shape = item_scene.get_node("ConverterPlacementBody/FullConverterShape").shape
+	placement_shape.shape = item_scene.get_node("PlacementObstruction/ShieldConverterObstructionShape").shape
 	placement_shape.scale = item_scene.scale
 	item_scene.queue_free()
 	preview_sprite.texture = pi.item_icon
