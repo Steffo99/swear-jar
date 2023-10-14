@@ -119,6 +119,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 stream = ExtResource("9_1aocf")
 volume_db = -8.0
 pitch_scale = 2.0
+max_polyphony = 8
 
 [node name="WorkingTimer" parent="." node_paths=PackedStringArray("working_sound") instance=ExtResource("10_72f5c")]
 working_sound = NodePath("SoundWorking")

@@ -132,6 +132,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 stream = ExtResource("10_p3n1d")
 volume_db = -8.0
 pitch_scale = 2.0
+max_polyphony = 8
 
 [node name="WorkingTimer" parent="." node_paths=PackedStringArray("working_sound") instance=ExtResource("11_svms0")]
 working_sound = NodePath("SoundWorking")
@@ -141,10 +142,9 @@ position = Vector2(0, 25)
 stream = ExtResource("10_hy4ck")
 pitch_scale = 1.08
 
-[node name="Spawner" parent="." node_paths=PackedStringArray("target", "sound_complete") instance=ExtResource("8_yel0k")]
+[node name="Spawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("8_yel0k")]
 position = Vector2(0, 10)
 scene = ExtResource("10_ry7ak")
-target = NodePath("")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
@@ -162,10 +162,9 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 position = Vector2(0, 2)
 stream = ExtResource("11_601lg")
 
-[node name="Spawner2" parent="." node_paths=PackedStringArray("target", "sound_complete") instance=ExtResource("8_yel0k")]
+[node name="Spawner2" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("8_yel0k")]
 position = Vector2(0, 10)
 scene = ExtResource("11_ekhmr")
-target = NodePath("")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0

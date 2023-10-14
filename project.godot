@@ -25,6 +25,10 @@ window/size/mode=2
 window/stretch/aspect="keep_height"
 window/handheld/orientation=1
 
+[editor]
+
+movie_writer/movie_file="/store/Documents/Workspaces/Steffo99/ld54/build/movie.avi"
+
 [input]
 
 gravity_up={

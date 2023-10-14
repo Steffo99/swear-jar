@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=26 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="15_trrh7"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost/ghost.tscn" id="16_8vhx6"]
 [ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="16_20aff"]
+[ext_resource type="AudioStream" uid="uid://cvrbqm56njwoe" path="res://audio/conversione/risucchio.wav" id="19_rvt56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -153,8 +154,9 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="ActionTimer" parent="Spawners/CheatGemSpawner" instance=ExtResource("13_y2562")]
 action = "cheat_spawn_gem"
 
-[node name="StoreCollector" parent="." instance=ExtResource("9_evdhb")]
+[node name="StoreCollector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("9_evdhb")]
 position = Vector2(135, 0)
+sound_absorb = NodePath("SoundAbsorb")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoreCollector"]
@@ -208,6 +210,11 @@ size_flags_vertical = 0
 text = "250"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="StoreCollector"]
+stream = ExtResource("19_rvt56")
+pitch_scale = 1.4
+max_polyphony = 8
 
 [node name="UniversalCollectorTop" parent="." instance=ExtResource("9_7op48")]
 position = Vector2(135, -270)
