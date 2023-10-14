@@ -12,10 +12,9 @@
 [node name="ItemChalice" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 14
-mass = 2.7
-inertia = 450.0
+mass = 24.0
+inertia = 1250.0
 physics_material_override = ExtResource("1_vp2el")
-continuous_cd = 1
 linear_damp = 0.1
 angular_damp = 0.1
 

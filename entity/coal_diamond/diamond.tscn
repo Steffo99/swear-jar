@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr5tiep20hk0s"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_mma75"]
+[ext_resource type="PhysicsMaterial" uid="uid://b5egitifjvcqo" path="res://entity/gem_physics_material.tres" id="1_1hg8e"]
 [ext_resource type="Texture2D" uid="uid://bquk2q5g6bst5" path="res://entity/coal_diamond/diamond.png" id="2_abwth"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="3_n4fa5"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="4_yfos5"]
@@ -8,10 +8,9 @@
 [node name="Diamond" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 14
-mass = 3.0
-inertia = 400.0
-physics_material_override = ExtResource("1_mma75")
-continuous_cd = 1
+mass = 10.0
+inertia = 1500.0
+physics_material_override = ExtResource("1_1hg8e")
 can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1

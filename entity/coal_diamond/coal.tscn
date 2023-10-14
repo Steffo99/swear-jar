@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://diy8fj7mcc00p"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_ftt7x"]
+[ext_resource type="PhysicsMaterial" uid="uid://b2ghrg3vynbi8" path="res://entity/coal_physics_material.tres" id="1_03a3j"]
 [ext_resource type="Texture2D" uid="uid://bnfwmlf7ems16" path="res://entity/coal_diamond/coal.png" id="2_ok4kf"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_e8hbs"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_3e4d8"]
@@ -8,10 +8,9 @@
 [node name="Coal" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 14
-mass = 0.75
-inertia = 1200.0
-physics_material_override = ExtResource("1_ftt7x")
-continuous_cd = 1
+mass = 0.5
+inertia = 300.0
+physics_material_override = ExtResource("1_03a3j")
 can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1

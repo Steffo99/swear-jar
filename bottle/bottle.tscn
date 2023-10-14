@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bllsprv8orpn4"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://b5egitifjvcqo" path="res://entity/gem_physics_material.tres" id="1_4mug4"]
 [ext_resource type="Texture2D" uid="uid://vmedndbi8crf" path="res://bottle/glass_tileset.png" id="1_qvgnf"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y0g3v"]
-friction = 0.1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tyce"]
 texture = ExtResource("1_qvgnf")
@@ -107,7 +105,7 @@ texture = ExtResource("1_qvgnf")
 [sub_resource type="TileSet" id="TileSet_tr7be"]
 physics_layer_0/collision_layer = 18
 physics_layer_0/collision_mask = 0
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_y0g3v")
+physics_layer_0/physics_material = ExtResource("1_4mug4")
 sources/1 = SubResource("TileSetAtlasSource_6tyce")
 
 [node name="Bottle" type="TileMap"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bawprh8kluilq"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_vmemd"]
+[ext_resource type="PhysicsMaterial" uid="uid://b5egitifjvcqo" path="res://entity/gem_physics_material.tres" id="1_bt3de"]
 [ext_resource type="Texture2D" uid="uid://b21bsbo5f0ed7" path="res://entity/gem/gemstone.png" id="3_6jejy"]
 [ext_resource type="PackedScene" uid="uid://vkvtap437nnf" path="res://color/colored.tscn" id="4_2cetq"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_idoeu"]
@@ -15,10 +15,9 @@ height = 9.0
 [node name="Gem" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 14
-mass = 1.5
-inertia = 800.0
-physics_material_override = ExtResource("1_vmemd")
-continuous_cd = 1
+mass = 8.0
+inertia = 1500.0
+physics_material_override = ExtResource("1_bt3de")
 can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
