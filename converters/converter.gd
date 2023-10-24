@@ -20,7 +20,7 @@ func _physics_process(_delta):
 		produce()
 
 func produce():
-	working_timer.start()
+	working_timer.do_start()
 	if sprite_front:
 		sprite_front.play()
 	if sprite_back:
