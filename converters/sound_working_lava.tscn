@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cite8fonsptm8"]
+
+[ext_resource type="AudioStream" uid="uid://cl7olfdtp57u3" path="res://audio/conversione/lava.ogg" id="1_rq8in"]
+
+[node name="SoundWorking" type="AudioStreamPlayer2D"]
+position = Vector2(0, 25)
+stream = ExtResource("1_rq8in")
+volume_db = 1.0
+pitch_scale = 1.08

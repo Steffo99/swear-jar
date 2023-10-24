@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dg4qq1pgojk8d" path="res://converters/copper_to_silver/copper_converter_front_3.png" id="6_acinx"]
 [ext_resource type="Texture2D" uid="uid://60502lbpup6" path="res://converters/copper_to_silver/copper_converter_front_4.png" id="7_11jge"]
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="8_tc2oo"]
-[ext_resource type="AudioStream" uid="uid://bpxjhl0aq3yrv" path="res://audio/conversione/suck2.wav" id="9_1aocf"]
+[ext_resource type="PackedScene" uid="uid://b7s1gsv72wwo5" path="res://converters/sound_absorb_basic.tscn" id="9_0mvt5"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="9_2wvgu"]
-[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_6hhch"]
 [ext_resource type="PackedScene" uid="uid://b3ev0md0jrpfj" path="res://converters/working_timer.tscn" id="10_72f5c"]
-[ext_resource type="AudioStream" uid="uid://7tw5efuo3gxj" path="res://audio/conversione/coin_to_coin.wav" id="11_r8505"]
+[ext_resource type="PackedScene" uid="uid://bj0c8si8r5qc6" path="res://converters/sound_working_basic.tscn" id="11_8o4bk"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="12_5qhgs"]
+[ext_resource type="PackedScene" uid="uid://1nbs4nj3rti1" path="res://converters/sound_complete_basic.tscn" id="14_ycmxn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62dyi"]
 atlas = ExtResource("4_exnn7")
@@ -115,19 +115,12 @@ collecting_amount = 10
 shape = SubResource("RectangleShape2D_csk2d")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
-[node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="Collector"]
-stream = ExtResource("9_1aocf")
-volume_db = -8.0
-pitch_scale = 2.0
-max_polyphony = 8
+[node name="SoundAbsorb" parent="Collector" instance=ExtResource("9_0mvt5")]
 
 [node name="WorkingTimer" parent="." node_paths=PackedStringArray("working_sound") instance=ExtResource("10_72f5c")]
 working_sound = NodePath("SoundWorking")
 
-[node name="SoundWorking" type="AudioStreamPlayer2D" parent="WorkingTimer"]
-position = Vector2(0, 25)
-stream = ExtResource("10_6hhch")
-pitch_scale = 1.08
+[node name="SoundWorking" parent="WorkingTimer" instance=ExtResource("11_8o4bk")]
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("9_2wvgu")]
 position = Vector2(0, 10)
@@ -145,9 +138,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_kbgq6")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
-[node name="SoundComplete" type="AudioStreamPlayer2D" parent="Spawner"]
-position = Vector2(0, 2)
-stream = ExtResource("11_r8505")
+[node name="SoundComplete" parent="Spawner" instance=ExtResource("14_ycmxn")]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]

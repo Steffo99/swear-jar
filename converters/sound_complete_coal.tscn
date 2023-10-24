@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbnjstin80gf6"]
+
+[ext_resource type="AudioStream" uid="uid://h0j20jsuk1yg" path="res://audio/conversione/coal_funny.ogg" id="1_6lcgb"]
+
+[node name="SoundComplete" type="AudioStreamPlayer2D"]
+position = Vector2(0, 2)
+stream = ExtResource("1_6lcgb")
+volume_db = -9.0

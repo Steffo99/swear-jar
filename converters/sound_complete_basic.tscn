@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1nbs4nj3rti1"]
+
+[ext_resource type="AudioStream" uid="uid://cqs3h6vdbxo8s" path="res://audio/conversione/coin_to_coin.ogg" id="1_chlpd"]
+
+[node name="SoundComplete" type="AudioStreamPlayer2D"]
+position = Vector2(0, 2)
+stream = ExtResource("1_chlpd")
+volume_db = -2.0

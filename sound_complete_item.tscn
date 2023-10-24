@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv52h0b0rvpqd"]
+
+[ext_resource type="AudioStream" uid="uid://b53kyxq2hn8vy" path="res://audio/conversione/new_item.ogg" id="1_43fg7"]
+
+[node name="SoundComplete" type="AudioStreamPlayer2D"]
+position = Vector2(0, 2)
+stream = ExtResource("1_43fg7")
+volume_db = -2.0

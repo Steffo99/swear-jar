@@ -32,7 +32,9 @@ func _on_body_entered(body: Node2D):
 		if collectible and collectible.type in collecting_types:
 			collected_count += 1
 			collectible.collect()
+			print("Should play ", sound_absorb)
 			if sound_absorb:
+				print("Will play ", sound_absorb)
 				sound_absorb.play()
 			collected.emit(body)
 			if collected_count >= collecting_amount:

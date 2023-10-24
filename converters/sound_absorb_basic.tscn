@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7s1gsv72wwo5"]
+
+[ext_resource type="AudioStream" uid="uid://cyulrjklb122q" path="res://audio/conversione/suck2.ogg" id="1_dt7q4"]
+
+[node name="SoundAbsorb" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_dt7q4")
+volume_db = -8.0
+pitch_scale = 2.0
+max_polyphony = 8

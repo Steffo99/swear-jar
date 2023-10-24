@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://c5w3b55aiui6c" path="res://collector/collector.tscn" id="7_rxm8j"]
 [ext_resource type="Texture2D" uid="uid://b3vbqgitwo8la" path="res://converters/gold_to_coaldiamond/diamond_converter_front_5.png" id="7_swl1g"]
 [ext_resource type="PackedScene" uid="uid://c67lfbk4gf1ga" path="res://spawner/spawner.tscn" id="8_yel0k"]
-[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="10_hy4ck"]
-[ext_resource type="AudioStream" uid="uid://bpxjhl0aq3yrv" path="res://audio/conversione/suck2.wav" id="10_p3n1d"]
+[ext_resource type="PackedScene" uid="uid://b7s1gsv72wwo5" path="res://converters/sound_absorb_basic.tscn" id="10_rffmx"]
 [ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="10_ry7ak"]
-[ext_resource type="AudioStream" uid="uid://db1i6rqitk0e" path="res://audio/conversione/coal_funny.wav" id="11_601lg"]
 [ext_resource type="PackedScene" uid="uid://cr5tiep20hk0s" path="res://entity/coal_diamond/diamond.tscn" id="11_ekhmr"]
 [ext_resource type="PackedScene" uid="uid://b3ev0md0jrpfj" path="res://converters/working_timer.tscn" id="11_svms0"]
-[ext_resource type="AudioStream" uid="uid://cc4mqxq6mxmdg" path="res://audio/conversione/coin_to_gem.wav" id="12_pddsd"]
+[ext_resource type="PackedScene" uid="uid://bj0c8si8r5qc6" path="res://converters/sound_working_basic.tscn" id="12_s5xhf"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="12_xld3l"]
+[ext_resource type="PackedScene" uid="uid://dbnjstin80gf6" path="res://converters/sound_complete_coal.tscn" id="15_7b66q"]
+[ext_resource type="PackedScene" uid="uid://dgun44tkwktvv" path="res://converters/sound_complete_gem.tscn" id="17_iaatb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00uxa"]
 atlas = ExtResource("3_p4wsd")
@@ -128,19 +128,12 @@ collecting_amount = 10
 shape = SubResource("RectangleShape2D_apl80")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
-[node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="Collector"]
-stream = ExtResource("10_p3n1d")
-volume_db = -8.0
-pitch_scale = 2.0
-max_polyphony = 8
+[node name="SoundAbsorb" parent="Collector" instance=ExtResource("10_rffmx")]
 
 [node name="WorkingTimer" parent="." node_paths=PackedStringArray("working_sound") instance=ExtResource("11_svms0")]
 working_sound = NodePath("SoundWorking")
 
-[node name="SoundWorking" type="AudioStreamPlayer2D" parent="WorkingTimer"]
-position = Vector2(0, 25)
-stream = ExtResource("10_hy4ck")
-pitch_scale = 1.08
+[node name="SoundWorking" parent="WorkingTimer" instance=ExtResource("12_s5xhf")]
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("8_yel0k")]
 position = Vector2(0, 10)
@@ -158,9 +151,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vi6vj")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
-[node name="SoundComplete" type="AudioStreamPlayer2D" parent="Spawner"]
-position = Vector2(0, 2)
-stream = ExtResource("11_601lg")
+[node name="SoundComplete" parent="Spawner" instance=ExtResource("15_7b66q")]
 
 [node name="Spawner2" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("8_yel0k")]
 position = Vector2(0, 10)
@@ -178,9 +169,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vi6vj")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
-[node name="SoundComplete" type="AudioStreamPlayer2D" parent="Spawner2"]
-position = Vector2(0, 2)
-stream = ExtResource("12_pddsd")
+[node name="SoundComplete" parent="Spawner2" instance=ExtResource("17_iaatb")]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]

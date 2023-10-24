@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgun44tkwktvv"]
+
+[ext_resource type="AudioStream" uid="uid://brok2rbyyg2i5" path="res://audio/conversione/coin_to_gem.ogg" id="1_gxdtx"]
+
+[node name="SoundComplete" type="AudioStreamPlayer2D"]
+position = Vector2(0, 2)
+stream = ExtResource("1_gxdtx")
+volume_db = -2.0

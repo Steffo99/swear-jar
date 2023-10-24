@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj0c8si8r5qc6"]
+
+[ext_resource type="AudioStream" uid="uid://du4o8icvo2pa7" path="res://audio/conversione/mechanic_sound.ogg" id="1_vvlo2"]
+
+[node name="SoundWorking" type="AudioStreamPlayer2D"]
+position = Vector2(0, 25)
+stream = ExtResource("1_vvlo2")
+volume_db = 1.0
+pitch_scale = 1.08
