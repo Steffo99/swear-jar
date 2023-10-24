@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=27 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -19,7 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://du3005kwybbrh" path="res://entity/coin_gold/coin_gold.tscn" id="15_trrh7"]
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost/ghost.tscn" id="16_8vhx6"]
 [ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="16_20aff"]
-[ext_resource type="AudioStream" uid="uid://cyulrjklb122q" path="res://audio/conversione/suck2.ogg" id="19_imgpx"]
+[ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="17_mf5fk"]
+[ext_resource type="AudioStream" uid="uid://daiute7lbjet7" path="res://audio/tap/click4.ogg" id="19_i72ko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
 size = Vector2(240, 384)
@@ -154,9 +155,25 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="ActionTimer" parent="Spawners/CheatGemSpawner" instance=ExtResource("13_y2562")]
 action = "cheat_spawn_gem"
 
+[node name="CheatCoalSpawner" parent="Spawners" node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
+scene = ExtResource("17_mf5fk")
+target = NodePath("../..")
+buffer_cap = 10
+spawn_rect = Rect2(-20, 0, 40, 0)
+overlapping_body_count_limit = 16
+metadata/_edit_lock_ = true
+
+[node name="NeckShape" type="CollisionShape2D" parent="Spawners/CheatCoalSpawner"]
+shape = SubResource("RectangleShape2D_4uksi")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="ActionTimer" parent="Spawners/CheatCoalSpawner" instance=ExtResource("13_y2562")]
+action = "cheat_spawn_coal"
+
 [node name="StoreCollector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("9_evdhb")]
 position = Vector2(135, 0)
 sound_absorb = NodePath("SoundAbsorb")
+sound_absorb_max_pitch = 4.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoreCollector"]
@@ -212,9 +229,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="StoreCollector"]
-stream = ExtResource("19_imgpx")
-volume_db = -8.0
-pitch_scale = 1.4
+stream = ExtResource("19_i72ko")
+volume_db = 4.0
+pitch_scale = 2.5
 max_polyphony = 8
 
 [node name="UniversalCollectorTop" parent="." instance=ExtResource("9_7op48")]
@@ -246,6 +263,7 @@ debug_color = Color(0, 0, 0, 0.419608)
 [connection signal="timeout" from="Spawners/CheatSilverSpawner/ActionTimer" to="Spawners/CheatSilverSpawner" method="spawn"]
 [connection signal="timeout" from="Spawners/CheatGoldSpawner/ActionTimer" to="Spawners/CheatGoldSpawner" method="spawn"]
 [connection signal="timeout" from="Spawners/CheatGemSpawner/ActionTimer" to="Spawners/CheatGemSpawner" method="spawn"]
+[connection signal="timeout" from="Spawners/CheatCoalSpawner/ActionTimer" to="Spawners/CheatCoalSpawner" method="spawn"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
 
 [editable path="Ghost"]

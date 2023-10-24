@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0c8si8r5qc6" path="res://converters/sound_working_basic.tscn" id="12_s5xhf"]
 [ext_resource type="PackedScene" uid="uid://bevj27e1ha8m3" path="res://converters/placement_obstruction.tscn" id="12_xld3l"]
 [ext_resource type="PackedScene" uid="uid://dbnjstin80gf6" path="res://converters/sound_complete_coal.tscn" id="15_7b66q"]
-[ext_resource type="PackedScene" uid="uid://dgun44tkwktvv" path="res://converters/sound_complete_gem.tscn" id="17_iaatb"]
+[ext_resource type="PackedScene" uid="uid://dgun44tkwktvv" path="res://converters/sound_complete_diamond.tscn" id="17_iaatb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00uxa"]
 atlas = ExtResource("3_p4wsd")

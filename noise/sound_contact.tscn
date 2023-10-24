@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://67pl0enqttmi"]
+
+[ext_resource type="Script" path="res://noise/sound_contact.gd" id="1_uxads"]
+
+[node name="SoundContact" type="AudioStreamPlayer2D"]
+script = ExtResource("1_uxads")

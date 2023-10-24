@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgun44tkwktvv"]
+
+[ext_resource type="AudioStream" uid="uid://c7gufi4l4vd7a" path="res://audio/conversione/coin_to_gem_but_actually_gem.ogg" id="1_h04jr"]
+
+[node name="SoundComplete" type="AudioStreamPlayer2D"]
+position = Vector2(0, 2)
+stream = ExtResource("1_h04jr")
+volume_db = 5.0

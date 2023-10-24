@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://du3005kwybbrh"]
+[gd_scene load_steps=11 format=3 uid="uid://du3005kwybbrh"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_nfq5t"]
 [ext_resource type="Texture2D" uid="uid://dxtstvjlten8p" path="res://entity/coin_gold/coin_gold.png" id="2_1mhvl"]
 [ext_resource type="Texture2D" uid="uid://bwqsdmghnrmhy" path="res://entity/coin_gold/coin_gold_outline.png" id="3_v0ty1"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="4_t2klm"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="5_palpv"]
+[ext_resource type="PackedScene" uid="uid://cvh8h0qfylp1x" path="res://noise/noisy.tscn" id="6_qbtaa"]
+[ext_resource type="PackedScene" uid="uid://67pl0enqttmi" path="res://noise/sound_contact.tscn" id="7_bv4nd"]
+[ext_resource type="AudioStream" uid="uid://d3knuq0635ie0" path="res://audio/coin/coin_coin_randomizer.tres" id="8_wq2hx"]
+[ext_resource type="AudioStream" uid="uid://gu3d7jpurudc" path="res://audio/coin/coin_glass_randomizer.tres" id="9_wcgyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6byl"]
 size = Vector2(27, 5)
@@ -15,6 +19,8 @@ collision_mask = 14
 mass = 2.0
 inertia = 600.0
 physics_material_override = ExtResource("1_nfq5t")
+max_contacts_reported = 1
+contact_monitor = true
 can_sleep = false
 linear_damp = 0.1
 angular_damp = 0.1
@@ -37,3 +43,18 @@ type = &"Gold"
 
 [node name="Valuable" parent="." instance=ExtResource("5_palpv")]
 value = 100
+
+[node name="Noisy" parent="." instance=ExtResource("6_qbtaa")]
+type = &"Coin"
+
+[node name="SoundContactCoin" parent="Noisy" instance=ExtResource("7_bv4nd")]
+stream = ExtResource("8_wq2hx")
+type = &"Coin"
+min_velocity = 100.0
+
+[node name="SoundContactGem" parent="Noisy" instance=ExtResource("7_bv4nd")]
+stream = ExtResource("9_wcgyq")
+type = &"Gem"
+min_velocity = 100.0
+
+[connection signal="body_entered" from="." to="Noisy" method="_on_body_entered"]

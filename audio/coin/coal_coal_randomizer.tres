@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bwo63mo5jge76"]
+
+[ext_resource type="AudioStream" uid="uid://x3wsub0qrc0t" path="res://audio/coin/coal_coal_1.ogg" id="1_8h4n0"]
+[ext_resource type="AudioStream" uid="uid://cuv1xn1ng4paf" path="res://audio/coin/coal_coal_2.ogg" id="2_42tuj"]
+
+[resource]
+streams_count = 2
+playback_mode = 1
+random_pitch = 1.2
+stream_0/stream = ExtResource("1_8h4n0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_42tuj")
+stream_1/weight = 1.0

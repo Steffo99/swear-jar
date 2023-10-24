@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://b5b2wile3yfoj"]
+
+[ext_resource type="AudioStream" uid="uid://b5xtbecwrn68j" path="res://audio/coin/gem_gem_2.ogg" id="1_fdpt6"]
+[ext_resource type="AudioStream" uid="uid://bctb1sd22bn2h" path="res://audio/coin/gem_gem_3.ogg" id="2_vwogo"]
+[ext_resource type="AudioStream" uid="uid://b67eiknx3741a" path="res://audio/coin/gem_gem_4.ogg" id="3_wq8oh"]
+[ext_resource type="AudioStream" uid="uid://dyq3vhl1gby4d" path="res://audio/coin/gem_gem_5.ogg" id="4_r62qn"]
+[ext_resource type="AudioStream" uid="uid://c5mbqpin8tujv" path="res://audio/coin/gem_gem_6.ogg" id="5_14l11"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_fdpt6")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_vwogo")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_wq8oh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_r62qn")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_14l11")
+stream_4/weight = 1.0

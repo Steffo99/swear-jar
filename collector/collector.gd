@@ -14,6 +14,9 @@ var collected_count: int = 0
 ## The sound played when an item is collected.
 @export var sound_absorb: AudioStreamPlayer2D
 
+@export_range(0.01, 4) var sound_absorb_min_pitch: float = 1.0
+@export_range(0.01, 4) var sound_absorb_max_pitch: float = 1.0
+
 ## The goal amount of entities to collect.
 ##
 ## When [collected_count] reaches it, it will be reset to zero, and the "goal" signal will be emitted.
@@ -32,9 +35,8 @@ func _on_body_entered(body: Node2D):
 		if collectible and collectible.type in collecting_types:
 			collected_count += 1
 			collectible.collect()
-			print("Should play ", sound_absorb)
 			if sound_absorb:
-				print("Will play ", sound_absorb)
+				sound_absorb.pitch_scale = sound_absorb_min_pitch + (float(collected_count) / float(collecting_amount)) * (sound_absorb_max_pitch - sound_absorb_min_pitch)
 				sound_absorb.play()
 			collected.emit(body)
 			if collected_count >= collecting_amount:

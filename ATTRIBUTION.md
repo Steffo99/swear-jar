@@ -135,3 +135,10 @@ https://freesound.org/people/PrimeJunt/sounds/135637/
 This work is licensed under the Attribution 4.0 License.
 
 ```
+
+<ul>
+    <li>S: <a href="https://freesound.org/people/forrisday/sounds/214509/">Coins .mp3</a> by <a href="https://freesound.org/people/forrisday/">forrisday</a> | License: Attribution 4.0</li>
+    <li>S: <a href="https://freesound.org/people/luongthenguyen1/sounds/463431/">Glass and metal.wav</a> by <a href="https://freesound.org/people/luongthenguyen1/">luongthenguyen1</a> | License: Creative Commons 0</li> 
+	<li>S: <a href="https://freesound.org/people/steaq/sounds/387232/">Badge Coin Win</a> by <a href="https://freesound.org/people/steaq/">steaq</a> | License: Creative Commons 0</li>
+    <li>S: <a href="https://freesound.org/people/aerror/sounds/350750/">stonehit1.wav</a> by <a href="https://freesound.org/people/aerror/">aerror</a> | License: Creative Commons 0</li> 
+</ul>

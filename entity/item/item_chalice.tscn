@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://451ddbtq4163"]
+[gd_scene load_steps=12 format=3 uid="uid://451ddbtq4163"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c6kn1an85lccr" path="res://entity/coin_physics_material.tres" id="1_vp2el"]
 [ext_resource type="Texture2D" uid="uid://wpen8vmuyvqv" path="res://entity/item/item_chalice.png" id="2_rnc33"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://vkvtap437nnf" path="res://color/colored.tscn" id="4_n40wg"]
 [ext_resource type="Shader" path="res://entity/gem/gem_shading_material.gdshader" id="5_bkxhb"]
 [ext_resource type="PackedScene" uid="uid://ujpra0s1kpqi" path="res://value/valuable.tscn" id="7_0qpb5"]
+[ext_resource type="PackedScene" uid="uid://cvh8h0qfylp1x" path="res://noise/noisy.tscn" id="8_54g2j"]
 [ext_resource type="PackedScene" uid="uid://bk1vvq5rug01m" path="res://collector/collectible.tscn" id="8_ghhw4"]
-[ext_resource type="AudioStream" uid="uid://br25ip30mu174" path="res://audio/conversione/mechanic_sound.wav" id="9_v6jws"]
+[ext_resource type="PackedScene" uid="uid://67pl0enqttmi" path="res://noise/sound_contact.tscn" id="9_v7j8f"]
+[ext_resource type="AudioStream" uid="uid://d3knuq0635ie0" path="res://audio/coin/coin_coin_randomizer.tres" id="10_epgea"]
+[ext_resource type="AudioStream" uid="uid://gu3d7jpurudc" path="res://audio/coin/coin_glass_randomizer.tres" id="11_rtt0g"]
 
 [node name="ItemChalice" type="RigidBody2D"]
 collision_layer = 4
@@ -15,6 +18,8 @@ collision_mask = 14
 mass = 24.0
 inertia = 1250.0
 physics_material_override = ExtResource("1_vp2el")
+max_contacts_reported = 1
+contact_monitor = true
 linear_damp = 0.1
 angular_damp = 0.1
 
@@ -39,5 +44,17 @@ type = &"Chalice"
 [node name="Valuable" parent="." instance=ExtResource("7_0qpb5")]
 value = 5000
 
-[node name="SoundWorking" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_v6jws")
+[node name="Noisy" parent="." instance=ExtResource("8_54g2j")]
+type = &"Coin"
+
+[node name="SoundContactCoin" parent="Noisy" instance=ExtResource("9_v7j8f")]
+stream = ExtResource("10_epgea")
+type = &"Coin"
+min_velocity = 100.0
+
+[node name="SoundContactGem" parent="Noisy" instance=ExtResource("9_v7j8f")]
+stream = ExtResource("11_rtt0g")
+type = &"Gem"
+min_velocity = 100.0
+
+[connection signal="body_entered" from="." to="Noisy" method="_on_body_entered"]

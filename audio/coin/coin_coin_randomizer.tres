@@ -1,0 +1,41 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=13 format=3 uid="uid://d3knuq0635ie0"]
+
+[ext_resource type="AudioStream" uid="uid://86d7joh71cyh" path="res://audio/coin/coin_coin_1.ogg" id="1_80twt"]
+[ext_resource type="AudioStream" uid="uid://cw17cmyevvef0" path="res://audio/coin/coin_coin_2.ogg" id="2_ltjfu"]
+[ext_resource type="AudioStream" uid="uid://yvxafurlvltc" path="res://audio/coin/coin_coin_11.ogg" id="3_ccv8c"]
+[ext_resource type="AudioStream" uid="uid://66s04c0nom3n" path="res://audio/coin/coin_coin_3.ogg" id="3_ngqjr"]
+[ext_resource type="AudioStream" uid="uid://cuokeuw46lymr" path="res://audio/coin/coin_coin_4.ogg" id="4_kpwtc"]
+[ext_resource type="AudioStream" uid="uid://5mhsngw8nptc" path="res://audio/coin/coin_coin_12.ogg" id="4_n8pxi"]
+[ext_resource type="AudioStream" uid="uid://dl6p5ltl2sdjt" path="res://audio/coin/coin_coin_5.ogg" id="7_wtdoh"]
+[ext_resource type="AudioStream" uid="uid://bansb8l4e7c6s" path="res://audio/coin/coin_coin_6.ogg" id="8_2pwgc"]
+[ext_resource type="AudioStream" uid="uid://ccg2i60y5ca1l" path="res://audio/coin/coin_coin_7.ogg" id="9_ysfba"]
+[ext_resource type="AudioStream" uid="uid://ckfos4qkb3jka" path="res://audio/coin/coin_coin_8.ogg" id="10_ciir8"]
+[ext_resource type="AudioStream" uid="uid://dodb5q7xostps" path="res://audio/coin/coin_coin_9.ogg" id="11_h1i27"]
+[ext_resource type="AudioStream" uid="uid://47spaxvsgkaw" path="res://audio/coin/coin_coin_10.ogg" id="12_qn5dh"]
+
+[resource]
+streams_count = 12
+stream_0/stream = ExtResource("1_80twt")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ltjfu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_ngqjr")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_kpwtc")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_wtdoh")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_2pwgc")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("9_ysfba")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("10_ciir8")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("11_h1i27")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("12_qn5dh")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("3_ccv8c")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("4_n8pxi")
+stream_11/weight = 1.0
