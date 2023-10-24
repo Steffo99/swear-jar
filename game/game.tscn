@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c3rxmcwa5nqng"]
+[gd_scene load_steps=28 format=3 uid="uid://c3rxmcwa5nqng"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_i3ly0"]
 [ext_resource type="PackedScene" uid="uid://bllsprv8orpn4" path="res://bottle/bottle.tscn" id="1_y7o2l"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://qtk4tm6l367w" path="res://interface/ghost/ghost.tscn" id="16_8vhx6"]
 [ext_resource type="PackedScene" uid="uid://bawprh8kluilq" path="res://entity/gem/gem.tscn" id="16_20aff"]
 [ext_resource type="PackedScene" uid="uid://diy8fj7mcc00p" path="res://entity/coal_diamond/coal.tscn" id="17_mf5fk"]
+[ext_resource type="PackedScene" uid="uid://cr5tiep20hk0s" path="res://entity/coal_diamond/diamond.tscn" id="18_2t5ba"]
 [ext_resource type="AudioStream" uid="uid://daiute7lbjet7" path="res://audio/tap/click4.ogg" id="19_i72ko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rh35r"]
@@ -170,6 +171,21 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="ActionTimer" parent="Spawners/CheatCoalSpawner" instance=ExtResource("13_y2562")]
 action = "cheat_spawn_coal"
 
+[node name="CheatDiamondSpawner" parent="Spawners" node_paths=PackedStringArray("target") instance=ExtResource("3_qwsty")]
+scene = ExtResource("18_2t5ba")
+target = NodePath("../..")
+buffer_cap = 10
+spawn_rect = Rect2(-20, 0, 40, 0)
+overlapping_body_count_limit = 16
+metadata/_edit_lock_ = true
+
+[node name="NeckShape" type="CollisionShape2D" parent="Spawners/CheatDiamondSpawner"]
+shape = SubResource("RectangleShape2D_4uksi")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="ActionTimer" parent="Spawners/CheatDiamondSpawner" instance=ExtResource("13_y2562")]
+action = "cheat_spawn_diamond"
+
 [node name="StoreCollector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("9_evdhb")]
 position = Vector2(135, 0)
 sound_absorb = NodePath("SoundAbsorb")
@@ -183,7 +199,7 @@ debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
 [node name="Panel" type="Panel" parent="StoreCollector"]
 visible = false
-z_index = -10
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -264,6 +280,7 @@ debug_color = Color(0, 0, 0, 0.419608)
 [connection signal="timeout" from="Spawners/CheatGoldSpawner/ActionTimer" to="Spawners/CheatGoldSpawner" method="spawn"]
 [connection signal="timeout" from="Spawners/CheatGemSpawner/ActionTimer" to="Spawners/CheatGemSpawner" method="spawn"]
 [connection signal="timeout" from="Spawners/CheatCoalSpawner/ActionTimer" to="Spawners/CheatCoalSpawner" method="spawn"]
+[connection signal="timeout" from="Spawners/CheatDiamondSpawner/ActionTimer" to="Spawners/CheatDiamondSpawner" method="spawn"]
 [connection signal="collected" from="StoreCollector" to="." method="_on_store_collector_collected"]
 
 [editable path="Ghost"]
