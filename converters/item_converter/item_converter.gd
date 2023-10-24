@@ -3,7 +3,6 @@ class_name ItemConverter
 
 @onready var sprite_front: AnimatedSprite2D = $SpriteFront
 @onready var sprite_back: AnimatedSprite2D = $SpriteBack
-@onready var sound_working: AudioStreamPlayer = $SoundWorking
 
 @export var crown_chance: float = 0.1
 @export var chalice_chance: float = 0.4
@@ -15,7 +14,7 @@ class_name ItemConverter
 @onready var gem_hue_stored: Array[float] = []
 @onready var gem_hue_spawn: Array[float] = []
 
-@onready var conversion_timer: Timer = $ConversionTimer
+@onready var working_timer: Timer = $WorkingTimer
 @onready var ring_spawner = $RingSpawner
 @onready var chalice_spawner = $ChaliceSpawner
 @onready var crown_spawner = $CrownSpawner
@@ -55,19 +54,17 @@ func try_produce():
 			gem_hue_stored.append(hue)
 
 func _physics_process(_delta):
-	if conversion_timer.is_stopped():
+	if working_timer.is_stopped():
 		var hue = gem_hue_stored.pop_front()
 		if hue:
 			gem_hue_spawn.append(hue)
-			conversion_timer.start()
+			working_timer.do_start()
 			if sprite_front:
 				sprite_front.play()
 			if sprite_back:
 				sprite_back.play()
-			if sound_working:
-				sound_working.play()
 
-func _on_timer_timeout():
+func _on_working_timer_timeout():
 	var rand = Randomizer.rng.randf()
 	if rand <= crown_chance:
 		crown_spawner.spawn()
@@ -79,8 +76,6 @@ func _on_timer_timeout():
 		sprite_front.stop()
 	if sprite_back:
 		sprite_back.stop()
-	if sound_working:
-		sound_working.stop()
 
 func _on_spawner_spawned(what: RigidBody2D):
 	var hue = gem_hue_spawn.pop_front()

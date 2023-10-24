@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddrhfhebwtq5"]
+[gd_scene load_steps=38 format=3 uid="uid://ddrhfhebwtq5"]
 
 [ext_resource type="Script" path="res://converters/item_converter/item_converter.gd" id="1_o3eos"]
 [ext_resource type="Texture2D" uid="uid://devcho3gaigt0" path="res://converters/item_converter/item_converter_back_1.png" id="2_136t7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://4tg81ksibacf" path="res://converters/item_converter/item_converter_front_5.png" id="11_cg5dk"]
 [ext_resource type="PackedScene" uid="uid://d32fgw4klo4x3" path="res://entity/item/item_crown.tscn" id="14_mioqu"]
 [ext_resource type="PackedScene" uid="uid://y2p6j177k3nr" path="res://entity/item/item_ring.tscn" id="14_yt3w3"]
+[ext_resource type="PackedScene" uid="uid://b3ev0md0jrpfj" path="res://converters/working_timer.tscn" id="15_38owi"]
 [ext_resource type="PackedScene" uid="uid://451ddbtq4163" path="res://entity/item/item_chalice.tscn" id="15_akn63"]
 [ext_resource type="AudioStream" uid="uid://du16ilpv6gmxd" path="res://audio/conversione/drop_in_lava.wav" id="15_nahnf"]
 [ext_resource type="AudioStream" uid="uid://dv1e0wiiquxp0" path="res://audio/conversione/lava.wav" id="16_ptmks"]
@@ -61,7 +62,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnpyk"]
@@ -104,21 +105,21 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aslkt"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b2tra"]
 radius = 1.5
 height = 28.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_31dtl"]
-size = Vector2(26, 4)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6ytld"]
+points = PackedVector2Array(0, 0, -16, 0, -16, -3, -5, -7, 5, -7, 16, -3, 16, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k11if"]
 size = Vector2(26, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeo5f"]
-size = Vector2(26, 8.83334)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb127"]
+size = Vector2(16, 4)
 
 [node name="ItemConverter" type="StaticBody2D"]
 scale = Vector2(3, 3)
@@ -128,6 +129,7 @@ input_pickable = true
 script = ExtResource("1_o3eos")
 
 [node name="SpriteBack" type="AnimatedSprite2D" parent="."]
+z_index = -2
 texture_filter = 1
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_psnir")
@@ -143,111 +145,124 @@ sprite_frames = SubResource("SpriteFrames_qqah4")
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 2
 position = Vector2(-14.5, -3)
-shape = SubResource("CapsuleShape2D_aslkt")
+shape = SubResource("CapsuleShape2D_b2tra")
+debug_color = Color(0, 0, 0, 0.784314)
 
 [node name="RightWall" type="CollisionShape2D" parent="."]
 z_index = 2
 position = Vector2(14.5, -3)
-shape = SubResource("CapsuleShape2D_aslkt")
+shape = SubResource("CapsuleShape2D_b2tra")
+debug_color = Color(0, 0, 0, 0.784314)
 
-[node name="InnerWall" type="CollisionShape2D" parent="."]
+[node name="BottomWall" type="CollisionShape2D" parent="."]
 z_index = 3
-position = Vector2(0, 4.5)
+position = Vector2(1.16196e-05, 9.08333)
 rotation = 3.14159
-shape = SubResource("RectangleShape2D_31dtl")
+shape = SubResource("ConvexPolygonShape2D_6ytld")
 one_way_collision = true
+debug_color = Color(0, 0, 0, 0.784314)
 
 [node name="GoldCollector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("3_qehi7")]
 z_index = 2
+position = Vector2(0, 6.5)
 collecting_types = Array[StringName]([&"Gold"])
-sound_absorb = NodePath("../SoundAbsorb")
+sound_absorb = NodePath("SoundAbsorb")
 collecting_amount = 25
 
 [node name="CollectShape" type="CollisionShape2D" parent="GoldCollector"]
 shape = SubResource("RectangleShape2D_k11if")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
+[node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="GoldCollector"]
+stream = ExtResource("15_nahnf")
+max_polyphony = 8
+
 [node name="GemCollector" parent="." node_paths=PackedStringArray("sound_absorb") instance=ExtResource("3_qehi7")]
 z_index = 2
+position = Vector2(0, 6.5)
 collecting_types = Array[StringName]([&"Gem"])
-sound_absorb = NodePath("../SoundAbsorb")
+sound_absorb = NodePath("SoundAbsorb")
 collecting_amount = 10
 
 [node name="CollectShape" type="CollisionShape2D" parent="GemCollector"]
 shape = SubResource("RectangleShape2D_k11if")
 debug_color = Color(0, 0.701961, 0.188235, 0.419608)
 
+[node name="SoundAbsorb" type="AudioStreamPlayer2D" parent="GemCollector"]
+stream = ExtResource("15_nahnf")
+max_polyphony = 8
+
+[node name="WorkingTimer" parent="." node_paths=PackedStringArray("working_sound") instance=ExtResource("15_38owi")]
+wait_time = 2.2
+working_sound = NodePath("SoundWorking")
+
+[node name="SoundWorking" type="AudioStreamPlayer2D" parent="WorkingTimer"]
+stream = ExtResource("16_ptmks")
+
 [node name="RingSpawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("4_ihtl7")]
-position = Vector2(0, 8)
+position = Vector2(0, 10)
 scene = ExtResource("14_yt3w3")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
 spawn_rotation_degrees_max = 100.0
 overlapping_body_count_limit = 4
-sound_complete = NodePath("../SoundComplete")
+sound_complete = NodePath("SoundComplete")
 
 [node name="PreventSpawnShape" type="CollisionShape2D" parent="RingSpawner"]
 z_index = 3
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_jeo5f")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fb127")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
+[node name="SoundComplete" type="AudioStreamPlayer2D" parent="RingSpawner"]
+position = Vector2(0, -8)
+stream = ExtResource("17_4wm4w")
+
 [node name="ChaliceSpawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("4_ihtl7")]
-position = Vector2(0, 8)
+position = Vector2(0, 10)
 scene = ExtResource("15_akn63")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
 spawn_rotation_degrees_max = 100.0
 overlapping_body_count_limit = 4
-sound_complete = NodePath("../SoundComplete")
+sound_complete = NodePath("SoundComplete")
 
 [node name="PreventSpawnShape" type="CollisionShape2D" parent="ChaliceSpawner"]
 z_index = 3
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_jeo5f")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fb127")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
+[node name="SoundComplete" type="AudioStreamPlayer2D" parent="ChaliceSpawner"]
+position = Vector2(0, -8)
+stream = ExtResource("17_4wm4w")
+
 [node name="CrownSpawner" parent="." node_paths=PackedStringArray("sound_complete") instance=ExtResource("4_ihtl7")]
-position = Vector2(0, 8)
+position = Vector2(0, 10)
 scene = ExtResource("14_mioqu")
 buffer_cap = 1
 spawn_rect = Rect2(-8, 0, 16, 4)
 spawn_rotation_degrees_min = 80.0
 spawn_rotation_degrees_max = 100.0
 overlapping_body_count_limit = 4
-sound_complete = NodePath("../SoundComplete")
+sound_complete = NodePath("SoundComplete")
 
 [node name="PreventSpawnShape" type="CollisionShape2D" parent="CrownSpawner"]
 z_index = 3
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_jeo5f")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fb127")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
-[node name="ConversionTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="SoundAbsorb" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_nahnf")
-volume_db = -12.291
-
-[node name="SoundWorking" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_ptmks")
-
-[node name="SoundComplete" type="AudioStreamPlayer" parent="."]
+[node name="SoundComplete" type="AudioStreamPlayer2D" parent="CrownSpawner"]
+position = Vector2(0, -8)
 stream = ExtResource("17_4wm4w")
-
-[node name="SpriteBack2" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_psnir")
-frame_progress = 0.228399
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="collected" from="GoldCollector" to="." method="_on_gold_collector_collected"]
 [connection signal="collected" from="GemCollector" to="." method="_on_gem_collector_collected"]
+[connection signal="timeout" from="WorkingTimer" to="." method="_on_working_timer_timeout"]
 [connection signal="spawned" from="RingSpawner" to="." method="_on_spawner_spawned"]
 [connection signal="spawned" from="ChaliceSpawner" to="." method="_on_spawner_spawned"]
 [connection signal="spawned" from="CrownSpawner" to="." method="_on_spawner_spawned"]
-[connection signal="timeout" from="ConversionTimer" to="." method="_on_timer_timeout" flags=18]
