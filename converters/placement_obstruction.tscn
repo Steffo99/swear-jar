@@ -5,5 +5,6 @@
 [node name="PlacementObstruction" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
+input_pickable = true
 
 [node name="ShieldConverterObstructionShape" parent="." instance=ExtResource("1_mcdb6")]

@@ -78,7 +78,6 @@ size = Vector2(16, 4)
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
-input_pickable = true
 script = ExtResource("1_mf1ls")
 spawner = NodePath("Spawner")
 spawner_alt = NodePath("Spawner2")
@@ -171,6 +170,6 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 
 [node name="SoundComplete" parent="Spawner2" instance=ExtResource("17_iaatb")]
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="PlacementObstruction" to="." method="_on_input_event"]
 [connection signal="goal" from="Collector" to="." method="_on_collector_goal"]
 [connection signal="timeout" from="WorkingTimer" to="." method="_on_working_timer_timeout"]

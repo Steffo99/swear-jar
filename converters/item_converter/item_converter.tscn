@@ -126,7 +126,6 @@ size = Vector2(16, 4)
 scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 0
-input_pickable = true
 script = ExtResource("1_o3eos")
 
 [node name="SpriteBack" type="AnimatedSprite2D" parent="."]
@@ -263,7 +262,7 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 volume_db = 0.0
 pitch_scale = 0.74
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="PlacementObstruction" to="." method="_on_input_event"]
 [connection signal="collected" from="GoldCollector" to="." method="_on_gold_collector_collected"]
 [connection signal="collected" from="GemCollector" to="." method="_on_gem_collector_collected"]
 [connection signal="timeout" from="WorkingTimer" to="." method="_on_working_timer_timeout"]
